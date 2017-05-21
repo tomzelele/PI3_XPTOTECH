@@ -6,10 +6,10 @@
 package br.com.senac.pi3.servlet.produtos;
 
 import br.com.senac.pi3.model.categoria.Categoria;
-import br.com.senac.pi3.model.produtos.Produtos;
+import br.com.senac.pi3.model.produto.Produto;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
-import br.com.senac.pi3.db.dao.CategoriaDao;
-import br.com.senac.pi3.db.dao.ProdutoDao;
+import br.com.senac.pi3.db.dao.DaoCategoria;
+import br.com.senac.pi3.db.dao.DaoProduto;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -35,11 +35,11 @@ public class EditarProduto extends HttpServlet{
 
            int idProduto = Integer.parseInt( req.getParameter("idProduto") );
            
-           ProdutoDao dao = new ProdutoDao(ConnectionUtils.getConnection());
+           DaoProduto dao = new DaoProduto(ConnectionUtils.getConnection());
            
-           CategoriaDao  categoriaDao = new CategoriaDao(ConnectionUtils.getConnection());
+           DaoCategoria  categoriaDao = new DaoCategoria(ConnectionUtils.getConnection());
            
-           Produtos produto = null;
+           Produto produto = null;
         try {
            produto = dao.buscarPorId(idProduto);
         } catch (SQLException ex) {
@@ -67,15 +67,15 @@ public class EditarProduto extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        ProdutoDao produtoDao = new ProdutoDao(ConnectionUtils.getConnection());
-        Produtos produto = new Produtos();
+        DaoProduto produtoDao = new DaoProduto(ConnectionUtils.getConnection());
+        Produto produto = new Produto();
         
         produto.setId(Integer.parseInt(req.getParameter("idProd")));
         
         produto.setProduto(req.getParameter("nomeProd"));
         int idCategoria = Integer.parseInt(req.getParameter("categoriaProd"));
         try {        
-            produto.setCategoria(new CategoriaDao(ConnectionUtils.getConnection()).buscarPorId(idCategoria));
+            produto.setCategoria(new DaoCategoria(ConnectionUtils.getConnection()).buscarPorId(idCategoria));
         } catch (SQLException ex) {
             Logger.getLogger(CadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }

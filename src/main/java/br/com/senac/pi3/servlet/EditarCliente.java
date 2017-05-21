@@ -8,8 +8,8 @@ package br.com.senac.pi3.servlet;
 import br.com.senac.pi3.model.cliente.Cliente;
 import br.com.senac.pi3.model.endereco.Endereco;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
-import br.com.senac.pi3.db.dao.ClienteDao;
-import br.com.senac.pi3.db.dao.EnderecoDao;
+import br.com.senac.pi3.db.dao.DaoCliente;
+import br.com.senac.pi3.db.dao.DaoEndereco;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -35,7 +35,7 @@ public class EditarCliente  extends HttpServlet{
         int idCliente = 0;
         idCliente= Integer.parseInt(request.getParameter("idCliente") );
         
-        ClienteDao clienteDao  = new ClienteDao(ConnectionUtils.getConnection());
+        DaoCliente clienteDao  = new DaoCliente(ConnectionUtils.getConnection());
         Cliente cliente = null;
         try {
              cliente = clienteDao.buscarPorId( idCliente);
@@ -60,7 +60,7 @@ public class EditarCliente  extends HttpServlet{
         Connection connection = ConnectionUtils.getConnection();
         
         
-        EnderecoDao enderecoDao = new EnderecoDao(connection);
+        DaoEndereco enderecoDao = new DaoEndereco(connection);
         
         Cliente cliente = new Cliente();
         
@@ -96,7 +96,7 @@ public class EditarCliente  extends HttpServlet{
             
         Connection connection1 = ConnectionUtils.getConnection();
         
-        ClienteDao clienteDao = new ClienteDao(connection1);
+        DaoCliente clienteDao = new DaoCliente(connection1);
         clienteDao.atualizarCliente(cliente);
 
         } catch (Exception ex) {

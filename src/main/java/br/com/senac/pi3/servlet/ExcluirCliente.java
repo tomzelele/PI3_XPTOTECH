@@ -6,7 +6,7 @@
 package br.com.senac.pi3.servlet;
 
 import br.com.senac.pi3.db.utils.ConnectionUtils;
-import br.com.senac.pi3.db.dao.ClienteDao;
+import br.com.senac.pi3.db.dao.DaoCliente;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,7 +25,7 @@ public class ExcluirCliente extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ClienteDao clienteDao  = new ClienteDao(ConnectionUtils.getConnection());
+        DaoCliente clienteDao  = new DaoCliente(ConnectionUtils.getConnection());
         
          
         int idCliente = 0;

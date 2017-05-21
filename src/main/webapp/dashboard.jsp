@@ -3,7 +3,7 @@
     Created on : 13/05/2017, 21:59:56
     Author     : Souza08
 --%>
-<%@page import="br.com.senac.pi.model.user.Usuario"%>
+<%@page import="br.com.senac.pi3.model.user.Usuario"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

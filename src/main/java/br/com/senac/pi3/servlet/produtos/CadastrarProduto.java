@@ -5,10 +5,10 @@
  */
 package br.com.senac.pi3.servlet.produtos;
 
-import br.com.senac.pi3.model.produtos.Produtos;
+import br.com.senac.pi3.model.produto.Produto;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
-import br.com.senac.pi3.db.dao.CategoriaDao;
-import br.com.senac.pi3.db.dao.ProdutoDao;
+import br.com.senac.pi3.db.dao.DaoCategoria;
+import br.com.senac.pi3.db.dao.DaoProduto;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -32,7 +32,7 @@ public class CadastrarProduto extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
         
-        CategoriaDao categoriaDao = new CategoriaDao(ConnectionUtils.getConnection());
+        DaoCategoria categoriaDao = new DaoCategoria(ConnectionUtils.getConnection());
         
         try {
             req.getSession().setAttribute("listaCategoria", categoriaDao.listarCategoria()) ;
@@ -48,15 +48,15 @@ public class CadastrarProduto extends HttpServlet{
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         
-        ProdutoDao produtoDao = new ProdutoDao(ConnectionUtils.getConnection());
-        Produtos produto = new Produtos();
+        DaoProduto produtoDao = new DaoProduto(ConnectionUtils.getConnection());
+        Produto produto = new Produto();
         
         
         
         produto.setProduto(req.getParameter("nomeProd"));
         int idCategoria = Integer.parseInt(req.getParameter("categoriaProd"));
         try {        
-            produto.setCategoria(new CategoriaDao(ConnectionUtils.getConnection()).buscarPorId(idCategoria));
+            produto.setCategoria(new DaoCategoria(ConnectionUtils.getConnection()).buscarPorId(idCategoria));
         } catch (SQLException ex) {
             Logger.getLogger(CadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }

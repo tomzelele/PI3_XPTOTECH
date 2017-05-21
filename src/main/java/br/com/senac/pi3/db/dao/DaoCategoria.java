@@ -17,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author Souza08
  */
-public class CategoriaDao {
+public class DaoCategoria {
     
         
     private Connection conBanco;
@@ -25,7 +25,7 @@ public class CategoriaDao {
     private ResultSet rsRegistros;
 
    
-    public CategoriaDao(Connection conBanco) {
+    public DaoCategoria(Connection conBanco) {
         
         this.conBanco = conBanco;
     }

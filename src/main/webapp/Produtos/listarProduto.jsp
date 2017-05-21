@@ -4,7 +4,7 @@
     Author     : Souza08
 --%>
 
-<%@page import="br.com.senac.pi.model.produtos.Produtos"%>
+<%@page import="br.com.senac.pi3.model.produto.Produto"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -34,7 +34,7 @@
 
     </head>
     <body>
-        <% List<Produtos> listaProdutos = (List<Produtos>) session.getAttribute("listaProdutos"); %>
+        <% List<Produto> listaProdutos = (List<Produto>) session.getAttribute("listaProdutos"); %>
         
         <form action="ExcluiProduto" method="POST" name="formExcluirProduto">
             <input type="hidden" value="" name="idProdutoExcluir">
@@ -70,7 +70,7 @@
                                     <th>Delete</th>
                                     </thead>
                                     <tbody>
-                                        <%for(Produtos produto : listaProdutos){ %>    
+                                        <%for(Produto produto : listaProdutos){ %>    
                                         <tr>
                                             <td><%= produto.getId()%></td>
                                             <td><%= produto.getProduto()%></td>

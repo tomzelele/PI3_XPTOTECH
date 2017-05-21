@@ -5,9 +5,9 @@
  */
 package br.com.senac.pi3.servlet.produtos;
 
-import br.com.senac.pi3.model.produtos.Produtos;
+import br.com.senac.pi3.model.produto.Produto;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
-import br.com.senac.pi3.db.dao.ProdutoDao;
+import br.com.senac.pi3.db.dao.DaoProduto;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -31,9 +31,9 @@ public class ListarProduto extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
         
-        ProdutoDao produtoDao = new ProdutoDao(ConnectionUtils.getConnection());
+        DaoProduto produtoDao = new DaoProduto(ConnectionUtils.getConnection());
         
-         List<Produtos> listaProdutos = null;
+         List<Produto> listaProdutos = null;
         try {
            listaProdutos =  produtoDao.listarProduto();
         } catch (SQLException ex) {

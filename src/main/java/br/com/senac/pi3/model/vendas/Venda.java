@@ -6,7 +6,7 @@
 package br.com.senac.pi3.model.vendas;
 
 import br.com.senac.pi3.model.Pessoa.Pessoa;
-import br.com.senac.pi3.model.produtos.Produtos;
+import br.com.senac.pi3.model.produto.Produto;
 import java.util.ArrayList;
 import java.util.Date;
 /**
@@ -20,15 +20,15 @@ public class Venda {
     private double valorVenda;
     private Pessoa cliente;
     private Integer idFuncionario;
-    private Produtos produto;
-    private ArrayList<Produtos> produtos;
+    private Produto produto;
+    private ArrayList<Produto> produtos;
     private String  data;
 
   
     /**
      * @param produto the produto to set
      */
-    public void setProduto(Produtos produto) {
+    public void setProduto(Produto produto) {
         this.produto = produto;
     }
 
@@ -78,14 +78,14 @@ public class Venda {
     /**
      * @return the produto
      */
-    public ArrayList<Produtos> getProduto() {
+    public ArrayList<Produto> getProduto() {
         return produtos;
     }
 
     /**
      * @param produto the produto to set
      */
-    public void setProduto(ArrayList<Produtos> produto) {
+    public void setProduto(ArrayList<Produto> produto) {
         this.produtos = produto;
     }
 

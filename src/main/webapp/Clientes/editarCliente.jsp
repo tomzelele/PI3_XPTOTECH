@@ -1,5 +1,5 @@
 s
-<%@page import="br.com.senac.pi.model.cliente.Cliente"%>
+<%@page import="br.com.senac.pi3.model.cliente.Cliente"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 

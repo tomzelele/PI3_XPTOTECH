@@ -1,6 +1,6 @@
 
 <%@page import="java.util.List"%>
-<%@page import="br.com.senac.pi.model.categoria.Categoria"%>
+<%@page import="br.com.senac.pi3.model.categoria.Categoria"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

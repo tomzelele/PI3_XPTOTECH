@@ -19,7 +19,7 @@ import java.util.ArrayList;
  *
  * @author Souza08
  */
-public class EnderecoDao {
+public class DaoEndereco {
     
     
     
@@ -28,7 +28,7 @@ public class EnderecoDao {
     private ResultSet rsRegistros;
 
    
-    public EnderecoDao(Connection conBanco) {
+    public DaoEndereco(Connection conBanco) {
         
         this.conBanco = conBanco;
     }

@@ -1,7 +1,7 @@
 
 <%@page import="java.util.List"%>
-<%@page import="br.com.senac.pi.model.categoria.Categoria"%>
-<%@page import="br.com.senac.pi.model.produtos.Produtos"%>
+<%@page import="br.com.senac.pi3.model.categoria.Categoria"%>
+<%@page import="br.com.senac.pi3.model.produto.Produto"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -27,7 +27,7 @@
 
     </head>
     <body>
-        <% Produtos produto = (Produtos) session.getAttribute("ProdutoAtualiza");
+        <% Produto produto = (Produto) session.getAttribute("ProdutoAtualiza");
         
            List<Categoria> listaCategoria = (List<Categoria>) session.getAttribute("ListaCategoriaAtualiza");
         

@@ -7,7 +7,7 @@ package br.com.senac.pi3.servlet;
 
 import br.com.senac.pi3.model.cliente.Cliente;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
-import br.com.senac.pi3.db.dao.ClienteDao;
+import br.com.senac.pi3.db.dao.DaoCliente;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -31,7 +31,7 @@ public class ListarCliente extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         
-        ClienteDao clienteDao = new ClienteDao(ConnectionUtils.getConnection());
+        DaoCliente clienteDao = new DaoCliente(ConnectionUtils.getConnection());
         
         List<Cliente> listaClientes = null;
         try {

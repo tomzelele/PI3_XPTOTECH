@@ -1,9 +1,9 @@
 
 <%@page import="java.util.List"%>
-<%@page import="br.com.senac.pi.model.endereco.Endereco"%>
-<%@page import="br.com.senac.pi.model.cliente.Cliente"%>
+<%@page import="br.com.senac.pi3.model.endereco.Endereco"%>
+<%@page import="br.com.senac.pi3.model.cliente.Cliente"%>
 <%@page import="br.com.senac.pi3.db.utils.ConnectionUtils"%>
-<%@page import="br.senac.tads.pi3.db.dao.ClienteDao"%>
+<%@page import="br.com.senac.pi3.db.dao.DaoCliente"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

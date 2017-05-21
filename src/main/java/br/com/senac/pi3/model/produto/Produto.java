@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.senac.pi3.model.produtos;
+package br.com.senac.pi3.model.produto;
 
 import br.com.senac.pi3.model.categoria.Categoria;
 
@@ -11,7 +11,7 @@ import br.com.senac.pi3.model.categoria.Categoria;
  *
  * @author Jonathan Souza
  */
-public class Produtos {
+public class Produto {
 
     
    private Integer id; 

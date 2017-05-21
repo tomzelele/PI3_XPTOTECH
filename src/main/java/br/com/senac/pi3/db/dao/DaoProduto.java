@@ -6,7 +6,7 @@
 package br.com.senac.pi3.db.dao;
 
 
-import br.com.senac.pi3.model.produtos.Produtos;
+import br.com.senac.pi3.model.produto.Produto;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,21 +19,25 @@ import java.util.ArrayList;
  *
  * @author Souza08
  */
-public class ProdutoDao {
+public class DaoProduto {
     
     private Connection conBanco;
     private PreparedStatement psComando;
     private ResultSet rsRegistros;
 
    
-    public ProdutoDao(Connection conBanco) {
+    public DaoProduto(Connection conBanco) {
         
         this.conBanco = conBanco;
 
     }
 
+    public DaoProduto() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-    public void inserirProduto(Produtos produto) throws SQLException, Exception {
+
+    public void inserirProduto(Produto produto) throws SQLException, Exception {
 
         String sql = "INSERT INTO Produto(vl_prod,desc_prod,enabled,fk_id_categoria) "+
                " VALUES (?,?,?,?)";
@@ -57,7 +61,7 @@ public class ProdutoDao {
     
     
     
-        public void atualizarProduto(Produtos produto) throws SQLException, Exception {
+        public void atualizarProduto(Produto produto) throws SQLException, Exception {
 
 //            String sql = "UPDATE Produto set qtd_unidade=?,vl_prod=?,desc_prod=?,qtd_estoque=?,categoria=? WHERE id_produto=?";
 
@@ -91,23 +95,23 @@ public class ProdutoDao {
         psComando.executeUpdate(); 
     }
      
-       public ArrayList<Produtos> listarProduto() throws SQLException{
+       public ArrayList<Produto> listarProduto() throws SQLException{
            
            String sql = "SELECT * FROM PRODUTO WHERE enabled=true";
            psComando = conBanco.prepareStatement(sql);
            ResultSet rs =  psComando.executeQuery();
            
            
-           ArrayList<Produtos> listaProduto  = new ArrayList<Produtos>();
+           ArrayList<Produto> listaProduto  = new ArrayList<Produto>();
            
            
            while(rs.next()){
-               Produtos produto = new Produtos();
+               Produto produto = new Produto();
                
                produto.setId(rs.getInt("id_produto"));
                produto.setVlProd(rs.getDouble("vl_prod"));
                produto.setProduto(rs.getString("desc_prod"));
-               produto.setCategoria(new CategoriaDao(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ID_CATEGORIA")));
+               produto.setCategoria(new DaoCategoria(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ID_CATEGORIA")));
                listaProduto.add(produto);
                
            }
@@ -116,14 +120,14 @@ public class ProdutoDao {
            
     }    
 
-    public Produtos buscarPorId(int idProduto) throws SQLException {
+    public Produto buscarPorId(int idProduto) throws SQLException {
          String sql = "SELECT * FROM Produto WHERE id_produto=?";
         psComando = conBanco.prepareStatement(sql);
         psComando.setInt(1, idProduto);
         ResultSet rs =  psComando.executeQuery();
            
            
-           Produtos produto=  new Produtos();
+           Produto produto=  new Produto();
            
            
            while(rs.next()){
@@ -132,11 +136,39 @@ public class ProdutoDao {
             produto.setId(rs.getInt("id_produto"));
             produto.setVlProd(rs.getDouble("vl_prod"));
             produto.setProduto(rs.getString("desc_prod"));
-            produto.setCategoria(new CategoriaDao(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ID_CATEGORIA")));
+            produto.setCategoria(new DaoCategoria(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ID_CATEGORIA")));
      
            }
            
             
         return produto;
     }  
+    
+    public ArrayList<Produto> procurarProduto(String valor)
+            throws SQLException, Exception {
+        
+        String sql = "SELECT * FROM produto WHERE ((UPPER(desc_prod) LIKE UPPER('%"
+                + valor + "%') ) AND enabled=true)";
+        
+        psComando = conBanco.prepareStatement(sql);
+        ResultSet rs =  psComando.executeQuery();
+        
+        ArrayList<Produto> listaProduto  = new ArrayList<Produto>();
+         
+           
+           while(rs.next()){
+               Produto produto = new Produto();
+               
+               produto.setId(rs.getInt("id_produto"));
+               produto.setVlProd(rs.getDouble("vl_prod"));
+               produto.setProduto(rs.getString("desc_prod"));
+               produto.setCategoria(new DaoCategoria(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ID_CATEGORIA")));
+               listaProduto.add(produto);
+               
+           }
+           
+           return listaProduto;
+    }
+    
+    
 }

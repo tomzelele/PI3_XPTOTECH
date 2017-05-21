@@ -8,8 +8,8 @@ package br.com.senac.pi3.servlet;
 import br.com.senac.pi3.model.cliente.Cliente;
 import br.com.senac.pi3.model.endereco.Endereco;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
-import br.com.senac.pi3.db.dao.ClienteDao;
-import br.com.senac.pi3.db.dao.EnderecoDao;
+import br.com.senac.pi3.db.dao.DaoCliente;
+import br.com.senac.pi3.db.dao.DaoEndereco;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -42,7 +42,7 @@ public class CadastrarCliente extends HttpServlet {
         Connection connection = ConnectionUtils.getConnection();
         
         
-        EnderecoDao enderecoDao = new EnderecoDao(connection);
+        DaoEndereco enderecoDao = new DaoEndereco(connection);
         
         Cliente cliente = new Cliente();
         
@@ -76,7 +76,7 @@ public class CadastrarCliente extends HttpServlet {
             
         Connection connection1 = ConnectionUtils.getConnection();
         
-        ClienteDao clienteDao = new ClienteDao(connection1);
+        DaoCliente clienteDao = new DaoCliente(connection1);
             clienteDao.inserir(cliente);
 
         } catch (Exception ex) {

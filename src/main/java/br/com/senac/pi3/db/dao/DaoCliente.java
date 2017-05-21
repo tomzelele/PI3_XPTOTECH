@@ -19,14 +19,14 @@ import java.util.ArrayList;
  *
  * @author Souza08
  */
-public class ClienteDao {
+public class DaoCliente {
     
     private Connection conBanco;
     private PreparedStatement psComando;
     private ResultSet rsRegistros;
 
    
-    public ClienteDao(Connection conBanco) {
+    public DaoCliente(Connection conBanco) {
         
         this.conBanco = conBanco;
     }
@@ -110,7 +110,7 @@ public class ClienteDao {
            ArrayList<Cliente> listaCliente  = new ArrayList<Cliente>();
            
            
-           EnderecoDao  daoEndereco = new EnderecoDao(ConnectionUtils.getConnection());
+           DaoEndereco  daoEndereco = new DaoEndereco(ConnectionUtils.getConnection());
            while(rs.next()){
                Cliente cliente = new Cliente();
                
@@ -156,7 +156,7 @@ public class ClienteDao {
                cliente.setCel(rs.getString("CEL"));
                cliente.setEmail(rs.getString("EMAIL"));
                              
-                cliente.setEndereco(new EnderecoDao(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ENDERECO")));
+                cliente.setEndereco(new DaoEndereco(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ENDERECO")));
                
            }
            

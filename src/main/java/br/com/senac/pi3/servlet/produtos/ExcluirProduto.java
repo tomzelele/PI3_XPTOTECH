@@ -6,7 +6,7 @@
 package br.com.senac.pi3.servlet.produtos;
 
 import br.com.senac.pi3.db.utils.ConnectionUtils;
-import br.com.senac.pi3.db.dao.ProdutoDao;
+import br.com.senac.pi3.db.dao.DaoProduto;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,7 +28,7 @@ public class ExcluirProduto extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         
-        ProdutoDao produtoDao = new ProdutoDao(ConnectionUtils.getConnection());
+        DaoProduto produtoDao = new DaoProduto(ConnectionUtils.getConnection());
         
         int idProduto = Integer.parseInt(req.getParameter("idProdutoExcluir"));
         
