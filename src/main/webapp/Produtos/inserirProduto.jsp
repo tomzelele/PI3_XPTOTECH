@@ -26,7 +26,7 @@
 
     </head>
     <body>
-<% List<Categoria> lista =  (List<Categoria>)session.getAttribute("listaCategoria") ;%>	
+    <% List<Categoria> lista =  (List<Categoria>)session.getAttribute("listaCategoria") ;%>	
         <div id="wrapper3">
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
@@ -35,7 +35,7 @@
                     <div id="textCustom" class="title">	<h2>Cadastro de Produtos</h2> </div>
                 </div>
 
-                <a id="botaoCustom" href="/XPTOTECH/dashboard.jsp" class="button">Voltar</a>
+                <a id="botaoCustom" href="/XPTOTECH/ListarProdutos" class="button">Voltar</a>
 
                 <div class="container" >
 

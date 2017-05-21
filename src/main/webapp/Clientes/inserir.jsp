@@ -33,8 +33,6 @@
                     <div id="textCustom" class="title">	<h2>Cadastro de Clientes</h2> </div>
                 </div>
                 
-                
-
                 <a id="botaoCustom" href="/XPTOTECH/ListarClientes" class="button">Voltar</a>
 
                 <div class="container" >
@@ -42,9 +40,6 @@
                     <div class="cadastroFormulario">
 
                         <form method="post" action="../CadastraCliente">
-
-
-
 
                             <fieldset class="fieldCliente">
                                 <legend>Dados Pessoais</legend>  

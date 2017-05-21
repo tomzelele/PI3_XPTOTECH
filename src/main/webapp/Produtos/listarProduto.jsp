@@ -1,4 +1,4 @@
-<%-- 
+%-- 
     Document   : listarProduto
     Created on : 16/05/2017, 23:35:57
     Author     : Souza08
@@ -42,12 +42,14 @@
         <div id="wrapper3"> 
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
+                
+                <a type="button" class="btn btn-info" href="/XPTOTECH/Produtos/inserirProduto.jsp">Inserir Produto</a>
 
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-suitcase"></span>
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Produtos</h2> </div>
                 </div>
 
-                <a id="botaoCustom" href="gerencia.html" class="button" style="border-radius: 10px;">Voltar</a>
+                <a id="botaoCustom" href="/XPTOTECH/dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
 
                 <div class="container">
                     <div class="row">
