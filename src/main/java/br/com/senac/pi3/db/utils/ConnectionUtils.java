@@ -3,7 +3,7 @@ package br.com.senac.pi3.db.utils;
  *
  * @author Jonathan Souza
  */
-import br.com.senac.pi.constants.MainConstants;
+import br.com.senac.pi3.constants.MainConstants;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
