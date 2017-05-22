@@ -31,11 +31,12 @@ CREATE TABLE Endereco (
 
 CREATE TABLE Filial(
     id_filial INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-    cnpj VARCHAR(255) NOT NULL,
-    desc_filial VARCHAR(50),
-    enabled BOOLEAN,
-    fk_endereco INTEGER NOT NULL REFERENCES Endereco(id_endereco)
-
+    cnpj VARCHAR(14) NOT NULL,
+    desc_nome VARCHAR(50),
+    desc_fantasia VARCHAR(50),
+    telefone VARCHAR(10),
+    fk_endereco INTEGER NOT NULL REFERENCES ENDERECO(ID_ENDRECO),
+    enabled BOOLEAN
 );
 
 

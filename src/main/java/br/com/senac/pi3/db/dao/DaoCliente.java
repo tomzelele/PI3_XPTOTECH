@@ -132,7 +132,7 @@ public class DaoCliente {
            
            return listaCliente;
            
-    }    
+    }
 
     public Cliente buscarPorId(int idCliente) throws SQLException {
          String sql = "SELECT * FROM Cliente WHERE id_cliente=?";

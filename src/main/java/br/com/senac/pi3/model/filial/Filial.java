@@ -1,65 +1,62 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.senac.pi3.model.filial;
 
 import br.com.senac.pi3.model.endereco.Endereco;
 
-/**
- *
- * @author Souza08
- */
 public class Filial {
     
     private Integer idFilial; 
-    private String descFilial;
+    private String Nome;
+    private String Fantasia;
+    private String Telefone;
     private String cnpj;
     private Endereco endereco;
-    
 
-    /**
-     * @return the idFilial
-     */
     public Integer getIdFilial() {
         return idFilial;
     }
 
-    /**
-     * @param idFilial the idFilial to set
-     */
     public void setIdFilial(Integer idFilial) {
         this.idFilial = idFilial;
     }
 
-    /**
-     * @return the descFilial
-     */
-    public String getDescFilial() {
-        return descFilial;
+    public String getNome() {
+        return Nome;
     }
 
-    /**
-     * @param descFilial the descFilial to set
-     */
-    public void setDescFilial(String descFilial) {
-        this.descFilial = descFilial;
+    public void setNome(String Nome) {
+        this.Nome = Nome;
     }
 
-    /**
-     * @return the cnpj
-     */
+    public String getFantasia() {
+        return Fantasia;
+    }
+
+    public void setFantasia(String Fantasia) {
+        this.Fantasia = Fantasia;
+    }
+
+    public String getTelefone() {
+        return Telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.Telefone = telefone;
+    }
+
     public String getCnpj() {
         return cnpj;
     }
 
-    /**
-     * @param cnpj the cnpj to set
-     */
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
-    
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
     
 }

@@ -55,7 +55,7 @@
 		<div class="title">
 			<h2>Gerenciamento de Filiais</h2>
 		</div>
-		<a href="gerFiliais.jsp" class="button">Gerenciar</a>
+		<a href="ListarFilial" class="button">Gerenciar</a>
 	</div>
 
 	<div id="tbox3"> <span class="icon icon-bar-chart"></span>
