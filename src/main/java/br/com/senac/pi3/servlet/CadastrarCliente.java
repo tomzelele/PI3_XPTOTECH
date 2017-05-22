@@ -5,10 +5,10 @@
  */
 package br.com.senac.pi3.servlet;
 
+import br.com.senac.pi3.db.dao.DaoCliente;
 import br.com.senac.pi3.model.cliente.Cliente;
 import br.com.senac.pi3.model.endereco.Endereco;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
-import br.com.senac.pi3.db.dao.DaoCliente;
 import br.com.senac.pi3.db.dao.DaoEndereco;
 import java.io.IOException;
 import java.io.PrintWriter;

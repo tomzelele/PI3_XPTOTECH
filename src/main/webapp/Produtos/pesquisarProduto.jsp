@@ -1,4 +1,5 @@
 
+
 <%@page import="java.util.List"%>
 <%@page import="br.com.senac.pi3.model.categoria.Categoria"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -41,7 +42,7 @@
 
                     <div class="cadastroFormulario" >
 
-                        <form method="post" action="CadastraProduto">
+                        <form method="post" action="PesquisaProduto">
 
                             <fieldset class="fieldProd">
                                 <legend>Informações do produto</legend>  
@@ -53,30 +54,9 @@
                                 
                                 <input required="" name="nomeProd" type="text" id="nomeProd" class="form-control input-sm"> </br>
                             </div>
-
-                            <div  class="categoriaProd">
-                                <label  for="categoriaProd">Categoria: </label>
-                                <select class="form-control" name="categoriaProd" id="categoriaProd" >
-                                
-                                    <% for(Categoria categoria : lista){ %>
-                                        <option value="<%= categoria.getIdCategoria() %>"><%= categoria.getCategoria() %></option>
-                                    <% } %>
-                                </select>
-                            
-                            </div>							
-							
-                            <div  class="vlProd">
-                                <label  for="vlProd">Valor: </label>
-                                <input required="" name="vlProd"  type="text" id="vlProd" class="form-control input-sm"> </br>
-                            </div>
-                            <div  class="qtdProd">
-                                <label  for="qtdProd">Qtd. Produto:  </label>
-                                <input required=""  name="qtdProd" type="date" id="qtdProd" class="form-control input-sm"> </br>
-                            </div>
- 
-
+                    
                             <div class="botaoCadastrarProd">
-                                <input type="submit" class="btn btn-primary" value="Cadastrar"></button>
+                                <input type="submit" class="btn btn-primary" value="Pesquisar"></button>
                             </div>
                         </form>
                     </div>

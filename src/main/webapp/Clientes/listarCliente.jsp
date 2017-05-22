@@ -37,14 +37,13 @@
         <div id="wrapper3">
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
+                
                 <a type="button" class="btn btn-info" href="/XPTOTECH/Clientes/inserir.jsp">Inserir Cliente</a>
 
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-group"></span>
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Clientes</h2> </div>
                 </div>
-                
-                
-
+                                
                 <a id="botaoCustom" href="/XPTOTECH/dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
 
                 <div class="container">
@@ -69,10 +68,7 @@
                                     <th>Delete</th>
                                     </thead>
                                     <tbody>
-
-
                                         <% List<Cliente> listaClientes = (List<Cliente>) session.getAttribute("listaClientes"); %>
-
                                         <% for (Cliente cliente : listaClientes) {%>
                                             <tr>            
                                                 <td><%= cliente.getNome()%></td>
@@ -85,8 +81,6 @@
                                                 <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditarCliente?idCliente=<%= cliente.getId()%>" class="btn btn-primary btn-xs" data-title="Edit"  ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
                                                 <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-cliente" data-idCliente="<%=cliente.getId()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                             </tr>    
-
-
                                         <% }%>
 
                                     </tbody>

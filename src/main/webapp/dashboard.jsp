@@ -48,7 +48,7 @@
 		<div class="title">
 			<h2>Gerenciar seus Produtos</h2>
 	</div>
-		<a href="ListaProduto" class="button">Gerenciar</a>
+		<a href="ListarProdutos" class="button">Gerenciar</a>
 	</div>
         
 	<div id="tbox3"> <span class="icon icon-truck"></span>
