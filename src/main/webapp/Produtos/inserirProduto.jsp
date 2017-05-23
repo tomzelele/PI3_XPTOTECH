@@ -71,7 +71,7 @@
                             </div>
                             <div  class="qtdProd">
                                 <label  for="qtdProd">Qtd. Produto:  </label>
-                                <input required=""  name="qtdProd" type="date" id="qtdProd" class="form-control input-sm"> </br>
+                                <input required=""  name="qtdProd" type="text" id="qtdProd" class="form-control input-sm"> </br>
                             </div>
  
 

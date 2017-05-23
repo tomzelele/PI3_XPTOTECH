@@ -17,7 +17,6 @@ public class DaoFilial {
     private ResultSet rsRegistros;
     
     public DaoFilial(Connection conBanco) {
-        
         this.conBanco = conBanco;
     }
     
@@ -61,9 +60,7 @@ public class DaoFilial {
 
     public static List<Filial> listarFiliais()
             throws SQLException, Exception {
-        //Monta a string de listagem de produtos no banco, considerando
-        //apenas a coluna de ativação de produtos ("enabled")
-        String sql = "SELECT * FROM FILIAL";
+        String sql = "SELECT * FROM FILIAL WHERE ENABLED = TRUE";
 
         return executarConsulta(sql);
     }

@@ -1,4 +1,4 @@
-package br.com.senac.pi3.servlet;
+package br.com.senac.pi3.servlet.filial;
 
 import br.com.senac.pi3.db.dao.DaoFilial;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
@@ -12,11 +12,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet({"/ListarFilial"})
+@WebServlet(name = "ListarFilial", urlPatterns = {"/ListarFilial"})
 
 public class ListarFilial extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
         DaoFilial filialDao = new DaoFilial(ConnectionUtils.getConnection());
         
         List<Filial> listaFilial = null;
@@ -26,7 +27,7 @@ public class ListarFilial extends HttpServlet{
         }
         req.getSession().setAttribute("listaFilial", listaFilial);
         
-        req.getRequestDispatcher("/Filial/ListarFilial.jsp").forward(req, resp);
+        req.getRequestDispatcher("/Filial/listarFilial.jsp").forward(req, resp);
 
     }
     

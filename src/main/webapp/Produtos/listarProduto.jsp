@@ -43,7 +43,7 @@
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
                 
-                <a type="button" class="btn btn-info" href="/XPTOTECH/Produtos/inserirProduto.jsp">Inserir Produto</a>
+                <a type="button" class="btn btn-info" href="CadastraProduto">Inserir Produto</a>
 
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-suitcase"></span>
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Produtos</h2> </div>
