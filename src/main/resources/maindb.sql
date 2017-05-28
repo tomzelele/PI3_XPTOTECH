@@ -1,13 +1,16 @@
 
 /*
 insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES(4940010,'Rua Afonso rui','santa lucia','são paulo','SP','55');
-insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES(4940010,'Rua Afonso rui','santa lucia','são paulo','SP','10');
-insert into filial(CNPJ,DESC_FILIAL,ENABLED,FK_ENDERECO) values('3634270980001','MATRIZ',true,1);
+insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES(04833001,'Avenida Teotonio Vilela','Vila São José','são paulo','SP','4029');
+insert into filial(CNPJ,DESC_FILIAL,ENABLED,FK_ENDERECO) values('3634270980001','MATRIZ',true,2);
 
 insert into funcionario (COD_ACESSO,CARGO,ID_FILIAL,NOME,SOBRENOME,DT_NASC,CPF,SEXO,CEL,EMAIL,ENABLED,FK_ENDERECO)
 values (1,'gerente',2,'Joao','Souza','27/12/90','36342709858','M','959668809','jazoniel@gmail.com',true,2);
 
-insert into USUARIO(login,senha,id_funcionario) values('admin','admin',2);
+
+
+insert into USUARIO(login,senha,id_funcionario) values('admin','admin',1);
+insert into USUARIO(login,senha,id_funcionario) values('kelly','kelly',2);
 
 
 insert into Categoria(desc_prod,enabled) values('Eletrodomésticos',true);
