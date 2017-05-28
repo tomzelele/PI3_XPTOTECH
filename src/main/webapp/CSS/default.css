@@ -22,6 +22,22 @@ body
     margin-right: -700px;
 }
 
+.btn-inserir {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+    margin-top: 160px;
+    margin-right: 50px;
+}
+
+.btn-pesq {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+    margin-top: 160px;
+    margin-right: -600px;
+}
+
 h1, h2, h3
 {
     margin: 0;
