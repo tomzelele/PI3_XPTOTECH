@@ -10,6 +10,7 @@ import br.com.senac.pi3.model.endereco.Endereco;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
 import br.com.senac.pi3.db.dao.DaoCliente;
 import br.com.senac.pi3.db.dao.DaoEndereco;
+import br.com.senac.pi3.exceptions.ClienteException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -82,6 +83,9 @@ public class EditarCliente  extends HttpServlet{
         endereco.setCidade(request.getParameter("cidadeCliente"));
         endereco.setEstado(request.getParameter("estadoCliente"));
         endereco.setNumero(request.getParameter("numEnderecoCliente"));
+        
+        // Validar campos
+        ClienteException clienteException = new ClienteException(cliente);
         
         try {
             
