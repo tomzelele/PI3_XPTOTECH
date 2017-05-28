@@ -10,6 +10,7 @@ import br.com.senac.pi3.model.cliente.Cliente;
 import br.com.senac.pi3.model.endereco.Endereco;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
 import br.com.senac.pi3.db.dao.DaoEndereco;
+import br.com.senac.pi3.exceptions.ClienteException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -63,6 +64,11 @@ public class CadastrarCliente extends HttpServlet {
         endereco.setEstado(request.getParameter("estadoCliente"));
         endereco.setNumero(request.getParameter("numEnderecoCliente"));
         
+        // Validar campos
+        ClienteException clienteException = new ClienteException(cliente);
+
+        
+                
         try {
             endereco = enderecoDao.inserir(endereco);
             cliente.setEndereco(endereco);
