@@ -155,4 +155,22 @@ public class DaoFilial {
            
            return listaFilial;   
         }
+        
+        public Filial buscarPorId(int idFilial) throws SQLException {
+            String sql = "SELECT * FROM FILIAL WHERE ID_FILIAL=?";
+            psComando = conBanco.prepareStatement(sql);
+            psComando.setInt(1, idFilial);
+            ResultSet rs =  psComando.executeQuery();
+            
+            Filial filial = new Filial();
+            while(rs.next()) {
+               filial.setIdFilial(rs.getInt("ID_FILIAL"));
+               filial.setNome(rs.getString("NOME"));
+               filial.setFantasia(rs.getString("NOME_FANTASIA"));
+               filial.setTelefone(rs.getString("TELEFONE"));
+               filial.setCnpj(rs.getString("CNPJ"));
+               //filial.setEstoque(new DaoEstoque(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ID_CATEGORIA")));
+            }
+        return filial;
+    } 
 }
