@@ -38,7 +38,8 @@
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
                 
-                <a type="button" class="btn btn-info" href="/XPTOTECH/Clientes/inserir.jsp">Inserir Cliente</a>
+                <a type="button" class="btn btn-inserir" href="/XPTOTECH/Clientes/inserir.jsp">Inserir Cliente</a>
+                <a type="button" class="btn btn-pesq" href="PesquisaCliente">Pesquisar Cliente</a>
 
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-group"></span>
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Clientes</h2> </div>

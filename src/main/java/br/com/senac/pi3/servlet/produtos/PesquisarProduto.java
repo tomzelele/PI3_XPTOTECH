@@ -52,29 +52,24 @@ public class PesquisarProduto extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+               
+        DaoProduto produtoDao = new DaoProduto(ConnectionUtils.getConnection());
+                
         String produto = req.getParameter("nomeProd");
-
+       
         try {
+            
             ServicoProduto.procurarProduto(produto);
 
         } catch (ProdutoException ex) {
             Logger.getLogger(PesquisarProduto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (DataSourceException ex) {
             Logger.getLogger(PesquisarProduto.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        DaoProduto daoProduto = new DaoProduto();
-
-        try {
-            if (produto == null || "".equals(produto)) {
-                daoProduto.listarProduto();
-            } else {
-                daoProduto.procurarProduto(produto);
-            }
         } catch (Exception ex) {
             Logger.getLogger(PesquisarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        req.getRequestDispatcher("Produtos/listarProduto.jsp").forward(req, resp);
+        
+        req.getRequestDispatcher("Produtos/exibirProduto.jsp").forward(req, resp);
     }
 }

@@ -2,22 +2,23 @@
 /*
 insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES(4940010,'Rua Afonso rui','santa lucia','são paulo','SP','55');
 insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES(04833001,'Avenida Teotonio Vilela','Vila São José','são paulo','SP','4029');
-insert into filial(CNPJ,DESC_FILIAL,ENABLED,FK_ENDERECO) values('3634270980001','MATRIZ',true,2);
+insert into filial(CNPJ,DESC_NOME,DESC_FANTASIA,TELEFONE,FK_ENDERECO,ENABLED) values('3634270980001','MATRIZ','MATRIZ','51235456',2,true);
 
 insert into funcionario (COD_ACESSO,CARGO,ID_FILIAL,NOME,SOBRENOME,DT_NASC,CPF,SEXO,CEL,EMAIL,ENABLED,FK_ENDERECO)
-values (1,'gerente',2,'Joao','Souza','27/12/90','36342709858','M','959668809','jazoniel@gmail.com',true,2);
+values (1,'gerente',1,'Joao','Souza','27/12/90','36342709858','M','959668809','jazoniel@gmail.com',true,1);
+
+insert into funcionario (COD_ACESSO,CARGO,ID_FILIAL,NOME,SOBRENOME,DT_NASC,CPF,SEXO,CEL,EMAIL,ENABLED,FK_ENDERECO)
+values (2,'gerente',1,'Kelly','Cristina','27/12/90','12345678900','F','999991234','kel0705@gmail.com',true,2);
+
+insert into USUARIO(login,senha,id_funcionario) values('admin','admin',5);
+insert into USUARIO(login,senha,id_funcionario) values('kelly','kelly',4);
 
 
-
-insert into USUARIO(login,senha,id_funcionario) values('admin','admin',1);
-insert into USUARIO(login,senha,id_funcionario) values('kelly','kelly',2);
-
-
-insert into Categoria(desc_prod,enabled) values('Eletrodomésticos',true);
-insert into Categoria(desc_prod,enabled) values('Livros',true);
-insert into Categoria(desc_prod,enabled) values('Filmes,Séries',true);
-insert into Categoria(desc_prod,enabled) values('Games',true);
-insert into Categoria(desc_prod,enabled) values('Moda',true);
+insert into Categoria(desc_prod,enabled) values('Acessórios',true);
+insert into Categoria(desc_prod,enabled) values('Cartuchos',true);
+insert into Categoria(desc_prod,enabled) values('Computadores',true);
+insert into Categoria(desc_prod,enabled) values('Impressoras',true);
+insert into Categoria(desc_prod,enabled) values('Notes e Tablets',true);
 
 
 */
@@ -38,7 +39,7 @@ CREATE TABLE Filial(
     desc_nome VARCHAR(50),
     desc_fantasia VARCHAR(50),
     telefone VARCHAR(10),
-    fk_endereco INTEGER NOT NULL REFERENCES ENDERECO(ID_ENDRECO),
+    fk_endereco INTEGER NOT NULL REFERENCES ENDERECO(ID_ENDERECO),
     enabled BOOLEAN
 );
 
@@ -74,6 +75,7 @@ CREATE TABLE Cliente (
     fk_endereco INTEGER NOT NULL REFERENCES Endereco(id_endereco)
 
   );
+
 CREATE TABLE Categoria (
     id_categoria INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
     desc_prod VARCHAR(50) NOT NULL,
