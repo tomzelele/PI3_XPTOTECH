@@ -18,7 +18,7 @@ public class Produto {
    private Integer qtdProd; 
    private Double vlProd;
    private String produto;
-   private Integer qtdUnidade; 
+   //private Integer qtdUnidade; 
    private Categoria categoria;
 
 
@@ -79,22 +79,15 @@ public class Produto {
     }
    
     
-    /**
-     * @return the qtdUnidade
-     */
+    /*
     public Integer getQtdUnidade() {
         return qtdUnidade;
     }
 
-    /**
-     * @param qtdUnidade the qtdUnidade to set
-     */
     public void setQtdUnidade(Integer qtdUnidade) {
         this.qtdUnidade = qtdUnidade;
     }
 
-    /**
-     * @return the categoria
      */
     public Categoria getCategoria() {
         return categoria;

@@ -42,39 +42,39 @@
 		<div class="title">
 			<h2>Gerenciar seus Clientes</h2>
 	</div>
-		<a href="ListarClientes" class="button">Gerenciar</a>
+		<a href="ListarClientes" class="buttonGerenciar">Gerenciar</a>
 	</div>
 	<div id="tbox2"> <span class="icon icon-suitcase"></span>
 		<div class="title">
 			<h2>Gerenciar seus Produtos</h2>
 	</div>
-		<a href="ListarProdutos" class="button">Gerenciar</a>
+		<a href="ListarProdutos" class="buttonGerenciar">Gerenciar</a>
 	</div>
         
 	<div id="tbox3"> <span class="icon icon-truck"></span>
 		<div class="title">
 			<h2>Gerenciamento de Filiais</h2>
 		</div>
-		<a href="ListarFilial" class="button">Gerenciar</a>
+		<a href="ListarFilial" class="buttonGerenciar">Gerenciar</a>
 	</div>
 
 	<div id="tbox3"> <span class="icon icon-bar-chart"></span>
 		<div class="title">
 			<h2>Gerenciamento de Vendas</h2>
 		</div>
-		<a href="gerVendas.jsp" class="button">Gerenciar</a>
+		<a href="gerVendas.jsp" class="buttonGerenciar">Gerenciar</a>
 	</div>
 	<div id="tbox3"> <span class="icon icon-signal"></span>
 		<div class="title">
 			<h2>Gerar seus Relatorios</h2>
 		</div>
-		<a href="gerRelatorio.jsp" class="button">Gerenciar</a>
+		<a href="gerRelatorio.jsp" class="buttonGerenciar">Gerenciar</a>
 	</div>
 	<div id="tbox3"> <span class="icon icon-cog"></span>
 		<div class="title">
 			<h2>Gerenciamento de Acessos</h2>
 		</div>
-		<a href="gerAcessos.jsp" class="button">Gerenciar</a>
+		<a href="gerAcessos.jsp" class="buttonGerenciar">Gerenciar</a>
 	</div>
 </div>
 </div>

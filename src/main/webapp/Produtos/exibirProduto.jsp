@@ -1,9 +1,10 @@
-%-- 
-    Document   : listarProduto
-    Created on : 16/05/2017, 23:35:57
-    Author     : Souza08
+<%-- 
+    Document   : exibirProduto
+    Created on : 28/05/2017, 19:48:06
+    Author     : Kelly
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="br.com.senac.pi3.model.produto.Produto"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -32,8 +33,7 @@
 
     </head>
     <body>
-        <% List<Produto> listaProdutos = (List<Produto>) session.getAttribute("listaProdutos"); %>
-        
+        <% List<Produto> listaProdutos = (List<Produto>) session.getAttribute("listaProdutos"); %>        
         <form action="ExcluiProduto" method="POST" name="formExcluirProduto">
             <input type="hidden" value="" name="idProdutoExcluir">
         </form>
@@ -41,14 +41,11 @@
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
                 
-                <a type="button" class="btn btn-inserir" href="CadastraProduto">Inserir Produto</a>
-                <a type="button" class="btn btn-pesq" href="PesquisaProduto">Pesquisar Produto</a>
-
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-suitcase"></span>
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Produtos</h2> </div>
                 </div>
 
-                <a id="botaoCustom" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
+                <a id="botaoCustom" href="/XPTOTECH/ListarProdutos" class="button" style="border-radius: 10px;">Voltar</a>
 
                 <div class="container">
                     <div class="row">
@@ -67,10 +64,13 @@
                                     <th>Categoria</th>
                                     <th>Valor</th>
                                     <th>Edit</th>
-
                                     <th>Delete</th>
+                                    
                                     </thead>
+                                    
                                     <tbody>
+                                          
+                                        
                                         <%for(Produto produto : listaProdutos){ %>    
                                         <tr>
                                             <td><%= produto.getId()%></td>
@@ -81,6 +81,8 @@
                                             <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-produto"  data-idProduto="<%=produto.getId()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                         </tr> 
                                         <%} %>
+                                        
+                                        
                                     </tbody>
 
                                 </table>
@@ -181,4 +183,5 @@
 
 </body>
 </html>
+
 
