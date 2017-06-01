@@ -25,10 +25,12 @@
 
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
-
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
     </head>
     <body>
-        <% List<Filial> listaFiliais = (List<Filial>) session.getAttribute("listaFilial"); %>
+        <% List<Filial> listaFiliais = (List<Filial>) session.getAttribute("vitor"); %>
     
         <form action="ExcluiFilial" method="post" name="formExcluirFilial">
             <input type="hidden" value="" name="idFilialExcluir">
@@ -37,13 +39,11 @@
         <div id="wrapper3">
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
-                <a type="button" class="btn btn-info" href="/XPTOTECH/Filial/inserirFilial.jsp">Inserir Filial</a>
+                <a type="button" class="btn btn-info" href="CadastraFilial">Inserir Filial</a>
 
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-group"></span>
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Filiais</h2> </div>
                 </div>
-                
-                
 
                 <a id="botaoCustom" href="/XPTOTECH/dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
 

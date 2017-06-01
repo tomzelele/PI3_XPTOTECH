@@ -12,10 +12,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ListarFilial", urlPatterns = {"ListarFilial"})
-public class ListarFilial extends HttpServlet{
+@WebServlet(name = "ListarFilial", urlPatterns = {"/ListarFilial"})
+public class ListarFilial extends HttpServlet {
+ 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         DaoFilial filialDao = new DaoFilial(ConnectionUtils.getConnection());
         
         List<Filial> listaFilial = null;
@@ -25,11 +27,8 @@ public class ListarFilial extends HttpServlet{
             //Logger.getLogger(ListarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        req.getSession().setAttribute("listaFilial", listaFilial);
-        req.getRequestDispatcher("Filial/listarFilial.jsp").forward(req, resp);
-    }
-    
-    
-    
-    
+        req.getSession().setAttribute("vitor", listaFilial);
+        req.getRequestDispatcher("Filial/teste.jsp").forward(req, resp);
+    }    
+   
 }
