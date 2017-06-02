@@ -74,7 +74,7 @@
 		<div class="title">
 			<h2>Gerenciamento de Acessos</h2>
 		</div>
-		<a href="gerAcessos.jsp" class="buttonGerenciar">Gerenciar</a>
+		<a href="Relatorios/gerAcessos.jsp" class="buttonGerenciar">Gerenciar</a>
 	</div>
 </div>
 </div>
