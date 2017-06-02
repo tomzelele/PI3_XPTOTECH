@@ -79,13 +79,13 @@ public class EditarCliente  extends HttpServlet{
 
         endereco.setBairro(request.getParameter("bairroCliente"));
         endereco.setRua(request.getParameter("enderecoCliente"));
-        endereco.setCep(Integer.parseInt(request.getParameter("cepCliente")));
+        endereco.setCep(request.getParameter("cepCliente"));
         endereco.setCidade(request.getParameter("cidadeCliente"));
         endereco.setEstado(request.getParameter("estadoCliente"));
         endereco.setNumero(request.getParameter("numEnderecoCliente"));
         
         // Validar campos
-        ClienteException clienteException = new ClienteException(cliente);
+        //ClienteException clienteException = new ClienteException(cliente);
         
         try {
             

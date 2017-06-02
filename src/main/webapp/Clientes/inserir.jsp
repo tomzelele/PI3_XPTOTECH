@@ -57,7 +57,7 @@
 
                             <div  class="dataNascimentoCliente">
                                 <label  for="dataNascimentoCliente">Data Nascimento:  </label>
-                                <input maxlength="10" requerid="" OnKeyPress="formatar('##/##/####', this)" requerid="" name="dataNascimentoCliente" type="text" id="dataNascimentoCliente" class="form-control input-sm"> </br>
+                                <input maxlength="10" requerid="" OnKeyPress="formatar('##/##/####', this)" name="dataNascimentoCliente" type="text" id="dataNascimentoCliente" class="form-control input-sm"> </br>
                             </div>
 
 
@@ -81,7 +81,7 @@
 
                             <div class="emailCliente">  
                                 <label for="emailCliente">Email:  </label>
-                                <input size="37" name="emailCliente" type="text" id="emailCliente" class="form-control input-sm" </br></br>
+                                <input size="50" name="emailCliente" type="text" id="emailCliente" class="form-control input-sm" </br></br>
                             </div>
 
 
@@ -91,15 +91,15 @@
 
                             <div class="enderecoCliente">
                                 <label>Rua: </label> 
-                                <input requerid="" size="30" type="text" id="enderecoCliente" maxlength="80" name="enderecoCliente" class="form-control input-sm">
+                                <input requerid=""  type="text" id="enderecoCliente" maxlength="80" name="enderecoCliente" class="form-control input-sm">
                             </div>
                             <div class="numEnderecoCliente">
                                 <label>Número: </label> 
-                                <input requerid="" size="4" type="text" id="numEnderecoCliente" maxlength="5" name="numEnderecoCliente" class="form-control input-sm">
+                                <input requerid=""  type="text" id="numEnderecoCliente" maxlength="5" name="numEnderecoCliente" class="form-control input-sm">
                             </div>
                             <div class="cepCliente">
                                 <label>Cep:</label>
-                                <input maxlength="9" OnKeyPress="formatar('#####-###', this)" requerid="" id="cepCliente"  type="cepCliente" maxlength="8" name="cepCliente" class="form-control input-sm" > </br>
+                                <input requerid="" type="text" id="cepCliente"  maxlength="9" name="cepCliente" class="form-control input-sm" > </br>
                             </div>
                             <div class="bairroCliente">
                                 <label>Bairro: </label> 
@@ -111,7 +111,7 @@
                             </div>
                             <div class="estadoCliente">
                                 <label>Estado: </label>
-                                <input requerid="" size="6"type="text" id="estadoCliente" maxlength="2" name="estadoCliente"class="form-control input-sm"></br>
+                                <input requerid="" type="text" id="estadoCliente" maxlength="2" name="estadoCliente"class="form-control input-sm"></br>
                             </div>
 
                             <div class="botaoCadastrarCliente">

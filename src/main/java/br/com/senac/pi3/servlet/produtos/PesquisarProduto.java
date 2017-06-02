@@ -45,7 +45,7 @@ public class PesquisarProduto extends HttpServlet {
             Logger.getLogger(PesquisarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        req.getRequestDispatcher("Produtos/pesquisarProduto.jsp").forward(req, resp);
+        req.getRequestDispatcher("Produtos/inserirProduto.jsp").forward(req, resp);
 
     }
 
@@ -55,7 +55,7 @@ public class PesquisarProduto extends HttpServlet {
                
         DaoProduto produtoDao = new DaoProduto(ConnectionUtils.getConnection());
                 
-        String produto = req.getParameter("nomeProd");
+        String produto = req.getParameter("pesquisaNome");
        
         try {
             

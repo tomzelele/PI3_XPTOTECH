@@ -47,6 +47,11 @@
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-suitcase"></span>
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Produtos</h2> </div>
                 </div>
+                
+                <div class="pesquisaNome">
+                                <label  for="pesquisaNome">Pesquisa por Nome: </label>	                           
+                                <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control input-sm"> 	
+                </div>
 
                 <a id="botaoCustom" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
 

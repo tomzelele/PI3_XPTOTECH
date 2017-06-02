@@ -11,7 +11,7 @@ package br.com.senac.pi3.model.endereco;
  */
 public class Endereco {
     private Integer id;
-    private Integer cep; 
+    private String cep; 
     private String bairro; 
     private String rua; 
     private String numero;
@@ -21,14 +21,14 @@ public class Endereco {
     /**
      * @return the cep
      */
-    public Integer getCep() {
+    public String getCep() {
         return cep;
     }
 
     /**
      * @param cep the cep to set
      */
-    public void setCep(Integer cep) {
+    public void setCep(String cep) {
         this.cep = cep;
     }
 

@@ -292,7 +292,7 @@ ul.contact li a:before
     font-size: 1.2em;
     color: #FFF;
 }
-
+/*
 .button
 {
     display: inline-block;
@@ -308,9 +308,9 @@ ul.contact li a:before
     font-size: 1.2em;
     color: #FFF;
 }
+*/
 
-/*
-.buttonORIGINAL
+.button
 {
     display: inline-block;
     margin-top: 2em;
@@ -324,7 +324,7 @@ ul.contact li a:before
     font-size: 1.2em;
     color: #FFF;
 }
-*/
+
 .button:before
 {
     display: inline-block;
@@ -782,6 +782,14 @@ ul.contact li a:before
     margin: 0px auto;
 }
 
+.pesquisaNome{
+
+    display: inline-block;
+    margin-top: 2em;
+    padding: 1em 2em 1em 2em;
+       
+    
+}
 .form-login{
 
     display : table;

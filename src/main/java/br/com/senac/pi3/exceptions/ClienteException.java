@@ -53,14 +53,7 @@ public class ClienteException extends Exception {
                 Logger.getLogger(CadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        // Sexo
-        if(cliente.getSexo().equals("")) {
-            try {
-                throw new ClienteException("Informe o sexo");
-            } catch (ClienteException ex) {
-                Logger.getLogger(CadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        
         // Celular
         if(cliente.getCel().equals("")) {
             try {

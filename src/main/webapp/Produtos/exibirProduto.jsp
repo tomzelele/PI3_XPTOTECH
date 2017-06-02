@@ -32,8 +32,9 @@
         
 
     </head>
-    <body>
-        <% List<Produto> listaProdutos = (List<Produto>) session.getAttribute("listaProdutos"); %>        
+  <body>
+        <% List<Produto> listaProdutos = (List<Produto>) session.getAttribute("listaProdutos"); %>
+        
         <form action="ExcluiProduto" method="POST" name="formExcluirProduto">
             <input type="hidden" value="" name="idProdutoExcluir">
         </form>
@@ -41,11 +42,13 @@
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
                 
+                
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-suitcase"></span>
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Produtos</h2> </div>
                 </div>
-
-                <a id="botaoCustom" href="/XPTOTECH/ListarProdutos" class="button" style="border-radius: 10px;">Voltar</a>
+                
+                
+                <a id="botaoCustom" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
 
                 <div class="container">
                     <div class="row">
@@ -64,13 +67,10 @@
                                     <th>Categoria</th>
                                     <th>Valor</th>
                                     <th>Edit</th>
+
                                     <th>Delete</th>
-                                    
                                     </thead>
-                                    
                                     <tbody>
-                                          
-                                        
                                         <%for(Produto produto : listaProdutos){ %>    
                                         <tr>
                                             <td><%= produto.getId()%></td>
@@ -81,8 +81,6 @@
                                             <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-produto"  data-idProduto="<%=produto.getId()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                         </tr> 
                                         <%} %>
-                                        
-                                        
                                     </tbody>
 
                                 </table>
@@ -183,5 +181,3 @@
 
 </body>
 </html>
-
-

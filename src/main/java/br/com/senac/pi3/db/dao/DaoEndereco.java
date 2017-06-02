@@ -42,7 +42,7 @@ public class DaoEndereco {
         try {
             psComando = conBanco.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            psComando.setLong(1, endereco.getCep());
+            psComando.setString(1, endereco.getCep());
             psComando.setString(2, endereco.getRua());
             psComando.setString(3, endereco.getBairro());
             psComando.setString(4, endereco.getCidade());
@@ -81,7 +81,7 @@ public class DaoEndereco {
            while(rs.next()){
                
                endereco.setId(rs.getInt("ID_ENDERECO"));
-               endereco.setCep(rs.getInt("CEP"));
+               endereco.setCep(rs.getString("CEP"));
                endereco.setRua(rs.getString("RUA"));
                endereco.setBairro(rs.getString("BAIRRO"));
                endereco.setCidade(rs.getString("CIDADE"));
@@ -103,7 +103,7 @@ public class DaoEndereco {
         try {
             psComando = conBanco.prepareStatement(sql);
 
-            psComando.setInt(1, endereco.getCep());
+            psComando.setString(1, endereco.getCep());
             psComando.setString(2, endereco.getRua());
             psComando.setString(3, endereco.getBairro());
             psComando.setString(4,endereco.getCidade());
