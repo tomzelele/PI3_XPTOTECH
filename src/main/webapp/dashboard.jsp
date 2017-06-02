@@ -68,7 +68,7 @@
 		<div class="title">
 			<h2>Gerar seus Relatorios</h2>
 		</div>
-		<a href="gerRelatorio.jsp" class="buttonGerenciar">Gerenciar</a>
+		<a href="Relatorios/gerRelatorio.jsp" class="buttonGerenciar">Gerenciar</a>
 	</div>
 	<div id="tbox3"> <span class="icon icon-cog"></span>
 		<div class="title">
