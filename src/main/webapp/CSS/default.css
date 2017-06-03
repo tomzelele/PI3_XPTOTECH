@@ -897,10 +897,10 @@ ul.contact li a:before
     margin-top: 450px;     
 }
 .numEnderecoCliente{
- position: absolute;  
- margin-left: 220px;
- margin-top: 450px; 
- size:4px;
+    position: absolute;  
+    margin-left: 220px;
+    margin-top: 450px; 
+    size:4px;
 }
 .cepCliente{
     position: absolute;
@@ -927,27 +927,24 @@ ul.contact li a:before
     margin-left: 550px;
 }
 .fieldCliente{
-width: 900px;
-margin-top: 150px;    
-position: absolute ; 
-margin-left: -115px;
+    width: 900px;
+    margin-top: 150px;    
+    position: absolute ; 
+    margin-left: -115px;
 }
 .fieldEndreco{
-width: 900px;
-margin-top: 400px;    
-position: absolute ; 
-margin-left: -115px;
+    width: 900px;
+    margin-top: 400px;    
+    position: absolute ; 
+    margin-left: -115px;
 }
 
 
-
-
-
-   .nomeProd{
+.nomeProd{
     position: absolute;
     margin-top: 200px;
     margin-left: 160px;
-    }
+}
     
 .categoriaProd{
     position: absolute;
@@ -956,30 +953,54 @@ margin-left: -115px;
 }
 
 .vlProd{
-    
     position: absolute;
-     margin-left: 160px;
+    margin-left: 160px;
     margin-top: 400px; 
-   
 }
 
 
 .qtdProd{
-    
     position: absolute;
-     margin-left: 160px;
-    margin-top: 500px;    
-    
+    margin-left: 160px;
+    margin-top: 500px;
 }
 
 .fieldProd{
-width: 900px;
-margin-top: 150px;    
-position: absolute ; 
-margin-left: -215px;
+    width: 900px;
+    margin-top: 150px;    
+    position: absolute ; 
+    margin-left: -215px;
 }
 
 .botaoCadastrarProd{
+    position: absolute;
+    margin-top: 570px;  
+    margin-left: 550px;
+}
+.cnpj{
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 160px;
+}
+    
+.desc_nome{
+    position: absolute;
+    margin-left: 160px;
+    margin-top: 300px;   
+}
+.desc_fantasia{
+    position: absolute;
+    margin-left: 160px;
+    margin-top: 400px;   
+}
+
+.telefone{
+    position: absolute;
+    margin-left: 160px;
+    margin-top: 500px; 
+}
+
+.botaoCadastrarCliente{
     position: absolute;
     margin-top: 570px;  
     margin-left: 550px;

@@ -25,7 +25,7 @@
 		<div id="textCustom" class="title">	<h2>Gerenciamento de Acessos</h2> </div>
 	</div>
 
-	<a id="botaoCustom" href="gerencia.html" class="button">Voltar</a>
+	<a id="botaoCustom" href="dashboard.jsp" class="button">Voltar</a>
 
 	<a href="gerencia.html" class="button botaoCustomizado">Inserir</a>
 	<a href="gerencia.html" class="button botaoCustomizado">Alterar</a>

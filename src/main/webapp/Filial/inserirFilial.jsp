@@ -48,10 +48,10 @@
 
                             <div class="cnpj">					
                                 <label  for="nome">CNPJ: </label>			
-                                <input   requerid="" name="cnpj" type="text" id="cnpj" OnKeyPress="formatar('##.###.###/####-##', this)" class="form-control input-sm"> </br>
+                                <input   requerid="" maxlength="17" name="cnpj" type="text" id="cnpj" OnKeyPress="formatar('##.###.###/####-##', this)" class="form-control input-sm"> </br>
                             </div>
 
-                            <div  class="desc_nome">
+                            <div class="desc_nome">
                                 <label  for="desc_nome">Razão social: </label>
                                 <input requerid="" name="desc_nome" type="text" maxlength="50" id="desc_nome" class="form-control input-sm"> </br>
                             </div>			
@@ -63,11 +63,11 @@
 
                             <div  class="telefone">
                                 <label  for="telefone">Telefone:  </label>
-                                <input requerid=""  maxlength="10"  name="telefone" type="text" id="telefone" class="form-control input-sm" > </br>
+                                <input requerid="" maxlength="13" OnKeyPress="formatar('(##)####-####', this)" maxlength="10"  name="telefone" type="text" id="telefone" class="form-control input-sm" > </br>
                             </div>
 
                             <fieldset  class="fieldEndreco">
-                                <legend>Endereço - Filial</legend>
+                                <legend>Endereço</legend>
                             </fieldset> 
 
                             <div class="enderecoCliente">

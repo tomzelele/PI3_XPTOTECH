@@ -27,8 +27,8 @@ public class ListarFilial extends HttpServlet {
             //Logger.getLogger(ListarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        req.getSession().setAttribute("vitor", listaFilial);
-        req.getRequestDispatcher("Filial/teste.jsp").forward(req, resp);
+        req.getSession().setAttribute("listFilial", listaFilial);
+        req.getRequestDispatcher("Filial/listarFilial.jsp").forward(req, resp);
     }    
    
 }

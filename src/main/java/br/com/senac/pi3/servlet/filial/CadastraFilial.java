@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
-@WebServlet(name = "CadastrarFilial", urlPatterns = {"/CadastraFilial"})
+@WebServlet(name = "CadastrarFilial", urlPatterns = {"/CadastrarFilial"})
 public class CadastraFilial extends HttpServlet{
 
     @Override
@@ -33,7 +33,7 @@ public class CadastraFilial extends HttpServlet{
             //Logger.getLogger(CadastrarFilial.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        req.getRequestDispatcher("Produtos/inserirFilial.jsp").forward(req, resp);
+        req.getRequestDispatcher("Filial/inserirFilial.jsp").forward(req, resp);
         
     }
 
@@ -72,7 +72,7 @@ public class CadastraFilial extends HttpServlet{
         
         
         
-        req.getRequestDispatcher("Produtos/listarProduto.jsp").forward(req, resp);
+        req.getRequestDispatcher("Filial/listarFilial.jsp").forward(req, resp);
     }
     
     

@@ -144,8 +144,8 @@ public class DaoFilial {
                Filial filial = new Filial();
                
                filial.setIdFilial(rs.getInt("ID_FILIAL"));
-               filial.setNome(rs.getString("NOME"));
-               filial.setFantasia(rs.getString("NOME_FANTASIA"));
+               filial.setNome(rs.getString("DESC_NOME"));
+               filial.setFantasia(rs.getString("DESC_FANTASIA"));
                filial.setTelefone(rs.getString("TELEFONE"));
                filial.setCnpj(rs.getString("CNPJ"));
                              

@@ -29,9 +29,7 @@
         <meta name="description" content="" />
         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
     </head>
-    <body>
-        <% List<Filial> listaFiliais = (List<Filial>) session.getAttribute("vitor"); %>
-    
+    <body>   
         <form action="ExcluiFilial" method="post" name="formExcluirFilial">
             <input type="hidden" value="" name="idFilialExcluir">
         </form>
@@ -39,7 +37,7 @@
         <div id="wrapper3">
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
-                <a type="button" class="btn btn-info" href="CadastraFilial">Inserir Filial</a>
+                <a type="button" class="btn btn-info" href="CadastrarFilial">Inserir Filial</a>
 
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-group"></span>
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Filiais</h2> </div>
@@ -54,21 +52,18 @@
                         <div class="col-md-12">
                             <div style="margin-top: -250px;" class="table-responsive">
 
-
-                                <table     id="mytable" class="table table-bordred table-striped">
-
+                                <table id="mytable" class="table table-bordred table-striped">
                                     <thead>
-
                                     <th>Fantasia</th>
                                     <th>CNPJ</th>
                                     <th>Endereço</th>
                                     <th>Telefone</th>
                                     <th>Edit</th>
-
                                     <th>Delete</th>
                                     </thead>
+                                    
                                     <tbody>
-
+                                        <% List<Filial> listaFiliais = (List<Filial>) session.getAttribute("listFilial"); %>
                                         <% for (Filial filial : listaFiliais) {%>
                                             <tr>            
                                                 <td><%= filial.getFantasia()%></td>
