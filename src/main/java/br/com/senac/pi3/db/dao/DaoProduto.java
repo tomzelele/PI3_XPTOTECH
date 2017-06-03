@@ -63,9 +63,7 @@ public class DaoProduto {
     
         public void atualizarProduto(Produto produto) throws SQLException, Exception {
 
-//            String sql = "UPDATE Produto set qtd_unidade=?,vl_prod=?,desc_prod=?,qtd_estoque=?,categoria=? WHERE id_produto=?";
-
-            
+//                     
             String sql =  "UPDATE PRODUTO SET DESC_PROD =? ,VL_PROD=? , FK_ID_CATEGORIA = ? WHERE ID_PRODUTO = ?";
 
             try {
@@ -144,10 +142,10 @@ public class DaoProduto {
         return produto;
     }  
     
-    public ArrayList<Produto> procurarProduto(String valor)
+    public ArrayList<Produto> procurarProduto(String nome)
             throws SQLException, Exception {
         
-        String sql = "SELECT * FROM produto WHERE UPPER (desc_prod) LIKE UPPER ('" + valor+ ""
+        String sql = "SELECT * FROM produto WHERE UPPER (desc_prod) LIKE UPPER ('" + nome + ""
                 + "%') AND enabled=true";
         
         psComando = conBanco.prepareStatement(sql);

@@ -57,8 +57,8 @@
                     <label  for="pesquisaNome">Pesquisa por Nome: </label>	                           
                     <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control input-sm"> 
                     <input type="hidden" value="" name="idProdutoPesquisar">
-                    <input class="fa fa-search " aria-hidden="true" type="submit" value="pesquisar">
-                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <a type="button" class="btn btn-pesq" >Pesquisar</a>
+                    
                     </form>
 
                 </div>
@@ -81,9 +81,9 @@
                                     <th>Produto</th>
                                     <th>Categoria</th>
                                     <th>Valor</th>
-                                    <th>Edit</th>
+                                    <th>Editar</th>
 
-                                    <th>Delete</th>
+                                    <th>Deletar</th>
                                     </thead>
                                     <tbody>
                                         <%for(Produto produto : listaProdutos){ %>    
@@ -142,7 +142,7 @@
 
 
 
-                <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">

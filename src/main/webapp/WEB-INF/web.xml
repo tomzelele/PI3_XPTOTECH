@@ -4,9 +4,41 @@
         <servlet-name>PesquisarProduto</servlet-name>
         <servlet-class>br.com.senac.pi3.servlet.produtos.PesquisarProduto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisarCliente</servlet-name>
+        <servlet-class>br.com.senac.pi3.servlet.PesquisarCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ver</servlet-name>
+        <servlet-class>br.com.senac.pi3.servlet.ver</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>xcvcxvxv</servlet-name>
+        <servlet-class>br.com.senac.pi3.servlet.xcvcxvxv</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewServlet</servlet-name>
+        <servlet-class>br.com.senac.pi3.servlet.NewServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisarProduto</servlet-name>
         <url-pattern>/PesquisaProduto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarCliente</servlet-name>
+        <url-pattern>/PesquisarCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ver</servlet-name>
+        <url-pattern>/ver</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>xcvcxvxv</servlet-name>
+        <url-pattern>/xcvcxvxv</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewServlet</servlet-name>
+        <url-pattern>/NewServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

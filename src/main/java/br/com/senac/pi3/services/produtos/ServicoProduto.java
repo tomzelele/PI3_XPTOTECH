@@ -36,11 +36,7 @@ public class ServicoProduto {
                 || produto.getVlProd() < 0) {
             throw new ProdutoException("É necessário informar um valor para o produto");
         }
-        if (produto.getQtdProd() == null
-                || produto.getVlProd() < 0) {
-            throw new ProdutoException("É necessário informar uma quantidade de produto válido");
-        }
-
+        
         try {
             //Realiza a chamada de inserção na fonte de dados
             daoProduto.inserirProduto(produto);
@@ -67,10 +63,6 @@ public class ServicoProduto {
         }
         if (produto.getCategoria() == null || "".equals(produto.getCategoria())) {
             throw new ProdutoException("É necessário informar uma categoria para produto");
-        }
-        if (produto.getQtdProd() == null
-                || produto.getQtdProd() < 0) {
-            throw new ProdutoException("É necessário informar uma quantidade de produto");
         }
         if (produto.getVlProd() == null
                 || produto.getVlProd() < 0) {

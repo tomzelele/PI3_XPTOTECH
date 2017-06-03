@@ -69,12 +69,7 @@
                                 <label  for="vlProd">Valor: </label>
                                 <input required="" name="vlProd"  type="text" id="vlProd" class="form-control input-sm"> </br>
                             </div>
-                            <div  class="qtdProd">
-                                <label  for="qtdProd">Qtd. Produto:  </label>
-                                <input required=""  name="qtdProd" type="text" id="qtdProd" class="form-control input-sm"> </br>
-                            </div>
- 
-
+                            
                             <div class="botaoCadastrarProd">
                                 <input type="submit" class="btn btn-primary" value="Cadastrar"></button>
                             </div>

@@ -40,7 +40,7 @@ public class ExcluirProduto extends HttpServlet {
         }
         
         
-                resp.sendRedirect("ListaProduto");
+        resp.sendRedirect("ListarProdutos");
 
     }
     

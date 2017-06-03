@@ -41,7 +41,7 @@
                     <div id="textCustom" class="title">	<h2>Editar Produto</h2> </div>
                 </div>
 
-                <a id="botaoCustom" href="/XPTOTECH/dashboard.jsp" class="button">Voltar</a>
+                <a id="botaoCustom" href="/XPTOTECH/ListarProdutos" class="button">Voltar</a>
 
                 <div class="container" >
 
@@ -81,7 +81,7 @@
  
 
                             <div class="botaoCadastrarProd">
-                                <input type="submit" class="btn btn-primary" value="Cadastrar"></button>
+                                <input type="submit" class="btn btn-primary" value="Atualizar"></button>
                             </div>
                         </form>
                     </div>

@@ -88,9 +88,8 @@ public class EditarProduto extends HttpServlet{
         }
         
         
-        resp.sendRedirect("ListaProduto");
-
-
+        resp.sendRedirect("ListarProdutos");
+        
     }
     
     

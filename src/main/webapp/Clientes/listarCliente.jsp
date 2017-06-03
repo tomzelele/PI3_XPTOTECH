@@ -39,10 +39,20 @@
                 <div><span class="arrow-down"></span></div>
                 
                 <a type="button" class="btn btn-inserir" href="/XPTOTECH/Clientes/inserir.jsp">Inserir Cliente</a>
-                <a type="button" class="btn btn-pesq" href="PesquisaCliente">Pesquisar Cliente</a>
-
+                
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-group"></span>
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Clientes</h2> </div>
+                </div>
+                
+                <div class="pesquisaNome">
+                    <form action="PesquisaCliente" method="POST" name="formPesquisarCliente"> 
+                    <label  for="pesquisaNome">Pesquisa por Nome: </label>	                           
+                    <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control input-sm"> 
+                    <input type="hidden" value="" name="idClientePesquisar">
+                    <a type="button" class="btn btn-pesq" >Pesquisar</a>
+                    
+                    </form>
+
                 </div>
                                 
                 <a id="botaoCustom" href="/XPTOTECH/dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
@@ -76,7 +86,7 @@
                                                 <td><%= cliente.getSobrenome()%></td>
                                                 <% Endereco endereco = cliente.getEndereco();%>
 
-                                                <td> <%= endereco.getRua() + " " + endereco.getNumero() + " " + endereco.getCidade() + "/" + endereco.getEstado()%> </td>
+                                                <td> <%= endereco.getRua() + ", " + endereco.getNumero() + " - " + endereco.getCidade() + "/" + endereco.getEstado()%> </td>
                                                 <td><%= cliente.getEmail()%></td>
                                                 <td><%= cliente.getCel()%></td>
                                                 <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditarCliente?idCliente=<%= cliente.getId()%>" class="btn btn-primary btn-xs" data-title="Edit"  ><span class="glyphicon glyphicon-pencil"></span></a></p></td>

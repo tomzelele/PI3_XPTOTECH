@@ -15,10 +15,8 @@ public class Produto {
 
     
    private Integer id; 
-   private Integer qtdProd; 
    private Double vlProd;
    private String produto;
-   //private Integer qtdUnidade; 
    private Categoria categoria;
 
 
@@ -34,20 +32,6 @@ public class Produto {
      */
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    /**
-     * @return the qtdProd
-     */
-    public Integer getQtdProd() {
-        return qtdProd;
-    }
-
-    /**
-     * @param qtdProd the qtdProd to set
-     */
-    public void setQtdProd(Integer qtdProd) {
-        this.qtdProd = qtdProd;
     }
 
     /**

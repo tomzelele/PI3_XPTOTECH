@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -163,4 +164,38 @@ public class DaoCliente {
             
         return cliente;
     }  
+    
+    public ArrayList<Cliente> procurarCliente(String nome)
+            throws SQLException, Exception {
+        
+        String sql = "SELECT * FROM cliente WHERE UPPER (nome) LIKE UPPER ('" + nome + ""
+                + "%') AND enabled=true";
+        
+        psComando = conBanco.prepareStatement(sql);
+        ResultSet rs =  psComando.executeQuery();
+        
+        ArrayList<Cliente> listaCliente  = new ArrayList<Cliente>();
+         
+           
+           while(rs.next()){
+               
+               Cliente cliente =  new Cliente();
+               cliente.setId(rs.getInt("ID_CLIENTE"));
+               cliente.setDtCadastro(rs.getString("DT_CADASTRO"));
+               cliente.setNome(rs.getString("NOME"));
+               cliente.setSobrenome(rs.getString("SOBRENOME"));
+               cliente.setDtNasc(rs.getString("DT_NASC"));
+               cliente.setCpf(rs.getString("CPF"));
+               cliente.setSexo(rs.getString("SEXO"));
+               cliente.setCel(rs.getString("CEL"));
+               cliente.setEmail(rs.getString("EMAIL"));
+               
+              
+               cliente.setEndereco(new DaoEndereco(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ENDERECO")));
+               
+           }
+           
+           return listaCliente;
+    }
+
 }

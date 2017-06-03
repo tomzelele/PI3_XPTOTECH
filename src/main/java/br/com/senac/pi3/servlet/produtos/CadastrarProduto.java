@@ -65,8 +65,7 @@ public class CadastrarProduto extends HttpServlet{
             Logger.getLogger(CadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
         produto.setVlProd(Double.parseDouble(req.getParameter("vlProd")));
-        produto.setQtdProd(Integer.parseInt(req.getParameter("qtdProd")));
-        
+                
         
         try {
             produtoDao.inserirProduto(produto);
