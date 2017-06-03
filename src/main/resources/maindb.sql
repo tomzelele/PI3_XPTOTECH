@@ -26,10 +26,10 @@ CREATE TABLE Endereco (
     id_endereco INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
     cep VARCHAR (9)NOT NULL,
     rua VARCHAR(50)NOT NULL,
-    bairro VARCHAR(255) NOT NULL,
-    cidade VARCHAR(255) NOT NULL,
+    bairro VARCHAR(50) NOT NULL,
+    cidade VARCHAR(50) NOT NULL,
     estado VARCHAR(2) NOT NULL,
-    numero VARCHAR(50) NOT NULL
+    numero VARCHAR(10) NOT NULL
 );
 
 
@@ -38,7 +38,7 @@ CREATE TABLE Filial(
     cnpj VARCHAR(14) NOT NULL,
     desc_nome VARCHAR(50),
     desc_fantasia VARCHAR(50),
-    telefone VARCHAR(10),
+    telefone VARCHAR(15),
     fk_endereco INTEGER NOT NULL REFERENCES ENDERECO(ID_ENDERECO),
     enabled BOOLEAN
 );
@@ -51,8 +51,8 @@ CREATE TABLE FUNCIONARIO(
     id_filial INTEGER NOT NULL REFERENCES Filial(id_filial),
     nome VARCHAR(50) NOT NULL,
     sobrenome VARCHAR(200) NOT NULL,
-    dt_nasc VARCHAR(8)NOT NULL,
-    cpf VARCHAR(11) NOT NULL UNIQUE,
+    dt_nasc VARCHAR(10)NOT NULL,
+    cpf VARCHAR(15) NOT NULL UNIQUE,
     sexo VARCHAR(10),
     cel VARCHAR(15) NOT NULL,
     email VARCHAR(50) NOT NULL,
@@ -132,8 +132,8 @@ CREATE TABLE Venda_Produto (
 
 CREATE TABLE Usuario(
     id_usuario INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-    login Varchar(255),
-    senha Varchar(255),
+    login Varchar(50),
+    senha Varchar(50),
     id_funcionario INTEGER NOT NULL REFERENCES FUNCIONARIO (id_funcionario)
 );
 

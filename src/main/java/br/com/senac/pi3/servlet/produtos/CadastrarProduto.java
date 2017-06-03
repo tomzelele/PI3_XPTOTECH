@@ -67,22 +67,18 @@ public class CadastrarProduto extends HttpServlet{
         produto.setVlProd(Double.parseDouble(req.getParameter("vlProd")));
         produto.setQtdProd(Integer.parseInt(req.getParameter("qtdProd")));
         
-        /*
+        
         try {
-            ServicoProduto.cadastrarProduto(produto);
+            produtoDao.inserirProduto(produto);
         } catch (ProdutoException ex) {
             Logger.getLogger(CadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (DataSourceException ex) {
             Logger.getLogger(CadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
-        }
-          
-        */
-        try {
-            produtoDao.inserirProduto(produto);
-        } catch (Exception ex) {
+        } catch (Exception ex) { 
             Logger.getLogger(CadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+       
+              
         
         
         req.getRequestDispatcher("Produtos/listarProduto.jsp").forward(req, resp);

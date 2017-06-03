@@ -73,7 +73,5 @@ public class ClienteException extends Exception {
         
     }
 
-    public ClienteException(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }
