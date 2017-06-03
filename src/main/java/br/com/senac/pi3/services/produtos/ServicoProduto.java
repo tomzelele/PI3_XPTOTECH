@@ -21,7 +21,7 @@ public class ServicoProduto {
             throws ProdutoException, DataSourceException {
 
         DaoProduto daoProduto = new DaoProduto();
-
+        
         //Realização de validações de negócio
         if (produto == null) {
             throw new ProdutoException("Não foi informado um produto");
@@ -38,7 +38,7 @@ public class ServicoProduto {
         }
         if (produto.getQtdProd() == null
                 || produto.getVlProd() < 0) {
-            throw new ProdutoException("É necessário informar um quantidade de produto válido");
+            throw new ProdutoException("É necessário informar uma quantidade de produto válido");
         }
 
         try {

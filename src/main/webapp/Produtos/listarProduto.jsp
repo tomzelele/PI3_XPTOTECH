@@ -34,25 +34,35 @@
     <body>
         <% List<Produto> listaProdutos = (List<Produto>) session.getAttribute("listaProdutos"); %>
         
+          
+            
+        
         <form action="ExcluiProduto" method="POST" name="formExcluirProduto">
             <input type="hidden" value="" name="idProdutoExcluir">
         </form>
+        
         <div id="wrapper3"> 
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
                 
                 <a type="button" class="btn btn-inserir" href="CadastraProduto">Inserir Produto</a>
-                <a type="button" class="btn btn-pesq" href="PesquisaProduto">Pesquisar Produto</a>
+             
 
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-suitcase"></span>
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Produtos</h2> </div>
                 </div>
                 
                 <div class="pesquisaNome">
-                                <label  for="pesquisaNome">Pesquisa por Nome: </label>	                           
-                                <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control input-sm"> 	
-                </div>
+                    <form action="PesquisaProduto" method="POST" name="formPesquisarProduto"> 
+                    <label  for="pesquisaNome">Pesquisa por Nome: </label>	                           
+                    <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control input-sm"> 
+                    <input type="hidden" value="" name="idProdutoPesquisar">
+                    <input class="fa fa-search " aria-hidden="true" type="submit" value="pesquisar">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    </form>
 
+                </div>
+               
                 <a id="botaoCustom" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
 
                 <div class="container">

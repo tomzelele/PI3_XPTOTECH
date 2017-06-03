@@ -45,7 +45,7 @@ public class PesquisarProduto extends HttpServlet {
             Logger.getLogger(PesquisarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        req.getRequestDispatcher("Produtos/inserirProduto.jsp").forward(req, resp);
+        req.getRequestDispatcher("Produtos/listarProduto.jsp").forward(req, resp);
 
     }
 
@@ -57,19 +57,19 @@ public class PesquisarProduto extends HttpServlet {
                 
         String produto = req.getParameter("pesquisaNome");
        
+        
+         List<Produto> listaProdutos = null;
         try {
-            
-            ServicoProduto.procurarProduto(produto);
-
-        } catch (ProdutoException ex) {
-            Logger.getLogger(PesquisarProduto.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (DataSourceException ex) {
-            Logger.getLogger(PesquisarProduto.class.getName()).log(Level.SEVERE, null, ex);
+           listaProdutos =  produtoDao.procurarProduto(produto);
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(ListarProduto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
             Logger.getLogger(PesquisarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         
-        req.getRequestDispatcher("Produtos/exibirProduto.jsp").forward(req, resp);
+        req.getSession().setAttribute("listaProdutos", listaProdutos);
+        
+        req.getRequestDispatcher("Produtos/listarProduto.jsp").forward(req, resp);
     }
 }

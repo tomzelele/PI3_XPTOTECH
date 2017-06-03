@@ -50,13 +50,12 @@ public class CadastrarCliente extends HttpServlet {
         cliente.setNome(request.getParameter("nomeCliente"));
         cliente.setSobrenome(request.getParameter("sobreNomeCliente"));
         cliente.setDtNasc(request.getParameter("dataNascimentoCliente"));
-        cliente.setCpf(request.getParameter("cpfCliente"));
         cliente.setSexo(request.getParameter("selectSexoCliente"));
         cliente.setCel(request.getParameter("celularCliente"));
+        cliente.setCpf(request.getParameter("cpfCliente"));
         cliente.setEmail(request.getParameter("emailCliente"));
         
-        // Validar campos
-        ClienteException clienteException = new ClienteException(cliente);
+        
         
         
         Endereco endereco = new Endereco();
