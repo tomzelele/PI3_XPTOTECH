@@ -84,7 +84,9 @@ public class EditarCliente  extends HttpServlet{
         endereco.setEstado(request.getParameter("estadoCliente"));
         endereco.setNumero(request.getParameter("numEnderecoCliente"));
         
-               
+        // Validar campos
+        //ClienteException clienteException = new ClienteException(cliente);
+        
         try {
             
            

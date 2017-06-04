@@ -145,7 +145,7 @@ public class DaoProduto {
     public ArrayList<Produto> procurarProduto(String nome)
             throws SQLException, Exception {
         
-        String sql = "SELECT * FROM produto WHERE UPPER (desc_prod) LIKE UPPER ('" + nome + ""
+        String sql = "SELECT * FROM produto WHERE UPPER (desc_prod) LIKE UPPER ('%" + nome + ""
                 + "%') AND enabled=true";
         
         psComando = conBanco.prepareStatement(sql);

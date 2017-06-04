@@ -1,19 +1,11 @@
-<%-- 
-    Document   : exibirProduto
-    Created on : 28/05/2017, 19:48:06
-    Author     : Kelly
---%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="br.com.senac.pi3.model.produto.Produto"%>
+<%@page import="br.com.senac.pi3.model.funcionario.Funcionario"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
 
-
-        <meta name="keywords" content="" />
+<meta name="keywords" content="" />
         <meta name="description" content="" />
         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
         <link href="default.css" rel="stylesheet" type="text/css" media="all" />
@@ -25,29 +17,43 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Consultar Produto</title>
+        <title>Consultar Usuário</title>
 
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
-        
-
     </head>
-  <body>
-        <% List<Produto> listaProdutos = (List<Produto>) session.getAttribute("listaProdutos"); %>
+    <body>
+        <% List<Funcionario> listaFuncionarios = (List<Funcionario>) session.getAttribute("listaFuncionarios"); %>
         
-        <form action="ExcluiProduto" method="POST" name="formExcluirProduto">
-            <input type="hidden" value="" name="idProdutoExcluir">
+          
+            
+        
+        <form action="ExcluiFuncionario" method="POST" name="formExcluirFuncionario">
+            <input type="hidden" value="" name="idFuncionarioExcluir">
         </form>
+        
         <div id="wrapper3"> 
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
                 
-                
+                <a type="button" class="btn btn-inserir" href="CadastraFuncionario">Inserir Funcionario</a>
+             
+
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-suitcase"></span>
-                    <div id="textCustom" class="title">	<h2>Gerenciamento de Produtos</h2> </div>
+                    <div id="textCustom" class="title">	<h2>Gerenciamento de Acessos</h2> </div>
                 </div>
                 
-                
+                <div class="pesquisaNome">
+                    <form action="PesquisaFuncionario" method="POST" name="formPesquisarFuncionario"> 
+                    <label  for="pesquisaNome">Pesquisa por Nome: </label>	                           
+                    <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control input-sm"> 
+                    <input type="hidden" value="" name="idFuncionarioPesquisar">
+                    <a type="button" class="btn btn-pesq" >Pesquisar</a>
+                    
+                    </form>
+
+                </div>
+               
                 <a id="botaoCustom" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
 
                 <div class="container">
@@ -62,23 +68,21 @@
 
                                     <thead>
 
-                                    <th>ID Produto</th>
-                                    <th>Produto</th>
-                                    <th>Categoria</th>
-                                    <th>Valor</th>
-                                    <th>Edit</th>
+                                    <th>Funcionário</th>
+                                    <th>Filial</th>
+                                    <th>Cargo</th>
+                                    <th>Editar</th>
 
-                                    <th>Delete</th>
+                                    <th>Deletar</th>
                                     </thead>
                                     <tbody>
-                                        <%for(Produto produto : listaProdutos){ %>    
+                                        <%for(Funcionario funcionario : listaFuncionarios){ %>    
                                         <tr>
-                                            <td><%= produto.getId()%></td>
-                                            <td><%= produto.getProduto()%></td>
-                                            <td><%= produto.getCategoria().getCategoria()%></td>
-                                            <td><%= produto.getVlProd()%></td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditarProduto?idProduto=<%=produto.getId()%>" class="btn btn-primary btn-xs" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-produto"  data-idProduto="<%=produto.getId()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                            <td><%= funcionario.getNome()+ " " + funcionario.getSobrenome()%></td>
+                                            <td><%= funcionario.getFilial()%></td>
+                                            <td><%= funcionario.getCargo()%></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditarFuncionario?idFuncionario=<%=funcionario.getId()%>" class="btn btn-primary btn-xs" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-produto"  data-idProduto="<%=funcionario.getId()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                         </tr> 
                                         <%} %>
                                     </tbody>
@@ -127,7 +131,7 @@
 
 
 
-                <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -161,17 +165,17 @@
 
             $(function () {
 
-                $(".excluir-produto").on('click', function () {
+                $(".excluir-funcionario").on('click', function () {
 
-                    let idProduto = $(this).attr('data-idProduto');
+                    let idFuncionario = $(this).attr('data-idFuncionario');
 
 
-                    formExcluirProduto.idProdutoExcluir.value = idProduto;
+                    formExcluirFuncionario.idFuncionarioExcluir.value = idFuncionario;
                 });
 
                 $('.btn-confirm-excluir').on('click', function () {
 
-                    formExcluirProduto.submit();
+                    formExcluirFuncionario.submit();
                 });
 
 
@@ -181,3 +185,4 @@
 
 </body>
 </html>
+

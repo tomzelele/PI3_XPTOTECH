@@ -55,7 +55,7 @@
 
                 </div>
                                 
-                <a id="botaoCustom" href="/XPTOTECH/dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
+                <a id="botaoCustom" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
 
                 <div class="container">
                     <div class="row">

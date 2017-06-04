@@ -17,6 +17,7 @@ public class Usuario {
    private Funcionario funcionario;
    private String  login;
    private String password;
+   private String perfil;
 
     /**
      * @return the funcionario
@@ -58,6 +59,20 @@ public class Usuario {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * @return the perfil
+     */
+    public String getPerfil() {
+        return perfil;
+    }
+
+    /**
+     * @param perfil the perfil to set
+     */
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
     }
     
 }

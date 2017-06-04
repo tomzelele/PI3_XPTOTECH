@@ -13,12 +13,15 @@ values (2,'gerente',1,'Kelly','Cristina','27/12/90','12345678900','F','999991234
 insert into USUARIO(login,senha,id_funcionario) values('admin','admin',1);
 insert into USUARIO(login,senha,id_funcionario) values('kelly','kelly',2);
 
-
 insert into Categoria(desc_prod,enabled) values('Acessórios',true);
 insert into Categoria(desc_prod,enabled) values('Cartuchos',true);
 insert into Categoria(desc_prod,enabled) values('Computadores',true);
 insert into Categoria(desc_prod,enabled) values('Impressoras',true);
 insert into Categoria(desc_prod,enabled) values('Notes e Tablets',true);
+
+insert into Perfil_Usuario(perfil,enabled) values('Administrador',true);
+insert into Perfil_Usuario(perfil,enabled) values('Gerente',true);
+insert into Perfil_Usuario(perfil,enabled) values('Vendedor',true);
 
 
 */
@@ -126,10 +129,6 @@ CREATE TABLE Venda_Produto (
     
 );
 
-
-
-
-
 CREATE TABLE Usuario(
     id_usuario INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
     login Varchar(50),
@@ -137,4 +136,9 @@ CREATE TABLE Usuario(
     id_funcionario INTEGER NOT NULL REFERENCES FUNCIONARIO (id_funcionario)
 );
 
+CREATE TABLE Perfil_Usuario (
+    id_perfil INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+    perfil VARCHAR(50) NOT NULL,
+    enabled BOOLEAN
+);
 

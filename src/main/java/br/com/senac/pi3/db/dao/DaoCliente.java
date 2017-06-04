@@ -168,8 +168,7 @@ public class DaoCliente {
     public ArrayList<Cliente> procurarCliente(String nome)
             throws SQLException, Exception {
         
-        String sql = "SELECT * FROM cliente WHERE UPPER (nome) LIKE UPPER ('" + nome + ""
-                + "%') AND enabled=true";
+        String sql = "SELECT * FROM cliente WHERE UPPER (nome) LIKE UPPER ('%" + nome + "%') AND enabled=true";
         
         psComando = conBanco.prepareStatement(sql);
         ResultSet rs =  psComando.executeQuery();
