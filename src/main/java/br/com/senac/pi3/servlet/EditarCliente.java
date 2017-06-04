@@ -85,7 +85,11 @@ public class EditarCliente  extends HttpServlet{
         endereco.setNumero(request.getParameter("numEnderecoCliente"));
         
         // Validar campos
-        //ClienteException clienteException = new ClienteException(cliente);
+        String message = validarCampos(cliente, endereco);
+        if (!message.equals("")) {
+            request.setAttribute("message", message);
+            request.getRequestDispatcher("Clientes/inserir.jsp").forward(request, response);
+        }      
         
         try {
             
@@ -111,10 +115,91 @@ public class EditarCliente  extends HttpServlet{
 
     }
     
-    
-    
-    
-    
-    
-    
+    /**
+     * Método responsável por realizar a validações do formulário de Cadastro de Clientes
+     */
+    public String validarCampos(Cliente c, Endereco e) {
+        String msgErro = "";
+        
+        // Nome
+        if (c.getNome() == null || c.getNome().equals("")) {
+            msgErro = "Informe o nome";
+        } else {
+            
+        }        
+        // Sobrenome
+        if (c.getSobrenome() == null || c.getSobrenome().equals("")) {
+            msgErro = "Informe o sobrenome";
+        } else {
+            
+        }
+        // Data de Nascimento
+        if (c.getDtNasc()== null || c.getDtNasc().equals("")) {
+            msgErro = "Informe a data de nascimento";
+        } else {
+            
+        }
+        // CPF
+        if (c.getCpf() == null || c.getCpf().equals("")) {
+            msgErro = "Informe o CPF";
+        } else {
+            
+        }
+        // Sexo
+        if (c.getSexo() == null || c.getSexo().equals("")) {
+            msgErro = "Informe o sexo"; 
+        } else {
+            
+        }
+        // Celular
+        if (c.getCel() == null || c.getCel().equals("")) {
+            msgErro = "Informe o celular";
+        } else {
+            
+        }
+        // E-mail
+        if (c.getEmail() == null || c.getEmail().equals("")) {
+            msgErro = "Informe o e-mail";
+        } else {
+
+        }
+        // Rua
+        if (e.getRua() == null || e.getRua().equals("")) {
+            msgErro = "Informe o nome da rua";
+        } else {
+            
+        }
+        // Numero
+        if (e.getNumero() == null || e.getNumero().equals("")) {
+            msgErro = "Informe o número residencial";
+        } else {
+            
+        }
+        // Bairro
+        if (e.getBairro() == null || e.getBairro().equals("")) {
+            msgErro = "Informe o bairro";
+        } else {
+            
+        }
+        // Cep
+        if (e.getCep() == null || e.getCep().equals("")) {
+            msgErro = "Informe o cep";
+        } else {
+            
+        }
+        // Cidade
+        if (e.getCidade() == null || e.getCidade().equals("")) {
+            msgErro = "Informe a cidade";
+        } else {
+            
+        }
+        // Estado
+        if (e.getEstado() == null || e.getEstado().equals("")) {
+            msgErro = "Informe o estado";
+        } else {
+            
+        }
+        
+        return msgErro;
+    }
 }
