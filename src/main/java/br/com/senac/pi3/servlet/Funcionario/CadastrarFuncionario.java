@@ -5,9 +5,9 @@
  */
 package br.com.senac.pi3.servlet.Funcionario;
 
-import br.com.senac.pi3.db.dao.DaoCliente;
 import br.com.senac.pi3.db.dao.DaoFilial;
 import br.com.senac.pi3.db.dao.DaoFuncionario;
+import br.com.senac.pi3.db.dao.DaoPerfil;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
 import br.com.senac.pi3.exceptions.DataSourceException;
 import br.com.senac.pi3.model.funcionario.Funcionario;
@@ -44,6 +44,14 @@ public class CadastrarFuncionario extends HttpServlet{
             Logger.getLogger(CadastrarFuncionario.class.getName()).log(Level.SEVERE, null, ex);
         }
        
+        DaoPerfil perfilDao = new DaoPerfil(ConnectionUtils.getConnection());
+        
+        try { 
+            req.getSession().setAttribute("listaPerfil", perfilDao.listarPerfil());
+                    
+                    } catch (SQLException ex) {
+            Logger.getLogger(CadastrarFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         req.getRequestDispatcher("Funcionarios/inserirFuncionario.jsp").forward(req, resp);
         
@@ -59,8 +67,6 @@ public class CadastrarFuncionario extends HttpServlet{
         
         funcionario.setCodAcesso(Integer.parseInt(req.getParameter("codAcesso")));
         funcionario.setCargo(req.getParameter("cargo"));
-        funcionario.setCargo(req.getParameter("cargo"));
-        
         
         int idFilial = Integer.parseInt(req.getParameter("filial"));
                
@@ -70,12 +76,20 @@ public class CadastrarFuncionario extends HttpServlet{
             Logger.getLogger(CadastrarFuncionario.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        int idPerfil = Integer.parseInt(req.getParameter("perfil"));
+        
+        try {
+            funcionario.setPerfil(new DaoPerfil (ConnectionUtils.getConnection()).buscarPorId(idPerfil));
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastrarFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         funcionario.setNome(req.getParameter("nomeFuncionario"));
         funcionario.setSobrenome(req.getParameter("sobreNomeFuncionario"));
         funcionario.setDtNasc(req.getParameter("dataNascimentoFuncionario"));
+        funcionario.setCpf(req.getParameter("cpfFuncionario"));
         funcionario.setSexo(req.getParameter("selectSexoFuncionario"));
         funcionario.setCel(req.getParameter("celularFuncionario"));
-        funcionario.setCpf(req.getParameter("cpfFuncionario"));
         funcionario.setEmail(req.getParameter("emailFuncionario"));
                 
         try {

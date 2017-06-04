@@ -17,7 +17,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Consultar Usuário</title>
+        <title>Consultar Perfil</title>
 
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
@@ -36,7 +36,7 @@
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
                 
-                <a type="button" class="btn btn-inserir" href="CadastraFuncionario">Inserir Funcionario</a>
+                <a type="button" class="btn btn-inserir" href="/XPTOTECH/Funcionarios/inserirFuncionario.jsp">Inserir Funcionario</a>
              
 
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-suitcase"></span>
@@ -71,6 +71,7 @@
                                     <th>Funcionário</th>
                                     <th>Filial</th>
                                     <th>Cargo</th>
+                                    <th>Perfil</th>
                                     <th>Editar</th>
 
                                     <th>Deletar</th>
@@ -81,6 +82,7 @@
                                             <td><%= funcionario.getNome()+ " " + funcionario.getSobrenome()%></td>
                                             <td><%= funcionario.getFilial()%></td>
                                             <td><%= funcionario.getCargo()%></td>
+                                            <td><%= funcionario.getPerfil().getPerfil()%></td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditarFuncionario?idFuncionario=<%=funcionario.getId()%>" class="btn btn-primary btn-xs" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-produto"  data-idProduto="<%=funcionario.getId()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                         </tr> 

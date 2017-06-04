@@ -61,18 +61,7 @@ public class Produto {
     public void setProduto(String produto) {
         this.produto = produto;
     }
-   
-    
-    /*
-    public Integer getQtdUnidade() {
-        return qtdUnidade;
-    }
 
-    public void setQtdUnidade(Integer qtdUnidade) {
-        this.qtdUnidade = qtdUnidade;
-    }
-
-     */
     public Categoria getCategoria() {
         return categoria;
     }

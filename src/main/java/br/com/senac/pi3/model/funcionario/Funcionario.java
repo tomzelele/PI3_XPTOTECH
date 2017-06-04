@@ -7,6 +7,8 @@ package br.com.senac.pi3.model.funcionario;
 
 import br.com.senac.pi3.model.filial.Filial;
 import br.com.senac.pi3.model.Pessoa.Pessoa;
+import br.com.senac.pi3.model.categoria.Categoria;
+import br.com.senac.pi3.model.perfil.Perfil;
 
 /**
  *
@@ -18,6 +20,7 @@ public class Funcionario extends Pessoa {
     private String cargo; 
     private Integer codAcesso; 
     private Filial filial;
+    private Perfil perfil;
 
     /**
      * @return the idFuncionario
@@ -76,4 +79,12 @@ public class Funcionario extends Pessoa {
     }
 
  
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
 }

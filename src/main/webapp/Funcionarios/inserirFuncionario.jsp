@@ -1,9 +1,5 @@
-<%-- 
-    Document   : inserirFuncionario
-    Created on : 03/06/2017, 21:18:22
-    Author     : Kelly
---%>
 
+<%@page import="br.com.senac.pi3.model.perfil.Perfil"%>
 <%@page import="java.util.List"%>
 <%@page import="br.com.senac.pi3.model.filial.Filial"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -13,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Inserir Usuário</title>
+        <title>Inserir Perfil</title>
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
@@ -31,7 +27,8 @@
         <style><%@include file="../CSS/fonts.css" %></style>
     </head>
     <body>
-        <% List<Filial> lista =  (List<Filial>)session.getAttribute("listaFilial") ;%>
+        <% List<Filial> listaFilial =  (List<Filial>)session.getAttribute("listaFilial") ;%>
+        <% List<Perfil> listaPerfil =  (List<Perfil>)session.getAttribute("listaPerfil") ;%>
 
         <div id="wrapper3">
             <div id="three-column" class="container">
@@ -41,7 +38,7 @@
                     <div id="textCustom" class="title">	<h2>Cadastro de Funcionários</h2> </div>
                 </div>
                 
-                <a id="botaoCustom" href="/XPTOTECH/ListarFuncionarios" class="button">Voltar</a>
+                <a id="botaoCustom" href="/XPTOTECH/ListarPerfil" class="button">Voltar</a>
 
                 <div class="container" >
 
@@ -66,20 +63,18 @@
                             <div  class="filial">
                                 <label  for="filial">Filial: </label>
                                 <select class="form-control" name="filial" id="filial" >
-                                
-                                    <% for(Filial filial : lista){ %>
+                                    <% for(Filial filial : listaFilial){ %>
                                         <option value="<%= filial.getIdFilial() %>"><%= filial.getNome() %></option>
                                     <% } %>
                                 </select>
-                            
                             </div>
                                 
-                            <label  class="teste"  for="perfil">Perfil de Acesso:  </label>
-                            <div  class="perfilFuncionario">
-                                <select class="form-control" name="perfilFuncionario" >
-                                    <option value="M">Administrador</option>
-                                    <option value="F">Gerente</option>
-                                    <option value="F">Vendedor</option>
+                            <label  class="perfil"  for="perfil">Perfil de Acesso:  </label>
+                            <div  class="perfil">
+                                <select class="form-control" name="perfil" >
+                                    <% for(Perfil perfil : listaPerfil){ %>
+                                        <option value="<%= perfil.getIdPerfil() %>"><%= perfil.getPerfil() %></option>
+                                    <% } %>
                                 </select>
                             </div>    
                             
@@ -111,18 +106,11 @@
                                 </select>
                             </div>
                             
-                            
                             <div required="" class="celularFuncionario">  
                                 <label  for="celularFuncionario">Celular:  </label>
                                 <input  maxlength="13" OnKeyPress="formatar('##-#####-####', this)" requerid="" name="celularFuncionario" type="text" id="celularCliente" class="form-control input-sm" </br>
                             </div>
-
-                            <div  class="cpfCliente">
-                                <label  for="cpfCliente">CPF:  </label>
-                                <input requerid=""  maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" name="cpfFuncionario" type="text" id="cpfCliente" class="form-control input-sm" > </br>
-                            </div>
-                                                      
-
+                                                   
                             <div class="emailFuncionario">  
                                 <label for="emailFuncionario">Email:  </label>
                                 <input size="50" name="emailFuncionario" type="text" id="emailFuncionario" class="form-control input-sm" </br></br>
