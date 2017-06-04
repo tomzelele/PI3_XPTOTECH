@@ -20,8 +20,7 @@ public class Funcionario extends Pessoa {
     private String cargo; 
     private Integer codAcesso; 
     private Filial filial;
-    private Perfil perfil;
-
+    
     /**
      * @return the idFuncionario
      */
@@ -78,13 +77,4 @@ public class Funcionario extends Pessoa {
         this.filial = filial;
     }
 
- 
-    public Perfil getPerfil() {
-        return perfil;
-    }
-
-    
-    public void setPerfil(Perfil perfil) {
-        this.perfil = perfil;
-    }
 }

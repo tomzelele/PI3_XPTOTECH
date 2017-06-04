@@ -4,15 +4,11 @@ insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES('04940-010','Ru
 insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES('04833-001','Avenida Teotonio Vilela','Vila São José','são paulo','SP','4029');
 insert into filial(CNPJ,DESC_NOME,DESC_FANTASIA,TELEFONE,FK_ENDERECO,ENABLED) values('3634270980001','MATRIZ','MATRIZ','51235456',2,true);
 
-insert into Perfil_Usuario(perfil,enabled) values('Administrador',true);
-insert into Perfil_Usuario(perfil,enabled) values('Gerente',true);
-insert into Perfil_Usuario(perfil,enabled) values('Vendedor',true);
+insert into funcionario (COD_ACESSO,CARGO,ID_FILIAL,NOME,SOBRENOME,DT_NASC,CPF,SEXO,CEL,EMAIL,ENABLED,FK_ENDERECO)
+values (1,'gerente',1,'Joao','Souza','27/12/90','36342709858','M','959668809','jazoniel@gmail.com',true,1);
 
-insert into funcionario (COD_ACESSO,CARGO,ID_FILIAL,ID_PERFIL,NOME,SOBRENOME,DT_NASC,CPF,SEXO,CEL,EMAIL,ENABLED,FK_ENDERECO)
-values (1,'gerente',1,1,'Joao','Souza','27/12/90','36342709858','M','959668809','jazoniel@gmail.com',true,1);
-
-insert into funcionario (COD_ACESSO,CARGO,ID_FILIAL,ID_PERFIL,NOME,SOBRENOME,DT_NASC,CPF,SEXO,CEL,EMAIL,ENABLED,FK_ENDERECO)
-values (2,'gerente',1,1,'Kelly','Cristina','27/12/90','12345678900','F','999991234','kel0705@gmail.com',true,2);
+insert into funcionario (COD_ACESSO,CARGO,ID_FILIAL,NOME,SOBRENOME,DT_NASC,CPF,SEXO,CEL,EMAIL,ENABLED,FK_ENDERECO)
+values (2,'gerente',1,'Kelly','Cristina','27/12/90','12345678900','F','999991234','kel0705@gmail.com',true,2);
 
 insert into USUARIO(login,senha,id_funcionario) values('admin','admin',1);
 insert into USUARIO(login,senha,id_funcionario) values('kelly','kelly',2);
@@ -46,18 +42,17 @@ CREATE TABLE Filial(
     enabled BOOLEAN
 );
 
-CREATE TABLE Perfil_Usuario (
-    id_perfil INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-    perfil VARCHAR(50) NOT NULL,
+CREATE TABLE cargo (
+    id_cargo INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+    cargo VARCHAR(50) NOT NULL,
     enabled BOOLEAN
 );
 
 CREATE TABLE FUNCIONARIO(
     id_funcionario INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
     cod_acesso INTEGER NOT NULL,
-    cargo VARCHAR(50),
+    cargo VARCHAR(50) NOT NULL,
     id_filial INTEGER NOT NULL REFERENCES Filial(id_filial),
-    id_perfil INTEGER NOT NULL REFERENCES Perfil_usuario(id_perfil),
     nome VARCHAR(50) NOT NULL,
     sobrenome VARCHAR(200) NOT NULL,
     dt_nasc VARCHAR(10)NOT NULL,
