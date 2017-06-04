@@ -47,17 +47,17 @@
 
                             <div class="nomeCliente">					
                                 <label  for="nome">Nome: </label>			
-                                <input  size="30" requerid="" name="nomeCliente" type="text" id="nomeCliente" class="form-control input-sm"> </br>
+                                <input  size="30" name="nomeCliente" type="text" id="nomeCliente" class="form-control input-sm"> </br>
                             </div>
 
                             <div  class="sobreNomeCliente">
-                                <label  for="sobreNomeCliente">Sobrenome: </label>
-                                <input requerid="" name="sobreNomeCliente" type="text" size="40" id="sobreNomeCliente" class="form-control input-sm"> </br>
+                                <label for="sobreNomeCliente">Sobrenome: </label>
+                                <input name="sobreNomeCliente" type="text" size="40" id="sobreNomeCliente" class="form-control input-sm"> </br>
                             </div>			
 
                             <div  class="dataNascimentoCliente">
-                                <label  for="dataNascimentoCliente">Data Nascimento:  </label>
-                                <input maxlength="10" requerid="" OnKeyPress="formatar('##/##/####', this)" name="dataNascimentoCliente" type="text" id="dataNascimentoCliente" class="form-control input-sm"> </br>
+                                <label for="dataNascimentoCliente">Data Nascimento:  </label>
+                                <input maxlength="10" OnKeyPress="formatar('##/##/####', this)" name="dataNascimentoCliente" type="text" id="dataNascimentoCliente" class="form-control input-sm"> </br>
                             </div>
 
                             <label  class="teste"  for="sexoCliente">Sexo:  </label>
@@ -71,12 +71,12 @@
                             
                             <div required="" class="celularCliente">  
                                 <label  for="celularCliente">Celular:  </label>
-                                <input  maxlength="13" OnKeyPress="formatar('##-#####-####', this)" requerid="" name="celularCliente" type="text" id="celularCliente" class="form-control input-sm" </br>
+                                <input  maxlength="13" OnKeyPress="formatar('##-#####-####', this)" name="celularCliente" type="text" id="celularCliente" class="form-control input-sm" </br>
                             </div>
 
                             <div  class="cpfCliente">
-                                <label  for="cpfCliente">CPF:  </label>
-                                <input requerid=""  maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" name="cpfCliente" type="text" id="cpfCliente" class="form-control input-sm" > </br>
+                                <label for="cpfCliente">CPF:  </label>
+                                <input maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" name="cpfCliente" type="text" id="cpfCliente" class="form-control input-sm" > </br>
                             </div>
                                                       
 
@@ -92,7 +92,7 @@
 
                             <div class="enderecoCliente">
                                 <label>Rua: </label> 
-                                <input requerid=""  type="text" id="enderecoCliente" maxlength="80" name="enderecoCliente" class="form-control input-sm">
+                                <input type="text" id="enderecoCliente" maxlength="80" name="enderecoCliente" class="form-control input-sm">
                             </div>
                             <div class="numEnderecoCliente">
                                 <label>Número: </label> 
@@ -101,17 +101,17 @@
                             
                             <div class="bairroCliente">
                                 <label>Bairro: </label> 
-                                <input requerid="" type="text" id="bairroCliente" maxlength="40" name="bairroCliente"class="form-control input-sm">
+                                <input type="text" id="bairroCliente" maxlength="40" name="bairroCliente"class="form-control input-sm">
                             </div>
                             
                             <div class="cepCliente">
                                 <label>Cep:</label>
-                                <input requerid="" type="text" id="cepCliente"  OnKeyPress="formatar('#####-###', this)"maxlength="9" name="cepCliente" class="form-control input-sm" > </br>
+                                <input type="text" id="cepCliente"  OnKeyPress="formatar('#####-###', this)"maxlength="9" name="cepCliente" class="form-control input-sm" > </br>
                             </div>
                             
                             <div class="cidadeCliente">
                                 <label>Cidade: </label>
-                                <input requerid="" type="text" id="cidadeCliente" maxlength="40" name="cidadeCliente"class="form-control input-sm">
+                                <input type="text" id="cidadeCliente" maxlength="40" name="cidadeCliente"class="form-control input-sm">
                             </div>
                             <div class="estadoCliente">
                                 <label>Estado: </label>
@@ -120,6 +120,9 @@
 
                             <div class="botaoCadastrarCliente">
                                 <input type="submit" class="btn btn-primary" value="Cadastrar"></button>
+                                <c:if test="${not empty message}" >
+                                    <p>Message: ${message}</p>
+                                </c:if>
                             </div>
                         </form>
 
