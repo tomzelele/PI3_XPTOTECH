@@ -2,13 +2,18 @@
 /*
 insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES('04940-010','Rua Afonso rui','santa lucia','são paulo','SP','55');
 insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES('04833-001','Avenida Teotonio Vilela','Vila São José','são paulo','SP','4029');
-insert into filial(CNPJ,DESC_NOME,DESC_FANTASIA,TELEFONE,FK_ENDERECO,ENABLED) values('3634270980001','MATRIZ','MATRIZ','51235456',2,true);
+insert into filial(CNPJ,DESC_NOME,DESC_FANTASIA,TELEFONE,FK_ENDERECO,ENABLED) values('0634270980001','MATRIZ','MATRIZ','51235456',1,true);
+insert into filial(CNPJ,DESC_NOME,DESC_FANTASIA,TELEFONE,FK_ENDERECO,ENABLED) values('0123456780001','FILIAL','FILIAL','43211234',2,true);
 
-insert into funcionario (COD_ACESSO,CARGO,ID_FILIAL,NOME,SOBRENOME,DT_NASC,CPF,SEXO,CEL,EMAIL,ENABLED,FK_ENDERECO)
-values (1,'gerente',1,'Joao','Souza','27/12/90','36342709858','M','959668809','jazoniel@gmail.com',true,1);
+insert into cargo(cargo,enabled) values('Administrador',true);
+insert into cargo(cargo,enabled) values('Gerente',true);
+insert into cargo(cargo,enabled) values('Vendedor',true);
 
-insert into funcionario (COD_ACESSO,CARGO,ID_FILIAL,NOME,SOBRENOME,DT_NASC,CPF,SEXO,CEL,EMAIL,ENABLED,FK_ENDERECO)
-values (2,'gerente',1,'Kelly','Cristina','27/12/90','12345678900','F','999991234','kel0705@gmail.com',true,2);
+insert into funcionario (COD_ACESSO,ID_CARGO,ID_FILIAL,NOME,SOBRENOME,DT_NASC,CPF,SEXO,CEL,EMAIL,ENABLED,FK_ENDERECO)
+values (1,1,1,'Joao','Souza','27/12/90','36342709858','M','959668809','jazoniel@gmail.com',true,1);
+
+insert into funcionario (COD_ACESSO,ID_CARGO,ID_FILIAL,NOME,SOBRENOME,DT_NASC,CPF,SEXO,CEL,EMAIL,ENABLED,FK_ENDERECO)
+values (2,1,1,'Kelly','Cristina','27/12/90','12345678900','F','999991234','kel0705@gmail.com',true,2);
 
 insert into USUARIO(login,senha,id_funcionario) values('admin','admin',1);
 insert into USUARIO(login,senha,id_funcionario) values('kelly','kelly',2);
@@ -51,7 +56,7 @@ CREATE TABLE cargo (
 CREATE TABLE FUNCIONARIO(
     id_funcionario INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
     cod_acesso INTEGER NOT NULL,
-    cargo VARCHAR(50) NOT NULL,
+    id_cargo INTEGER NOT NULL REFERENCES Cargo(id_cargo),
     id_filial INTEGER NOT NULL REFERENCES Filial(id_filial),
     nome VARCHAR(50) NOT NULL,
     sobrenome VARCHAR(200) NOT NULL,

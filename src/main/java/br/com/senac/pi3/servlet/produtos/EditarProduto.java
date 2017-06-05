@@ -35,13 +35,13 @@ public class EditarProduto extends HttpServlet{
 
            int idProduto = Integer.parseInt( req.getParameter("idProduto") );
            
-           DaoProduto dao = new DaoProduto(ConnectionUtils.getConnection());
+           DaoProduto produtoDao = new DaoProduto(ConnectionUtils.getConnection());
            
            DaoCategoria  categoriaDao = new DaoCategoria(ConnectionUtils.getConnection());
            
            Produto produto = null;
         try {
-           produto = dao.buscarPorId(idProduto);
+           produto = produtoDao.buscarPorId(idProduto);
         } catch (SQLException ex) {
             Logger.getLogger(EditarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
