@@ -1007,3 +1007,27 @@ ul.contact li a:before
     margin-top: 570px;  
     margin-left: 550px;
 }
+
+div.alert {
+    position: absolute;
+    margin-top: 60px;    
+    margin-left: 615px;    
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+

@@ -70,6 +70,21 @@ public class CadastrarCliente extends HttpServlet {
         // Validar campos
         String message = validarCampos(cliente, endereco);
         if (!message.equals("")) {
+            // Obtendo os valores do formulário p/ manter o mesmo preenchido 
+            request.setAttribute("nomeCliente", cliente.getNome());
+            request.setAttribute("sobreNomeCliente", cliente.getSobrenome());
+            request.setAttribute("dataNascimentoCliente", cliente.getDtNasc());
+            request.setAttribute("selectSexoCliente", cliente.getSexo());
+            request.setAttribute("celularCliente", cliente.getCel());
+            request.setAttribute("cpfCliente", cliente.getCpf());
+            request.setAttribute("emailCliente", cliente.getEmail());            
+            request.setAttribute("bairroCliente", endereco.getBairro());
+            request.setAttribute("enderecoCliente", endereco.getRua());
+            request.setAttribute("cepCliente", endereco.getCep());
+            request.setAttribute("cidadeCliente", endereco.getCidade());
+            request.setAttribute("estadoCliente", endereco.getEstado());
+            request.setAttribute("numEnderecoCliente", endereco.getNumero());
+            
             request.setAttribute("message", message);
             request.getRequestDispatcher("Clientes/inserir.jsp").forward(request, response);
         }      
@@ -105,82 +120,94 @@ public class CadastrarCliente extends HttpServlet {
         // Nome
         if (c.getNome() == null || c.getNome().equals("")) {
             msgErro = "Informe o nome";
+            return msgErro;
         } else {
             
         }        
         // Sobrenome
         if (c.getSobrenome() == null || c.getSobrenome().equals("")) {
             msgErro = "Informe o sobrenome";
+            return msgErro;
         } else {
             
         }
         // Data de Nascimento
         if (c.getDtNasc()== null || c.getDtNasc().equals("")) {
             msgErro = "Informe a data de nascimento";
+            return msgErro;
         } else {
             
         }
         // CPF
         if (c.getCpf() == null || c.getCpf().equals("")) {
             msgErro = "Informe o CPF";
+            return msgErro;
         } else {
             
         }
         // Sexo
         if (c.getSexo() == null || c.getSexo().equals("")) {
             msgErro = "Informe o sexo"; 
+            return msgErro;
         } else {
             
         }
         // Celular
         if (c.getCel() == null || c.getCel().equals("")) {
             msgErro = "Informe o celular";
+            return msgErro;
         } else {
             
         }
         // E-mail
         if (c.getEmail() == null || c.getEmail().equals("")) {
             msgErro = "Informe o e-mail";
+            return msgErro;
         } else {
 
         }
         // Rua
         if (e.getRua() == null || e.getRua().equals("")) {
             msgErro = "Informe o nome da rua";
+            return msgErro;
         } else {
             
         }
         // Numero
         if (e.getNumero() == null || e.getNumero().equals("")) {
             msgErro = "Informe o número residencial";
+            return msgErro;
         } else {
             
         }
         // Bairro
         if (e.getBairro() == null || e.getBairro().equals("")) {
             msgErro = "Informe o bairro";
+            return msgErro;
         } else {
             
         }
         // Cep
         if (e.getCep() == null || e.getCep().equals("")) {
             msgErro = "Informe o cep";
+            return msgErro;
         } else {
             
         }
         // Cidade
         if (e.getCidade() == null || e.getCidade().equals("")) {
             msgErro = "Informe a cidade";
+            return msgErro;
         } else {
             
         }
         // Estado
         if (e.getEstado() == null || e.getEstado().equals("")) {
             msgErro = "Informe o estado";
+            return msgErro;
         } else {
             
-        }
-        
-        return msgErro;
+        }       
+        return null;
     }
 }
