@@ -137,4 +137,45 @@ public class ServicoProduto {
             throw new DataSourceException("Erro na fonte de dados", e);
         }
     }
+    
+    /**
+     * Método responsável por realizar a validações do formulário de Cadastro de Clientes
+     * @author cfaraujo
+     * @param p (objeto produto)
+     * @return msgErro
+     */
+     public String validarCampos(Produto p) {
+    	String msgErro = "";
+    	ServicoProduto utilProduto = new ServicoProduto();
+    	
+    	if (p.getProduto() == null || p.getProduto().equals("")) {
+    		msgErro = "Informe o produto";
+    		return msgErro;
+    	} else {
+    		try {
+    			utilProduto.procurarProduto(p.getProduto());
+    		} catch (Exception e) {
+				
+			}
+    		
+    	}
+    	
+    	if (p.getCategoria() == null || p.getCategoria().equals("")) {
+    		msgErro = "Informe a categoria";
+    		return msgErro;
+    	} else {
+    		
+    	}
+    	
+    	if (p.getVlProd() == 0) {
+    		if (p.getVlProd() < 0) {
+    			msgErro = "Valor inválido";
+    			return msgErro;
+    		}
+    		msgErro = "Informe o valor do produto";
+    		return msgErro;
+    	}
+    	
+    	return null;
+    }
 }

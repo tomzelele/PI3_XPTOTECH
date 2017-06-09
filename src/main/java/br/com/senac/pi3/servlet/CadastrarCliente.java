@@ -11,6 +11,7 @@ import br.com.senac.pi3.model.endereco.Endereco;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
 import br.com.senac.pi3.db.dao.DaoEndereco;
 import br.com.senac.pi3.exceptions.ClienteException;
+import br.com.senac.pi3.services.clientes.ServicoCliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -39,14 +40,10 @@ public class CadastrarCliente extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        
         Connection connection = ConnectionUtils.getConnection();
-        
-        
         DaoEndereco enderecoDao = new DaoEndereco(connection);
         
         Cliente cliente = new Cliente();
-        
         cliente.setNome(request.getParameter("nomeCliente"));
         cliente.setSobrenome(request.getParameter("sobreNomeCliente"));
         cliente.setDtNasc(request.getParameter("dataNascimentoCliente"));
@@ -55,11 +52,7 @@ public class CadastrarCliente extends HttpServlet {
         cliente.setCpf(request.getParameter("cpfCliente"));
         cliente.setEmail(request.getParameter("emailCliente"));
         
-        
-        
-        
         Endereco endereco = new Endereco();
-        
         endereco.setBairro(request.getParameter("bairroCliente"));
         endereco.setRua(request.getParameter("enderecoCliente"));
         endereco.setCep(request.getParameter("cepCliente"));
@@ -67,8 +60,8 @@ public class CadastrarCliente extends HttpServlet {
         endereco.setEstado(request.getParameter("estadoCliente"));
         endereco.setNumero(request.getParameter("numEnderecoCliente"));
         
-        // Validar campos
-        String message = validarCampos(cliente, endereco);
+        ServicoCliente utilCliente = new ServicoCliente();
+        String message = utilCliente.validarCampos(cliente, endereco);
         if (!message.equals("")) {
             // Obtendo os valores do formulário p/ manter o mesmo preenchido 
             request.setAttribute("nomeCliente", cliente.getNome());
@@ -84,10 +77,11 @@ public class CadastrarCliente extends HttpServlet {
             request.setAttribute("cidadeCliente", endereco.getCidade());
             request.setAttribute("estadoCliente", endereco.getEstado());
             request.setAttribute("numEnderecoCliente", endereco.getNumero());
-            
+            // Passando mensagem para página jsp
             request.setAttribute("message", message);
             request.getRequestDispatcher("Clientes/inserir.jsp").forward(request, response);
-        }      
+        
+        }
                 
         try {
             endereco = enderecoDao.inserir(endereco);
@@ -97,117 +91,15 @@ public class CadastrarCliente extends HttpServlet {
             System.out.println(endereco.getId());
 
         } catch (Exception ex) {
+            
         }
         try {
-            
-        Connection connection1 = ConnectionUtils.getConnection();
-        
-        DaoCliente clienteDao = new DaoCliente(connection1);
+            Connection connection1 = ConnectionUtils.getConnection();
+            DaoCliente clienteDao = new DaoCliente(connection1);
             clienteDao.inserir(cliente);
-
         } catch (Exception ex) {
-        }
         
+        }
         response.sendRedirect("ListarClientes");
     }
-    
-    /**
-     * Método responsável por realizar a validações do formulário de Cadastro de Clientes
-     */
-    public String validarCampos(Cliente c, Endereco e) {
-        String msgErro = "";
-        
-        // Nome
-        if (c.getNome() == null || c.getNome().equals("")) {
-            msgErro = "Informe o nome";
-            return msgErro;
-        } else {
-            
-        }        
-        // Sobrenome
-        if (c.getSobrenome() == null || c.getSobrenome().equals("")) {
-            msgErro = "Informe o sobrenome";
-            return msgErro;
-        } else {
-            
-        }
-        // Data de Nascimento
-        if (c.getDtNasc()== null || c.getDtNasc().equals("")) {
-            msgErro = "Informe a data de nascimento";
-            return msgErro;
-        } else {
-            
-        }
-        // CPF
-        if (c.getCpf() == null || c.getCpf().equals("")) {
-            msgErro = "Informe o CPF";
-            return msgErro;
-        } else {
-            
-        }
-        // Sexo
-        if (c.getSexo() == null || c.getSexo().equals("")) {
-            msgErro = "Informe o sexo"; 
-            return msgErro;
-        } else {
-            
-        }
-        // Celular
-        if (c.getCel() == null || c.getCel().equals("")) {
-            msgErro = "Informe o celular";
-            return msgErro;
-        } else {
-            
-        }
-        // E-mail
-        if (c.getEmail() == null || c.getEmail().equals("")) {
-            msgErro = "Informe o e-mail";
-            return msgErro;
-        } else {
-
-        }
-        // Rua
-        if (e.getRua() == null || e.getRua().equals("")) {
-            msgErro = "Informe o nome da rua";
-            return msgErro;
-        } else {
-            
-        }
-        // Numero
-        if (e.getNumero() == null || e.getNumero().equals("")) {
-            msgErro = "Informe o número residencial";
-            return msgErro;
-        } else {
-            
-        }
-        // Bairro
-        if (e.getBairro() == null || e.getBairro().equals("")) {
-            msgErro = "Informe o bairro";
-            return msgErro;
-        } else {
-            
-        }
-        // Cep
-        if (e.getCep() == null || e.getCep().equals("")) {
-            msgErro = "Informe o cep";
-            return msgErro;
-        } else {
-            
-        }
-        // Cidade
-        if (e.getCidade() == null || e.getCidade().equals("")) {
-            msgErro = "Informe a cidade";
-            return msgErro;
-        } else {
-            
-        }
-        // Estado
-        if (e.getEstado() == null || e.getEstado().equals("")) {
-            msgErro = "Informe o estado";
-            return msgErro;
-        } else {
-            
-        }       
-        return null;
-    }
-}
+ }

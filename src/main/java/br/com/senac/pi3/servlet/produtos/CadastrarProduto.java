@@ -64,8 +64,22 @@ public class CadastrarProduto extends HttpServlet{
         } catch (SQLException ex) {
             Logger.getLogger(CadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         produto.setVlProd(Double.parseDouble(req.getParameter("vlProd")));
                 
+        // Validar campos
+        ServicoProduto utilProduto = new ServicoProduto();
+        String message = utilProduto.validarCampos(produto);
+        if (!message.equals("")) {
+            // Obtendo os valores do formulário p/ manter o mesmo preenchido 
+            req.setAttribute("nomeProd", produto.getProduto());
+            
+            // Passando mensagem para página jsp
+            req.setAttribute("message", message);
+            req.getRequestDispatcher("Produtos/inserirProduto.jsp").forward(req, resp);
+            
+            
+        }
         
         try {
             produtoDao.inserirProduto(produto);
@@ -82,9 +96,5 @@ public class CadastrarProduto extends HttpServlet{
         
         req.getRequestDispatcher("Produtos/listarProduto.jsp").forward(req, resp);
     }
-    
-    
-    
-    
     
 }

@@ -1009,9 +1009,11 @@ ul.contact li a:before
 }
 
 div.alert {
-    position: absolute;
-    margin-top: 60px;    
-    margin-left: 615px;    
+    position: relative;
+    margin: 30%;
+    margin-left: 36%;
+    margin-top: 5%; 
+    margin-bottom: 0%;
 }
 
 .alert {
@@ -1025,6 +1027,7 @@ div.alert {
 }
 
 .alert-danger {
+    position: relative;
     color: #a94442;
     background-color: #f2dede;
     border-color: #ebccd1;

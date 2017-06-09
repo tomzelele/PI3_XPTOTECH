@@ -11,6 +11,7 @@ import br.com.senac.pi3.db.utils.ConnectionUtils;
 import br.com.senac.pi3.db.dao.DaoCliente;
 import br.com.senac.pi3.db.dao.DaoEndereco;
 import br.com.senac.pi3.exceptions.ClienteException;
+import br.com.senac.pi3.services.clientes.ServicoCliente;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -55,16 +56,10 @@ public class EditarCliente  extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            
-        
-        
         Connection connection = ConnectionUtils.getConnection();
-        
-        
         DaoEndereco enderecoDao = new DaoEndereco(connection);
         
         Cliente cliente = new Cliente();
-        
         cliente.setId(Integer.parseInt(request.getParameter("idClienteAtualiza")));        
         cliente.setNome(request.getParameter("nomeCliente"));
         cliente.setSobrenome(request.getParameter("sobreNomeCliente"));
@@ -76,7 +71,6 @@ public class EditarCliente  extends HttpServlet{
         
         Endereco endereco = new Endereco();
         endereco.setId(Integer.parseInt(request.getParameter("idEnderecoAtualiza")));        
-
         endereco.setBairro(request.getParameter("bairroCliente"));
         endereco.setRua(request.getParameter("enderecoCliente"));
         endereco.setCep(request.getParameter("cepCliente"));
@@ -84,122 +78,45 @@ public class EditarCliente  extends HttpServlet{
         endereco.setEstado(request.getParameter("estadoCliente"));
         endereco.setNumero(request.getParameter("numEnderecoCliente"));
         
-        // Validar campos
-        String message = validarCampos(cliente, endereco);
+        ServicoCliente utilCliente = new ServicoCliente();
+        String message = utilCliente.validarCampos(cliente, endereco);
         if (!message.equals("")) {
+            // Obtendo os valores do formulário p/ manter o mesmo preenchido 
+            request.setAttribute("nomeCliente", cliente.getNome());
+            request.setAttribute("sobreNomeCliente", cliente.getSobrenome());
+            request.setAttribute("dataNascimentoCliente", cliente.getDtNasc());
+            request.setAttribute("selectSexoCliente", cliente.getSexo());
+            request.setAttribute("celularCliente", cliente.getCel());
+            request.setAttribute("cpfCliente", cliente.getCpf());
+            request.setAttribute("emailCliente", cliente.getEmail());            
+            request.setAttribute("bairroCliente", endereco.getBairro());
+            request.setAttribute("enderecoCliente", endereco.getRua());
+            request.setAttribute("cepCliente", endereco.getCep());
+            request.setAttribute("cidadeCliente", endereco.getCidade());
+            request.setAttribute("estadoCliente", endereco.getEstado());
+            request.setAttribute("numEnderecoCliente", endereco.getNumero());
+            // Passando mensagem para página jsp
             request.setAttribute("message", message);
             request.getRequestDispatcher("Clientes/inserir.jsp").forward(request, response);
-        }      
+        }
         
         try {
-            
-           
             enderecoDao.atualizarEndereco(endereco);
             connection.commit();
             connection.close();
-
         } catch (Exception ex) {
+            
         }
+        
         try { 
-            
-        Connection connection1 = ConnectionUtils.getConnection();
+            Connection connection1 = ConnectionUtils.getConnection();
         
-        DaoCliente clienteDao = new DaoCliente(connection1);
-        clienteDao.atualizarCliente(cliente);
-
+            DaoCliente clienteDao = new DaoCliente(connection1);
+            clienteDao.atualizarCliente(cliente);
         } catch (Exception ex) {
+            
         }
-        
-                response.sendRedirect("ListarClientes");
+        response.sendRedirect("ListarClientes");
 
-
-    }
-    
-    /**
-     * Método responsável por realizar a validações do formulário de Cadastro de Clientes
-     */
-    public String validarCampos(Cliente c, Endereco e) {
-        String msgErro = "";
-        
-        // Nome
-        if (c.getNome() == null || c.getNome().equals("")) {
-            msgErro = "Informe o nome";
-        } else {
-            
-        }        
-        // Sobrenome
-        if (c.getSobrenome() == null || c.getSobrenome().equals("")) {
-            msgErro = "Informe o sobrenome";
-        } else {
-            
-        }
-        // Data de Nascimento
-        if (c.getDtNasc()== null || c.getDtNasc().equals("")) {
-            msgErro = "Informe a data de nascimento";
-        } else {
-            
-        }
-        // CPF
-        if (c.getCpf() == null || c.getCpf().equals("")) {
-            msgErro = "Informe o CPF";
-        } else {
-            
-        }
-        // Sexo
-        if (c.getSexo() == null || c.getSexo().equals("")) {
-            msgErro = "Informe o sexo"; 
-        } else {
-            
-        }
-        // Celular
-        if (c.getCel() == null || c.getCel().equals("")) {
-            msgErro = "Informe o celular";
-        } else {
-            
-        }
-        // E-mail
-        if (c.getEmail() == null || c.getEmail().equals("")) {
-            msgErro = "Informe o e-mail";
-        } else {
-
-        }
-        // Rua
-        if (e.getRua() == null || e.getRua().equals("")) {
-            msgErro = "Informe o nome da rua";
-        } else {
-            
-        }
-        // Numero
-        if (e.getNumero() == null || e.getNumero().equals("")) {
-            msgErro = "Informe o número residencial";
-        } else {
-            
-        }
-        // Bairro
-        if (e.getBairro() == null || e.getBairro().equals("")) {
-            msgErro = "Informe o bairro";
-        } else {
-            
-        }
-        // Cep
-        if (e.getCep() == null || e.getCep().equals("")) {
-            msgErro = "Informe o cep";
-        } else {
-            
-        }
-        // Cidade
-        if (e.getCidade() == null || e.getCidade().equals("")) {
-            msgErro = "Informe a cidade";
-        } else {
-            
-        }
-        // Estado
-        if (e.getEstado() == null || e.getEstado().equals("")) {
-            msgErro = "Informe o estado";
-        } else {
-            
-        }
-        
-        return msgErro;
     }
 }
