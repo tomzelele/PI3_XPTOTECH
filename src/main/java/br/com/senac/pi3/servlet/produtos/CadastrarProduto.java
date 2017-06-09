@@ -77,9 +77,6 @@ public class CadastrarProduto extends HttpServlet{
             Logger.getLogger(CadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
        
-              
-        
-        
         req.getRequestDispatcher("Produtos/listarProduto.jsp").forward(req, resp);
     }
     

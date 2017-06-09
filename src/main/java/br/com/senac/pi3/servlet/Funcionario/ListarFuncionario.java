@@ -36,7 +36,7 @@ public class ListarFuncionario extends HttpServlet{
          List<Funcionario> listaFuncionarios = null;
         
         try {
-            listaFuncionarios =  funcionarioDao.listarFuncionario();
+            listaFuncionarios = funcionarioDao.listarFuncionario();
         } catch (SQLException ex) {
             Logger.getLogger(ListarFuncionario.class.getName()).log(Level.SEVERE, null, ex);
         }
