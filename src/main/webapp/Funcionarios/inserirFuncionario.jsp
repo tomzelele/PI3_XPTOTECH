@@ -22,6 +22,11 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+         <!-- Mensagens de alerta (CSS) -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
@@ -52,7 +57,7 @@
                             
                             <div class="codAcesso">					
                                 <label  for="codAcesso">Código de Acesso: </label>			
-                                <input  size="10" requerid="" name="codAcesso" type="text" id="codAcesso" class="form-control input-sm"> </br>
+                                <input  size="10" name="codAcesso" type="text" id="codAcesso" class="form-control input-sm" value="<%= request.getAttribute("codAcesso") != null ? request.getAttribute("codAcesso") : ""%>"> </br>
                             </div>
                             
                             <div class="cargo">					
@@ -75,22 +80,22 @@
                             
                             <div class="nomeFuncionario">					
                                 <label  for="nome">Nome: </label>			
-                                <input  size="30" requerid="" name="nomeFuncionario" type="text" id="nomeCliente" class="form-control input-sm"> </br>
+                                <input  size="30" name="nomeFuncionario" type="text" id="nomeCliente" class="form-control input-sm" value="<%= request.getAttribute("nomeFuncionario") != null ? request.getAttribute("nomeFuncionario") : ""%>"> </br>
                             </div>
 
                             <div  class="sobreNomeFuncionario">
                                 <label  for="sobreNomeFuncionario">Sobrenome: </label>
-                                <input requerid="" name="sobreNomeFuncionario" type="text" size="40" id="sobreNomeCliente" class="form-control input-sm"> </br>
+                                <input	name="sobreNomeFuncionario" type="text" size="40" id="sobreNomeCliente" class="form-control input-sm" value="<%= request.getAttribute("sobreNomeFuncionario") != null ? request.getAttribute("sobreNomeFuncionario") : ""%>"> </br>
                             </div>			
 
                             <div  class="dataNascimentoFuncionario">
-                                <label  for="dataNascimentoFuncionario">Data Nascimento:  </label>
-                                <input maxlength="10" requerid="" OnKeyPress="formatar('##/##/####', this)" name="dataNascimentoFuncionario" type="text" id="dataNascimentoCliente" class="form-control input-sm"> </br>
+                                <label 	for="dataNascimentoFuncionario">Data Nascimento:  </label>
+                                <input 	maxlength="10" OnKeyPress="formatar('##/##/####', this)" name="dataNascimentoFuncionario" type="text" id="dataNascimentoCliente" class="form-control input-sm" value="<%= request.getAttribute("dataNascimentoFuncionario") != null ? request.getAttribute("dataNascimentoFuncionario") : ""%>"> </br>
                             </div>
                             
                             <div  class="cpfFuncionario">
                                 <label  for="cpfFuncionario">CPF:  </label>
-                                <input requerid=""  maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" name="cpfFuncionario" type="text" id="cpfCliente" class="form-control input-sm" > </br>
+                                <input  maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" name="cpfFuncionario" type="text" id="cpfCliente" class="form-control input-sm" value="<%= request.getAttribute("cpfFuncionario") != null ? request.getAttribute("cpfFuncionario") : ""%>"> </br>
                             </div>
 
                             <label  class="teste"  for="sexoFuncionario">Sexo:  </label>
@@ -101,14 +106,14 @@
                                 </select>
                             </div>
                             
-                            <div required="" class="celularFuncionario">  
+                            <div	class="celularFuncionario">  
                                 <label  for="celularFuncionario">Celular:  </label>
-                                <input  maxlength="13" OnKeyPress="formatar('##-#####-####', this)" requerid="" name="celularFuncionario" type="text" id="celularCliente" class="form-control input-sm" </br>
+                                <input  maxlength="13" OnKeyPress="formatar('##-#####-####', this)" name="celularFuncionario" type="text" id="celularCliente" class="form-control input-sm" value="<%= request.getAttribute("celularFuncionario") != null ? request.getAttribute("celularFuncionario") : ""%>"> </br>
                             </div>
                                                    
                             <div class="emailFuncionario">  
                                 <label for="emailFuncionario">Email:  </label>
-                                <input size="50" name="emailFuncionario" type="text" id="emailFuncionario" class="form-control input-sm" </br></br>
+                                <input size="50" name="emailFuncionario" type="text" id="emailFuncionario" class="form-control input-sm" value="<%= request.getAttribute("emailFuncionario") != null ? request.getAttribute("emailFuncionario") : ""%>"> </br></br>
                             </div>
 
                             
@@ -119,23 +124,35 @@
 
                     </div>
                 </div>
-
-
             </div>
+            <c:if test="${not empty message}" >                    
+                    <div class="bs-example">
+                        <div class="alert alert-danger" id="myAlert">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <p>${message}.</p>
+                        </div>
+                    </div>                                    
+            </c:if>
         </div>            
 
         
         <script>
-		function formatar(mascara, documento){
-			var i = documento.value.length;
-			var saida = mascara.substring(0,1);
-			var texto = mascara.substring(i)
-			
-			if (texto.substring(0,1) != saida){
-				documento.value += texto.substring(0,1);
+			function formatar(mascara, documento){
+				var i = documento.value.length;
+				var saida = mascara.substring(0,1);
+				var texto = mascara.substring(i)
+				
+				if (texto.substring(0,1) != saida){
+					documento.value += texto.substring(0,1);
+				}
+				
 			}
 			
-		}
+			$(document).ready(function(){
+                $("#myAlert").on('closed.bs.alert', function () {
+                    
+                });
+            });  
         </script>  
         <c:import url="../Estrutura/footer.jsp"></c:import>
     </body>

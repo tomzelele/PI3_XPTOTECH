@@ -11,6 +11,9 @@ import br.com.senac.pi3.db.dao.DaoFuncionario;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
 import br.com.senac.pi3.exceptions.DataSourceException;
 import br.com.senac.pi3.model.funcionario.Funcionario;
+import br.com.senac.pi3.services.funcionarios.ServicoFuncionario;
+import br.com.senac.pi3.services.produtos.ServicoProduto;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -83,22 +86,34 @@ public class CadastrarFuncionario extends HttpServlet{
         funcionario.setSexo(req.getParameter("selectSexoFuncionario"));
         funcionario.setCel(req.getParameter("celularFuncionario"));
         funcionario.setEmail(req.getParameter("emailFuncionario"));
-                
-        try {
-            
-        Connection connection1 = ConnectionUtils.getConnection();
         
-        DaoFuncionario funcionarioDao = new DaoFuncionario(connection1);
+        // Validar campos
+        ServicoFuncionario utilFuncionario = new ServicoFuncionario();
+        String message = utilFuncionario.validarCampos(funcionario);
+        if (!message.equals("")) {
+        	// Obtendo os valores do formulário p/ manter o mesmo preenchido 
+        	req.setAttribute("codAcesso", funcionario.getCargo());
+        	req.setAttribute("nomeFuncionario", funcionario.getNome());
+        	req.setAttribute("sobreNomeFuncionario", funcionario.getSobrenome());
+        	req.setAttribute("dataNascimentoFuncionario", funcionario.getDtNasc());
+        	req.setAttribute("cpfFuncionario", funcionario.getCpf());
+        	req.setAttribute("selectSexoFuncionario", funcionario.getSexo());
+        	req.setAttribute("celularFuncionario", funcionario.getCel());
+        	req.setAttribute("emailFuncionario", funcionario.getEmail());
+        	// Passando mensagem para página jsp
+            req.setAttribute("message", message);
+        	req.getRequestDispatcher("Funcionarios/inserirFuncionario.jsp").forward(req, resp);
+        }
+        
+        try {
+        	Connection connection1 = ConnectionUtils.getConnection();
+        	DaoFuncionario funcionarioDao = new DaoFuncionario(connection1);
             funcionarioDao.inserir(funcionario);
 
         } catch (Exception ex) {
+        	
         }
       
         req.getRequestDispatcher("Funcionarios/listarFuncionario.jsp").forward(req, resp);
     }
-    
-    
-    
-    
-    
 }

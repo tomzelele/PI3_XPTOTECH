@@ -7,6 +7,7 @@ package br.com.senac.pi3.servlet.produtos;
 
 import br.com.senac.pi3.model.categoria.Categoria;
 import br.com.senac.pi3.model.produto.Produto;
+import br.com.senac.pi3.services.produtos.ServicoProduto;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
 import br.com.senac.pi3.db.dao.DaoCategoria;
 import br.com.senac.pi3.db.dao.DaoProduto;
@@ -80,6 +81,18 @@ public class EditarProduto extends HttpServlet{
             Logger.getLogger(CadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
         produto.setVlProd(Double.parseDouble(req.getParameter("vlProd")));
+        
+        ServicoProduto utilProduto = new ServicoProduto();
+        String message = utilProduto.validarCampos(produto);
+        if (!message.equals("")) {
+        	// Obtendo os valores do formulário p/ manter o mesmo preenchido 
+            req.setAttribute("nomeProd", produto.getProduto());
+            req.setAttribute("vlProd", produto.getVlProd());
+            
+            // Passando mensagem para página jsp
+            req.setAttribute("message", message);
+            req.getRequestDispatcher("/Produtos/editarProduto.jsp").forward(req, resp);
+        }
         
         try {
             produtoDao.atualizarProduto(produto);

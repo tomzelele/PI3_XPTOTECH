@@ -73,6 +73,7 @@ public class CadastrarProduto extends HttpServlet{
         if (!message.equals("")) {
             // Obtendo os valores do formulário p/ manter o mesmo preenchido 
             req.setAttribute("nomeProd", produto.getProduto());
+            req.setAttribute("vlProd", produto.getVlProd());
             
             // Passando mensagem para página jsp
             req.setAttribute("message", message);

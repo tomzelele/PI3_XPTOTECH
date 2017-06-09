@@ -22,6 +22,11 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
+		<!-- Mensagens de alerta (CSS) -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
 
@@ -54,12 +59,12 @@
                             </fieldset>   
                             
                             
-                            <input value="<%= produto.getId()%>" required="" name="idProd" type="hidden" id="idProd" class="form-control input-sm"> </br>
+                            <input value="<%= produto.getId()%>" name="idProd" type="hidden" id="idProd" class="form-control input-sm"> </br>
 
 
                             <div class="nomeProd">
                                 <label  for="nomeProd">Nome: </label>			
-                                <input  value="<%= produto.getProduto() %>" required="" name="nomeProd" type="text" id="nomeProd" class="form-control input-sm"> </br>
+                                <input  value="<%= produto.getProduto() %>" name="nomeProd" type="text" id="nomeProd" class="form-control input-sm"> </br>
                             </div>
 
                             <div  class="categoriaProd">

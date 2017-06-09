@@ -22,6 +22,11 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
+		<!-- Mensagens de alerta (CSS) -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
 
@@ -54,7 +59,7 @@
                             </fieldset>   
                             
                             
-                            <input value="<%= produto.getId()%>" required="" name="idProd" type="hidden" id="idProd" class="form-control input-sm"> </br>
+                            <input value="<%= produto.getId()%>" name="idProd" type="hidden" id="idProd" class="form-control input-sm"> </br>
 
 
                             <div class="nomeProd">
@@ -75,7 +80,7 @@
 							
                             <div  class="vlProd">
                                 <label  for="vlProd">Valor: </label>
-                                <input  required="" name="vlProd" value="<%= produto.getVlProd()%>"  type="text" id="vlProd" class="form-control input-sm"> </br>
+                                <input  name="vlProd" value="<%= produto.getVlProd()%>"  type="text" id="vlProd" class="form-control input-sm"> </br>
                             </div>
                           
  
@@ -87,8 +92,24 @@
                     </div>
                 </div>
             </div>
+            <c:if test="${not empty message}" >                    
+                <div class="bs-example">
+                    <div class="alert alert-danger" id="myAlert">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <p>${message}.</p>
+                        </div>
+                    </div>                                    
+            </c:if>
         </div>      
-
+        
+		<script>
+                $(document).ready(function(){
+                    $("#myAlert").on('closed.bs.alert', function () {
+                        
+                    });
+                });      
+                
+        </script>
         <c:import url="../Estrutura/footer.jsp"></c:import>
     </body>
 </html>
