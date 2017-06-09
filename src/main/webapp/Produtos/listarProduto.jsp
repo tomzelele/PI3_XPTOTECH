@@ -34,9 +34,6 @@
     <body>
         <% List<Produto> listaProdutos = (List<Produto>) session.getAttribute("listaProdutos"); %>
         
-          
-            
-        
         <form action="ExcluiProduto" method="POST" name="formExcluirProduto">
             <input type="hidden" value="" name="idProdutoExcluir">
         </form>

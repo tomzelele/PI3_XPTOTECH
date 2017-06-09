@@ -158,20 +158,7 @@ public class DaoFuncionario {
            while(rs.next()){
                Funcionario funcionario = new Funcionario();
                
-            psComando.setInt(1, funcionario.getCodAcesso());
-            psComando.setInt(2, funcionario.getCargo().getIdCargo());
-            psComando.setInt(3, funcionario.getFilial().getIdFilial());
-            psComando.setString(4, funcionario.getNome());
-            psComando.setString(5, funcionario.getSobrenome());
-            psComando.setString(6, funcionario.getDtNasc());
-            psComando.setString(7, funcionario.getCpf());
-            psComando.setString(8, funcionario.getSexo());
-            psComando.setString(9, funcionario.getCel());
-            psComando.setString(10, funcionario.getEmail());
-            psComando.setBoolean(11, true);
-            psComando.setInt(12, funcionario.getEndereco().getId());
-               
-               
+                           
                funcionario.setId(rs.getInt("ID_FUNCIONARIO"));
                funcionario.setCargo(new DaoCargo(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("ID_CARGO")));
                funcionario.setFilial(daoFilial.buscarPorId(rs.getInt("FK_FILIAL")));
