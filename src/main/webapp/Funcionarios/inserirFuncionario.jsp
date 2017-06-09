@@ -23,7 +23,7 @@
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
-         <!-- Mensagens de alerta (CSS) -->
+        <!-- Mensagens de alerta (CSS) -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
