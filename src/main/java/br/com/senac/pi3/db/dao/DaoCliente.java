@@ -168,7 +168,8 @@ public class DaoCliente {
     public ArrayList<Cliente> procurarCliente(String nome)
             throws SQLException, Exception {
         
-        String sql = "SELECT * FROM cliente WHERE UPPER (nome) LIKE UPPER ('%" + nome + "%') AND enabled=true";
+        String sql = "SELECT * FROM cliente WHERE UPPER(nome) LIKE UPPER('%" + nome + "%') AND enabled=true";
+                    // "SELECT * FROM produto WHERE UPPER (desc_prod) LIKE UPPER ('%" + nome + "%') AND enabled=true";
         
         psComando = conBanco.prepareStatement(sql);
         ResultSet rs =  psComando.executeQuery();
@@ -192,6 +193,7 @@ public class DaoCliente {
               
                cliente.setEndereco(new DaoEndereco(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ENDERECO")));
                
+               listaCliente.add(cliente);
            }
            
            return listaCliente;

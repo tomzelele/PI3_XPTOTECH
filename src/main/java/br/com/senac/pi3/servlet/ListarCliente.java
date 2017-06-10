@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jazon
  */
-@WebServlet({"/ListarClientes"})
+@WebServlet(name = "ListarCliente", urlPatterns = {"/ListarClientes"})
 
 public class ListarCliente extends HttpServlet{
     
@@ -34,14 +34,17 @@ public class ListarCliente extends HttpServlet{
         DaoCliente clienteDao = new DaoCliente(ConnectionUtils.getConnection());
         
         List<Cliente> listaClientes = null;
-        try {
-            listaClientes =  clienteDao.listarCliente();
-        } catch (SQLException ex) {
-        }
+        
+         try {
+             listaClientes =  clienteDao.listarCliente();
+         } catch (SQLException ex) {
+             Logger.getLogger(ListarCliente.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
         
         req.getSession().setAttribute("listaClientes", listaClientes);
         
-        req.getRequestDispatcher("/Clientes/listarCliente.jsp").forward(req, resp);
+        req.getRequestDispatcher("Clientes/listarCliente.jsp").forward(req, resp);
     }
     
     
