@@ -109,7 +109,7 @@ public class ServicoCliente {
         } else {
             
         }       
-        return null;
+        return msgErro;
     }
 	
 	/**
@@ -180,6 +180,7 @@ public class ServicoCliente {
      * @param cpf
      * @return pkWithoutMask
      * */
+    
     public static String removeContaMask(String cpf) {
        	StringBuffer pkWithoutMask = new StringBuffer("");
        	String pk = cpf;
@@ -198,4 +199,5 @@ public class ServicoCliente {
     		}
     		return pkWithoutMask.toString().trim();
     }
+
 }

@@ -81,9 +81,8 @@ public class CadastrarCliente extends HttpServlet {
             request.setAttribute("message", message);
             request.getRequestDispatcher("Clientes/inserir.jsp").forward(request, response);
         
-        }
-                
-        try {
+        } else {
+            try {
             endereco = enderecoDao.inserir(endereco);
             cliente.setEndereco(endereco);
             connection.commit();
@@ -97,9 +96,17 @@ public class CadastrarCliente extends HttpServlet {
             Connection connection1 = ConnectionUtils.getConnection();
             DaoCliente clienteDao = new DaoCliente(connection1);
             clienteDao.inserir(cliente);
+            message = "Inclusão efetuada com sucesso";
+            request.setAttribute("message", message);
+            request.getRequestDispatcher("Clientes/inserir.jsp").forward(request, response);
         } catch (Exception ex) {
-        
+            message = "Erro na fonte de dados";
+            request.setAttribute("message", message);
+            request.getRequestDispatcher("Clientes/inserir.jsp").forward(request, response);
         }
+        }
+                
+        
         response.sendRedirect("ListarClientes");
     }
  }

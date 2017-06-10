@@ -121,7 +121,7 @@ CREATE TABLE Venda (
     id_venda INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
     dt_venda DATE ,
     valor_compra DOUBLE NOT NULL,
-    cliente_id INTEGER NOT NULL REFERENCES cliente(id_cliente)    
+    cliente_id INTEGER NOT NULL REFERENCES cliente(id_cliente),    
     filial_id INTEGER NOT NULL REFERENCES filial(id_filial) 
    
 );
