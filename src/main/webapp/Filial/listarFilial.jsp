@@ -17,12 +17,9 @@
         <title>Consultar Filial</title>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      
-
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
         <meta name="keywords" content="" />
@@ -37,7 +34,7 @@
         <div id="wrapper3">
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
-                <a type="button" class="btn btn-info" href="CadastrarFilial">Inserir Filial</a>
+                <a type="button" class="btn btn-inserir" href="CadastrarFilial">Inserir Filial</a>
 
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-group"></span>
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Filiais</h2> </div>
@@ -54,6 +51,7 @@
 
                                 <table id="mytable" class="table table-bordred table-striped">
                                     <thead>
+                                    <th>Id</th>
                                     <th>Fantasia</th>
                                     <th>CNPJ</th>
                                     <th>Endereço</th>
@@ -65,7 +63,8 @@
                                     <tbody>
                                         <% List<Filial> listaFiliais = (List<Filial>) session.getAttribute("listFilial"); %>
                                         <% for (Filial filial : listaFiliais) {%>
-                                            <tr>            
+                                            <tr>
+                                                 <td><%= filial.getIdFilial()%></td>
                                                 <td><%= filial.getFantasia()%></td>
                                                 <td><%= filial.getCnpj()%></td>
                                                 <% Endereco endereco = filial.getEndereco();%>

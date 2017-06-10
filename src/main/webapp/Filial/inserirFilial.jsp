@@ -1,8 +1,8 @@
-<%-- 
-    Document   : inserir
-    Created on : 21/05/2017, 20:32:32
-    Author     : Vitor
---%>
+<%@page import="java.util.List"%>
+<%@page import="br.com.senac.pi3.model.endereco.Endereco"%>
+<%@page import="br.com.senac.pi3.db.utils.ConnectionUtils"%>
+<%@page import="br.com.senac.pi3.db.dao.DaoCliente"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -44,11 +44,11 @@
 
                     <div class="cadastroFormulario">
 
-                        <form method="post" action="../CadastraFilial">
+                        <form method="post" action="CadastrarFilial">
 
                             <div class="cnpj">					
                                 <label  for="nome">CNPJ: </label>			
-                                <input   requerid="" maxlength="17" name="cnpj" type="text" id="cnpj" OnKeyPress="formatar('##.###.###/####-##', this)" class="form-control input-sm"> </br>
+                                <input  requerid="" maxlength="17" name="cnpj" type="text" id="cnpj" OnKeyPress="formatar('##.###.###/####-##', this)" class="form-control input-sm"> </br>
                             </div>
 
                             <div class="desc_nome">
@@ -63,7 +63,7 @@
 
                             <div  class="telefone">
                                 <label  for="telefone">Telefone:  </label>
-                                <input requerid="" maxlength="13" OnKeyPress="formatar('(##)####-####', this)" maxlength="10"  name="telefone" type="text" id="telefone" class="form-control input-sm" > </br>
+                                <input requerid="" maxlength="13" OnKeyPress="formatar('##-#####-####', this)" maxlength="10"  name="telefone" type="text" id="telefone" class="form-control input-sm" > </br>
                             </div>
 
                             <fieldset  class="fieldEndreco">
@@ -95,7 +95,7 @@
                                 <input requerid="" size="6"type="text" id="estadoCliente" maxlength="2" name="estadoCliente"class="form-control input-sm"></br>
                             </div>
 
-                            <div class="botaoCadastrarCliente">
+                            <div class="botaoCadastrarFilial">
                                 <input type="submit" class="btn btn-primary" value="Cadastrar"></button>
                             </div>
                         </form>

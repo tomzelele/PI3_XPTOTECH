@@ -1,4 +1,4 @@
-%-- 
+<%-- 
     Document   : listarProduto
     Created on : 16/05/2017, 23:35:57
     Author     : Souza08
@@ -25,42 +25,59 @@
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar Produto</title>
-
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
-        
+
 
     </head>
     <body>
         <% List<Produto> listaProdutos = (List<Produto>) session.getAttribute("listaProdutos"); %>
-        
+
+
+
+
         <form action="ExcluiProduto" method="POST" name="formExcluirProduto">
             <input type="hidden" value="" name="idProdutoExcluir">
         </form>
-        
+
         <div id="wrapper3"> 
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
-                
-                <a type="button" class="btn btn-inserir" href="CadastraProduto">Inserir Produto</a>
-             
+
 
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-suitcase"></span>
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Produtos</h2> </div>
                 </div>
-                
+                <div class="voltar">
+
+                    <a id="button" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
+                </div>
+                <div class="inserirProd">
+                    <a type="button" class="btn btn-inserir" href="CadastraProduto">Inserir Produto</a>
+                </div>
                 <div class="pesquisaNome">
+
                     <form action="PesquisaProduto" method="POST" name="formPesquisarProduto"> 
-                    <label  for="pesquisaNome">Pesquisa por Nome: </label>	                           
-                    <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control input-sm"> 
-                    <input type="hidden" value="" name="idProdutoPesquisar">
-                    <a type="button" class="btn btn-pesq" >Pesquisar</a>
-                    
+                        <div class="col-lg-3">
+
+                            <div  class="input-group custom-search-form">
+
+                                <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control" placeholder="Pesquisa" /> 
+
+                                <span class="input-group-btn">                             
+
+                                    <button type="button" class="btn btn-danger">
+
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
                     </form>
 
                 </div>
-               
-                <a id="botaoCustom" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
+
 
                 <div class="container">
                     <div class="row">
@@ -83,7 +100,7 @@
                                     <th>Deletar</th>
                                     </thead>
                                     <tbody>
-                                        <%for(Produto produto : listaProdutos){ %>    
+                                        <%for (Produto produto : listaProdutos) {%>    
                                         <tr>
                                             <td><%= produto.getId()%></td>
                                             <td><%= produto.getProduto()%></td>
@@ -92,7 +109,7 @@
                                             <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditarProduto?idProduto=<%=produto.getId()%>" class="btn btn-primary btn-xs" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-produto"  data-idProduto="<%=produto.getId()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                         </tr> 
-                                        <%} %>
+                                        <%}%>
                                     </tbody>
 
                                 </table>
@@ -164,8 +181,8 @@
             </div>
         </div>
 
-    <c:import url="Estrutura/footer.jsp"></c:import>
-    <script
+        <c:import url="../Estrutura/footer.jsp"></c:import>
+        <script
             src="https://code.jquery.com/jquery-1.12.4.min.js"
             integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
         crossorigin="anonymous"></script>
@@ -191,6 +208,6 @@
 
         </script>
 
-</body>
+    </body>
 </html>
 
