@@ -169,7 +169,7 @@ public class DaoCliente {
             throws SQLException, Exception {
         
         String sql = "SELECT * FROM cliente WHERE UPPER(nome) LIKE UPPER('%" + nome + "%') AND enabled=true";
-                    // "SELECT * FROM produto WHERE UPPER (desc_prod) LIKE UPPER ('%" + nome + "%') AND enabled=true";
+                    
         
         psComando = conBanco.prepareStatement(sql);
         ResultSet rs =  psComando.executeQuery();
