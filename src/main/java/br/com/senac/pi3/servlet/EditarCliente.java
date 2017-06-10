@@ -98,24 +98,31 @@ public class EditarCliente  extends HttpServlet{
             // Passando mensagem para página jsp
             request.setAttribute("message", message);
             request.getRequestDispatcher("Clientes/inserir.jsp").forward(request, response);
+        } else {
+            try {
+                enderecoDao.atualizarEndereco(endereco);
+                connection.commit();
+                connection.close();
+            } catch (Exception ex) {
+                message = "Erro na fonte de dados";
+                request.setAttribute("message", message);
+                request.getRequestDispatcher("Clientes/inserir.jsp").forward(request, response);
+            }
+            try { 
+                Connection connection1 = ConnectionUtils.getConnection();
+                DaoCliente clienteDao = new DaoCliente(connection1);
+                clienteDao.atualizarCliente(cliente);
+                message = "Alteração efetuada com sucesso";
+                request.setAttribute("message", message);
+                request.getRequestDispatcher("Clientes/inserir.jsp").forward(request, response);
+            } catch (Exception ex) {
+                message = "Erro na fonte de dados";
+                request.setAttribute("message", message);
+                request.getRequestDispatcher("Clientes/inserir.jsp").forward(request, response);
+            }
         }
         
-        try {
-            enderecoDao.atualizarEndereco(endereco);
-            connection.commit();
-            connection.close();
-        } catch (Exception ex) {
-            
-        }
         
-        try { 
-            Connection connection1 = ConnectionUtils.getConnection();
-        
-            DaoCliente clienteDao = new DaoCliente(connection1);
-            clienteDao.atualizarCliente(cliente);
-        } catch (Exception ex) {
-            
-        }
         response.sendRedirect("ListarClientes");
 
     }

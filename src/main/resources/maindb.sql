@@ -21,7 +21,7 @@ insert into funcionario (COD_ACESSO,ID_CARGO,ID_FILIAL,NOME,SOBRENOME,DT_NASC,CP
 values (3,3,1,'Vendedor','Cristina','27/12/90','12345678900','F','999991234','kel0705@gmail.com',true,2);
 
 insert into USUARIO(login,senha,id_funcionario) values('gerente','gerente',1);
-insert into USUARIO(login,senha,id_funcionario) values('kelly','kelly',2);
+insert into USUARIO(login,senha,id_funcionario) values('admin','admin',2);
 insert into USUARIO(login,senha,id_funcionario) values('vendedor','vendedor',3);
 
 insert into Categoria(desc_prod,enabled) values('Acessórios',true);

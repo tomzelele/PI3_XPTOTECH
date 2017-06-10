@@ -102,17 +102,24 @@ public class CadastrarFuncionario extends HttpServlet{
         	req.setAttribute("emailFuncionario", funcionario.getEmail());
         	// Passando mensagem para página jsp
             req.setAttribute("message", message);
-        	req.getRequestDispatcher("Funcionarios/inserirFuncionario.jsp").forward(req, resp);
+            req.getRequestDispatcher("Funcionarios/inserirFuncionario.jsp").forward(req, resp);
+        } else {
+            try {
+                // Realiza a alteração do registro e envia mensagem para jsp
+                Connection connection1 = ConnectionUtils.getConnection();
+                DaoFuncionario funcionarioDao = new DaoFuncionario(connection1);
+                funcionarioDao.inserir(funcionario);
+                message = "Inclusão efetuada com sucesso";
+                req.setAttribute("message", message);
+
+            } catch (Exception ex) {
+                message = "Erro na fonte de dados";
+                req.setAttribute("message", message);
+            }
+            req.getRequestDispatcher("Funcionarios/inserirFuncionario.jsp").forward(req, resp);
         }
         
-        try {
-        	Connection connection1 = ConnectionUtils.getConnection();
-        	DaoFuncionario funcionarioDao = new DaoFuncionario(connection1);
-            funcionarioDao.inserir(funcionario);
-
-        } catch (Exception ex) {
-        	
-        }
+        
       
         req.getRequestDispatcher("Funcionarios/listarFuncionario.jsp").forward(req, resp);
     }

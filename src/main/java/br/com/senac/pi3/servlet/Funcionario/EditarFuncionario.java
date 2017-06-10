@@ -109,25 +109,31 @@ public class EditarFuncionario extends HttpServlet{
         ServicoFuncionario utilFuncionario = new ServicoFuncionario();
         String message = utilFuncionario.validarCampos(funcionario);
         if (!message.equals("")) {
-        	// Obtendo os valores do formulário p/ manter o mesmo preenchido 
-        	req.setAttribute("codAcesso", funcionario.getCargo());
-        	req.setAttribute("nomeFuncionario", funcionario.getNome());
-        	req.setAttribute("sobreNomeFuncionario", funcionario.getSobrenome());
-        	req.setAttribute("dataNascimentoFuncionario", funcionario.getDtNasc());
-        	req.setAttribute("cpfFuncionario", funcionario.getCpf());
-        	req.setAttribute("selectSexoFuncionario", funcionario.getSexo());
-        	req.setAttribute("celularFuncionario", funcionario.getCel());
-        	req.setAttribute("emailFuncionario", funcionario.getEmail());
-        	// Passando mensagem para página jsp
+            // Obtendo os valores do formulário p/ manter o mesmo preenchido 
+            req.setAttribute("codAcesso", funcionario.getCargo());
+            req.setAttribute("nomeFuncionario", funcionario.getNome());
+            req.setAttribute("sobreNomeFuncionario", funcionario.getSobrenome());
+            req.setAttribute("dataNascimentoFuncionario", funcionario.getDtNasc());
+            req.setAttribute("cpfFuncionario", funcionario.getCpf());
+            req.setAttribute("selectSexoFuncionario", funcionario.getSexo());
+            req.setAttribute("celularFuncionario", funcionario.getCel());
+            req.setAttribute("emailFuncionario", funcionario.getEmail());
+            // Passando mensagem para página jsp
             req.setAttribute("message", message);
-        	req.getRequestDispatcher("Funcionarios/editarFuncionario.jsp").forward(req, resp);
+            req.getRequestDispatcher("Funcionarios/editarFuncionario.jsp").forward(req, resp);
+        } else {
+            try {
+                funcionarioDao.atualizarFuncionario(funcionario);
+                message = "Alteração efetuada com sucesso";
+                req.setAttribute("message", message);
+            } catch (Exception ex) {
+                message = "Erro na fonte de dados";
+                req.setAttribute("message", message);
+            }   
+            req.getRequestDispatcher("Funcionarios/editarFuncionario.jsp").forward(req, resp);
         }
         
-        try {
-            funcionarioDao.atualizarFuncionario(funcionario);
-        } catch (Exception ex) {
-
-        }
+        
         
         resp.sendRedirect("ListarFuncionarios");
         

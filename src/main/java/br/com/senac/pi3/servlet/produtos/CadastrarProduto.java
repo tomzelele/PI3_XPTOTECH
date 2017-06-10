@@ -80,17 +80,29 @@ public class CadastrarProduto extends HttpServlet{
             req.getRequestDispatcher("Produtos/inserirProduto.jsp").forward(req, resp);
             
             
+        } else {
+            try {
+                // Realiza a inclusão do registro e envia mensagem para jsp
+                produtoDao.inserirProduto(produto);
+                message = "Inclusão efetuada com sucesso";
+                req.setAttribute("message", message);
+                req.getRequestDispatcher("Produtos/inserirProduto.jsp").forward(req, resp);
+            } catch (ProdutoException ex) {
+                message = "Erro na fonte de dados";
+                req.setAttribute("message", message);
+                Logger.getLogger(CadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DataSourceException ex) {
+                message = "Erro na fonte de dados";
+                req.setAttribute("message", message);
+                Logger.getLogger(CadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) { 
+                message = "Erro na fonte de dados";
+                req.setAttribute("message", message);
+                Logger.getLogger(CadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
-        try {
-            produtoDao.inserirProduto(produto);
-        } catch (ProdutoException ex) {
-            Logger.getLogger(CadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (DataSourceException ex) {
-            Logger.getLogger(CadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) { 
-            Logger.getLogger(CadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
        
         req.getRequestDispatcher("Produtos/listarProduto.jsp").forward(req, resp);
     }
