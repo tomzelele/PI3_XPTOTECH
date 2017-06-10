@@ -26,12 +26,12 @@
 </head>
 <body>
 <% Usuario logado = (Usuario) (session.getAttribute("usuarioLogado")); %> 
-<div id="wrapper2">
-	<div id="welcome" class="container">
+<div id="wrapper2" >
+	<div id="welcome" class="container" >
 		<div class="title">
                     <h2>Bem-Vindo <%= logado.getFuncionario().getNome() %> </h2>
 		</div>
-		<p>O QUE DESEJA FAZER ?</p>
+                <p style="color: white;" style=" text-shadow: black 5.1em 5.1em 0.5sem;">O QUE DESEJA FAZER ?</p>
 	</div>
 </div>
 <div id="wrapper3">
@@ -74,7 +74,7 @@
 		<div class="title">
 			<h2>Gerenciamento de Acessos</h2>
 		</div>
-		<a href="ListarFuncionarios" class="buttonGerenciar">Gerenciar</a>
+		<a href="Relatorios/gerAcessos.jsp" class="buttonGerenciar">Gerenciar</a>
 	</div>
 </div>
 </div>

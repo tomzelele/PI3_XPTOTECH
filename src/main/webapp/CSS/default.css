@@ -473,12 +473,21 @@ ul.contact li a:before
 
 #wrapper1
 {
-    background: #242424;
+    background: #242424;  
 }
 
 #wrapper2
 {
     background: #DC572E;
+    background-image: url('images/header.jpg'); 
+    background-repeat: no-repeat; 
+    background-size:100%; 
+    background-attachment: fixed;
+    background-position: center-top;  
+    background-position-y: -100%;
+   
+   
+   
 }
 
 #wrapper3
@@ -505,22 +514,31 @@ ul.contact li a:before
     padding: 8em 100px 8em 100px;
     text-align: center;
     color: rgba(0,0,0,0.6);
+    height: 10px; 
+   color: white;
+   color: white; text-shadow: black 0.1em 0.1em 0.2em;
 }
 
 #welcome .content
 {
+       color: white; text-shadow: black 0.1em 0.1em 0.2em;
     padding: 0em 8em;
+    
 }
 
 #welcome .title h2
 {
-    color: rgba(0,0,0,0.8);
+   color: rgba(0,0,0,0.8); 
+   color: white;
+
 }
 
 #welcome a,
 #welcome strong
 {
     color: rgba(0,0,0,0.8);
+    
+       color: white; text-shadow: black 0.1em 0.1em 0.2em;
 }
 
 /*********************************************************************************/
@@ -784,13 +802,25 @@ ul.contact li a:before
 
 .pesquisaNome{
 
-    display: inline-block;
-    margin-top: 2em;
-    padding: 1em 2em 1em 2em;
-       
-    
+    margin-top: -30px;
+    margin-left: 0px;
+    position: absolute;
+
 }
 
+.voltar{
+    margin-top: 25px;
+    margin-left: 980px;
+
+   
+}
+
+.inserirProd{
+    margin-top: -70px;
+    margin-left: 1040px;
+
+   
+}
 
 .form-login{
 
@@ -838,11 +868,11 @@ ul.contact li a:before
     background-color: #BF1E4B;
     border-color: #BF1E4B;
 }
-    .nomeCliente{
+.nomeCliente{
     position: absolute;
     margin-top: 200px;
-    }
-    
+}
+
 .sobreNomeCliente {
     position: absolute;
     margin-left: 220px;
@@ -850,39 +880,39 @@ ul.contact li a:before
 }
 
 .dataNascimentoCliente{
-    
+
     position: absolute;
     margin-left: 500px;
     margin-top: 200px; 
-   
+
 }
 
 .cpfCliente{
-    
+
     position: absolute;
     margin-left: 500px;
     margin-top: 260px; 
-    
+
 }
 
 .celularCliente{
     position: absolute;
     margin-left: 220px;
     margin-top: 260px;     
-    
+
 }
 
 .selectSexoCliente{
-    
+
     position: absolute;
     margin-top: 275px;    
-    
+
 }
 .teste{
-	
+
     position: absolute;
     margin-top: 260px; 	
-	
+
 }
 
 .emailCliente{
@@ -947,7 +977,7 @@ ul.contact li a:before
     margin-top: 200px;
     margin-left: 160px;
 }
-    
+
 .categoriaProd{
     position: absolute;
     margin-left: 160px;
@@ -982,24 +1012,24 @@ ul.contact li a:before
 .cnpj{
     position: absolute;
     margin-top: 200px;
-    margin-left: 160px;
+    margin-left: 60px;
 }
-    
+
 .desc_nome{
     position: absolute;
-    margin-left: 160px;
-    margin-top: 300px;   
+    margin-left: 400px;
+    margin-top: 200px;   
 }
 .desc_fantasia{
     position: absolute;
-    margin-left: 160px;
-    margin-top: 400px;   
+    margin-left: 60px;
+    margin-top: 300px;   
 }
 
 .telefone{
     position: absolute;
-    margin-left: 160px;
-    margin-top: 500px; 
+    margin-left: 400px;
+    margin-top: 300px; 
 }
 
 .botaoCadastrarCliente{
@@ -1007,30 +1037,65 @@ ul.contact li a:before
     margin-top: 570px;  
     margin-left: 550px;
 }
-
-div.alert {
-    position: relative;
-    margin: 30%;
-    margin-left: 36%;
-    margin-top: 5%; 
-    margin-bottom: 0%;
+.cli{
+    position: absolute;
+    margin-top: 100px;  
+    margin-left: 280px;
 }
-
-.alert {
-    padding: 15px;
-    margin-bottom: 10px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+.prod{
+    position: absolute;
+    margin-top: 100px;  
+    margin-left: 480px;
 }
+.qtdProduto{
+    position: absolute;
+    margin-top: 100px;  
+    margin-left: 680px;
+}
+.btn-pesq{
 
-.alert-danger {
-    position: relative;
-    color: #a94442;
-    background-color: #f2dede;
-    border-color: #ebccd1;
+    position: absolute;
+    margin-top: 123px;  
+    margin-left: 280px;
+
 }
 
 
+#custom-search-input {
+        margin:0;
+        margin-top: 10px;
+        padding: 0;
+    }
+ 
+    #custom-search-input .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+ 
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+ 
+    #custom-search-input button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color:#D9230F;
+    }
+ 
+    .search-query:focus + button {
+        z-index: 3;   
+    }

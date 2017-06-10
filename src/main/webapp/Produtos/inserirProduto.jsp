@@ -21,18 +21,12 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
-        <!-- Mensagens de alerta (CSS) -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
 
     </head>
     <body>
     <% List<Categoria> lista =  (List<Categoria>)session.getAttribute("listaCategoria") ;%>	
-    
         <div id="wrapper3">
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
@@ -57,7 +51,7 @@
                             <div class="nomeProd">
                                 <label  for="nomeProd">Nome: </label>	
                                 
-                                <input name="nomeProd" type="text" id="nomeProd" class="form-control input-sm" value="<%= request.getAttribute("nomeProd") != null ? request.getAttribute("nomeProd") : ""%>"> </br>
+                                <input required="" name="nomeProd" type="text" id="nomeProd" class="form-control input-sm"> </br>
                             </div>
 
                             <div  class="categoriaProd">
@@ -73,7 +67,7 @@
 							
                             <div  class="vlProd">
                                 <label  for="vlProd">Valor: </label>
-                                <input name="vlProd"  type="text" id="vlProd" class="form-control input-sm" value="<%= request.getAttribute("vlProd") != null ? request.getAttribute("vlProd") : ""%>"> </br>
+                                <input required="" name="vlProd"  type="text" id="vlProd" class="form-control input-sm"> </br>
                             </div>
                             
                             <div class="botaoCadastrarProd">
@@ -83,24 +77,8 @@
                     </div>
                 </div>
             </div>
-            <c:if test="${not empty message}" >                    
-                <div class="bs-example">
-                    <div class="alert alert-danger" id="myAlert">
-                        <a href="#" class="close" data-dismiss="alert">&times;</a>
-                        <p>${message}.</p>
-                        </div>
-                    </div>                                    
-            </c:if>
         </div>      
-                                
-        <script>
-                $(document).ready(function(){
-                    $("#myAlert").on('closed.bs.alert', function () {
-                        
-                    });
-                });      
-                
-        </script>  
+
         <c:import url="../Estrutura/footer.jsp"></c:import>
     </body>
 </html>

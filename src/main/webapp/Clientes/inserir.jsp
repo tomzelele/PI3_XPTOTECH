@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inserir Cliente</title>
         <meta name="keywords" content="" />
         <meta name="description" content="" />
@@ -16,11 +16,9 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-        <!-- Mensagens de alerta (CSS) -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      
+
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
     </head>
@@ -48,42 +46,42 @@
 
                             <div class="nomeCliente">					
                                 <label  for="nome">Nome: </label>			
-                                <input  size="30" name="nomeCliente" type="text" id="nomeCliente" class="form-control input-sm" value="<%= request.getAttribute("nomeCliente") != null ? request.getAttribute("nomeCliente") : ""%>"> </br>
+                                <input  size="30" requerid="" name="nomeCliente" type="text" id="nomeCliente" class="form-control input-sm"> </br>
                             </div>
 
                             <div  class="sobreNomeCliente">
-                                <label for="sobreNomeCliente">Sobrenome: </label>
-                                <input name="sobreNomeCliente" type="text" size="40" id="sobreNomeCliente" class="form-control input-sm" value="<%= request.getAttribute("sobreNomeCliente") != null ? request.getAttribute("sobreNomeCliente") : ""%>"> </br>
+                                <label  for="sobreNomeCliente">Sobrenome: </label>
+                                <input requerid="" name="sobreNomeCliente" type="text" size="40" id="sobreNomeCliente" class="form-control input-sm"> </br>
                             </div>			
 
                             <div  class="dataNascimentoCliente">
-                                <label for="dataNascimentoCliente">Data Nascimento:  </label>
-                                <input maxlength="10" OnKeyPress="formatar('##/##/####', this)" name="dataNascimentoCliente" type="text" id="dataNascimentoCliente" class="form-control input-sm" value="<%= request.getAttribute("dataNascimentoCliente") != null ? request.getAttribute("dataNascimentoCliente") : ""%>"> </br>
+                                <label  for="dataNascimentoCliente">Data Nascimento:  </label>
+                                <input maxlength="10" requerid="" OnKeyPress="formatar('##/##/####', this)" name="dataNascimentoCliente" type="text" id="dataNascimentoCliente" class="form-control input-sm"> </br>
                             </div>
 
                             <label  class="teste"  for="sexoCliente">Sexo:  </label>
                             <div  class="selectSexoCliente">
-                                <select class="form-control" name="selectSexoCliente" value ="<%= request.getAttribute("selectSexoCliente") != null ? request.getAttribute("selectSexoCliente") : ""%>">
+                                <select class="form-control" name="selectSexoCliente" >
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
                                 </select>
                             </div>
                             
                             
-                            <div class="celularCliente">  
+                            <div required="" class="celularCliente">  
                                 <label  for="celularCliente">Celular:  </label>
-                                <input  maxlength="13" OnKeyPress="formatar('##-#####-####', this)" name="celularCliente" type="text" id="celularCliente" class="form-control input-sm" value="<%= request.getAttribute("celularCliente") != null ? request.getAttribute("celularCliente") : ""%>" > </br>
+                                <input  maxlength="13" OnKeyPress="formatar('##-#####-####', this)" requerid="" name="celularCliente" type="text" id="celularCliente" class="form-control input-sm" </br>
                             </div>
 
                             <div  class="cpfCliente">
-                                <label for="cpfCliente">CPF:  </label>
-                                <input maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" name="cpfCliente" type="text" id="cpfCliente" class="form-control input-sm" value="<%= request.getAttribute("cpfCliente") != null ? request.getAttribute("cpfCliente") : ""%>"> </br>
+                                <label  for="cpfCliente">CPF:  </label>
+                                <input requerid=""  maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" name="cpfCliente" type="text" id="cpfCliente" class="form-control input-sm" > </br>
                             </div>
                                                       
 
                             <div class="emailCliente">  
                                 <label for="emailCliente">Email:  </label>
-                                <input size="50" name="emailCliente" type="text" id="emailCliente" class="form-control input-sm" value="<%= request.getAttribute("emailCliente") != null ? request.getAttribute("emailCliente") : ""%>"> </br></br>
+                                <input size="50" name="emailCliente" type="text" id="emailCliente" class="form-control input-sm" </br></br>
                             </div>
 
 
@@ -93,47 +91,42 @@
 
                             <div class="enderecoCliente">
                                 <label>Rua: </label> 
-                                <input type="text" id="enderecoCliente" maxlength="80" name="enderecoCliente" class="form-control input-sm" value="<%= request.getAttribute("enderecoCliente") != null ? request.getAttribute("enderecoCliente") : ""%>">
+                                <input requerid=""  type="text" id="enderecoCliente" maxlength="80" name="enderecoCliente" class="form-control input-sm">
                             </div>
                             <div class="numEnderecoCliente">
                                 <label>Número: </label> 
-                                <input size="4" requerid=""  type="text" id="numEnderecoCliente" maxlength="5" name="numEnderecoCliente" class="form-control input-sm" value="<%= request.getAttribute("numEnderecoCliente") != null ? request.getAttribute("numEnderecoCliente") : ""%>">
+                                <input size="4" requerid=""  type="text" id="numEnderecoCliente" maxlength="5" name="numEnderecoCliente" class="form-control input-sm">
                             </div>
                             
                             <div class="bairroCliente">
                                 <label>Bairro: </label> 
-                                <input type="text" id="bairroCliente" maxlength="40" name="bairroCliente"class="form-control input-sm" value="<%= request.getAttribute("bairroCliente") != null ? request.getAttribute("bairroCliente") : ""%>">
+                                <input requerid="" type="text" id="bairroCliente" maxlength="40" name="bairroCliente"class="form-control input-sm">
                             </div>
                             
                             <div class="cepCliente">
                                 <label>Cep:</label>
-                                <input type="text" id="cepCliente"  OnKeyPress="formatar('#####-###', this)"maxlength="9" name="cepCliente" class="form-control input-sm" value="<%= request.getAttribute("cepCliente") != null ? request.getAttribute("cepCliente") : ""%>"> </br>
+                                <input requerid="" type="text" id="cepCliente"  OnKeyPress="formatar('#####-###', this)"maxlength="9" name="cepCliente" class="form-control input-sm" > </br>
                             </div>
                             
                             <div class="cidadeCliente">
                                 <label>Cidade: </label>
-                                <input type="text" id="cidadeCliente" maxlength="40" name="cidadeCliente"class="form-control input-sm" value="<%= request.getAttribute("cidadeCliente") != null ? request.getAttribute("cidadeCliente") : ""%>">
+                                <input requerid="" type="text" id="cidadeCliente" maxlength="40" name="cidadeCliente"class="form-control input-sm">
                             </div>
                             <div class="estadoCliente">
                                 <label>Estado: </label>
-                                <input size="5" type="text" id="estadoCliente" maxlength="2" name="estadoCliente"class="form-control input-sm" value="<%= request.getAttribute("estadoCliente") != null ? request.getAttribute("estadoCliente") : ""%>"></br>
+                                <input size="5" requerid="" type="text" id="estadoCliente" maxlength="2" name="estadoCliente"class="form-control input-sm"></br>
                             </div>
 
                             <div class="botaoCadastrarCliente">
-                                <input type="submit" class="btn btn-primary" value="Cadastrar"></button></ br>                         
-                            </div>                            
-                        </form>                            
+                                <input type="submit" class="btn btn-primary" value="Cadastrar"></button>
+                            </div>
+                        </form>
+
                     </div>
-                </div>               
+                </div>
+
+
             </div>
-            <c:if test="${not empty message}" >                    
-                    <div class="bs-example">
-                        <div class="alert alert-danger" id="myAlert">
-                            <a href="#" class="close" data-dismiss="alert">&times;</a>
-                            <p>${message}.</p>
-                        </div>
-                    </div>                                    
-            </c:if>
         </div>            
 
         
@@ -148,15 +141,7 @@
 			}
 			
 		}
-                
-                $(document).ready(function(){
-                    $("#myAlert").on('closed.bs.alert', function () {
-                        
-                    });
-                });      
-                
         </script>  
-        
         <c:import url="../Estrutura/footer.jsp"></c:import>
     </body>
 </html>

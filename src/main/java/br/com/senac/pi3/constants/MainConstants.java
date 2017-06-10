@@ -15,9 +15,9 @@ package br.com.senac.pi3.constants;
 public class MainConstants {
     //URL de conexão com o banco de dados
     public static final String DB_ADDRESS
-            = "jdbc:derby://localhost:1527/xptoTech";
+            = "jdbc:derby://localhost:1527/xptoTech2";
     //Usuário de conexão com o banco de dados
-    public static final String DB_USER = "xptoTech";
+    public static final String DB_USER = "xptoTech2";
     //Senha de conexão com o banco de dados
-    public static final String DB_PASS = "xptoTech";
+    public static final String DB_PASS = "xptoTech2";
 }

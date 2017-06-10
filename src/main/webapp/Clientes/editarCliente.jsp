@@ -1,4 +1,3 @@
-s
 <%@page import="br.com.senac.pi3.model.cliente.Cliente"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -20,12 +19,7 @@ s
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-        
-        <!-- Mensagens de alerta (CSS) -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        
+
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
     <body>
@@ -51,21 +45,21 @@ s
                             </fieldset>       
                             <div class="nomeCliente">
                                 <input type="hidden" value="<%= cliente.getId()%>" name="idClienteAtualiza"> 
-                                <label for="nome">Nome: </label>			
-                                <input name="nomeCliente" type="text" id="nomeCliente"  value="<%= cliente.getNome()%>" class="form-control input-sm"> </br>
+                                <label  for="nome">Nome: </label>			
+                                <input requerid="" name="nomeCliente" type="text" id="nomeCliente"  value="<%= cliente.getNome()%>" class="form-control input-sm"> </br>
                             </div>
                             <div  class="sobreNomeCliente">
-                                <label for="sobreNomeCliente">Sobrenome: </label>
-                                <input name="sobreNomeCliente" type="text" id="sobreNomeCliente" value="<%= cliente.getSobrenome()%>"  class="form-control input-sm"> </br>
+                                <label  for="sobreNomeCliente">Sobrenome: </label>
+                                <input requerid="" name="sobreNomeCliente" type="text" id="sobreNomeCliente" value="<%= cliente.getSobrenome()%>"  class="form-control input-sm"> </br>
                             </div>			
 
                             <div  class="dataNascimentoCliente">    
                                 <label  for="dataNascimentoCliente">Data Nascimento:  </label>
-                                <input maxlength="10" OnKeyPress="formatar('##/##/####', this)" name="dataNascimentoCliente"  type="text" id="dataNascimentoCliente" value="<%= cliente.getDtNasc()%>" class="form-control input-sm"> </br>
+                                <input maxlength="10" requerid="" OnKeyPress="formatar('##/##/####', this)" name="dataNascimentoCliente"  type="text" id="dataNascimentoCliente" value="<%= cliente.getDtNasc()%>" class="form-control input-sm"> </br>
                             </div>
                             <div  class="cpfCliente">
                                 <label  for="cpfCliente">CPF:  </label>
-                                <input  maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" name="cpfCliente" type="text" id="cpfCliente" value="<%= cliente.getCpf()%>" class="form-control input-sm" > </br>
+                                <input  maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" requerid="" name="cpfCliente" type="text" id="cpfCliente" value="<%= cliente.getCpf()%>" class="form-control input-sm" > </br>
                             </div>
 
                             <label  class="teste"  for="sexoCliente">Sexo:  </label>
@@ -83,7 +77,7 @@ s
                  
                         <div required="" class="celularCliente">			
                             <label  for="celularCliente">Celular:  </label>
-                            <input maxlength="13" OnKeyPress="formatar('##-#####-####', this)" name="celularCliente" type="text" size="30" id="celularCliente" class="form-control input-sm" value="<%= cliente.getCel()%>" > </br>
+                            <input maxlength="13" OnKeyPress="formatar('##-#####-####', this)" requerid="" name="celularCliente" type="text" size="30" id="celularCliente" class="form-control input-sm" value="<%= cliente.getCel()%>" > </br>
                         </div>		
                         <div class="emailCliente">
                             <label style="margin-right: 12px" for="emailCliente">Email:  </label>
@@ -96,35 +90,32 @@ s
                         <input type="hidden" value="<%= cliente.getEndereco().getId()%>" name="idEnderecoAtualiza" > 
                         <div class="enderecoCliente">
                             <label>Rua: </label> 
-                            <input size="30" type="text" id="enderecoCliente" maxlength="80" name="enderecoCliente" class="form-control input-sm" value="<%= cliente.getEndereco().getRua()%>">
+                            <input requerid="" size="30" type="text" id="enderecoCliente" maxlength="80" name="enderecoCliente" class="form-control input-sm" value="<%= cliente.getEndereco().getRua()%>">
                         </div>
                         <div class="numEnderecoCliente">
                             <label>Número: </label> 
-                            <input size="4" type="text" id="numEnderecoCliente" maxlength="5" name="numEnderecoCliente" class="form-control input-sm" value="<%= cliente.getEndereco().getNumero()%>" >
+                            <input requerid="" size="4" type="text" id="numEnderecoCliente" maxlength="5" name="numEnderecoCliente" class="form-control input-sm" value="<%= cliente.getEndereco().getNumero()%>" >
                         </div>
                         <div class="cepCliente">
                             <label>Cep:</label>
-                            <input OnKeyPress="formatar('#####-###', this)" id="cepCliente"  type="cepCliente" maxlength="9" name="cepCliente" class="form-control input-sm" value="<%= cliente.getEndereco().getCep()%>" > </br>
+                            <input OnKeyPress="formatar('#####-###', this)" requerid="" id="cepCliente"  type="cepCliente" maxlength="9" name="cepCliente" class="form-control input-sm" value="<%= cliente.getEndereco().getCep()%>" > </br>
                         </div>
                         <div class="bairroCliente">
                             <label>Bairro: </label> 
-                            <input type="text" id="bairroCliente" maxlength="40" name="bairroCliente"class="form-control input-sm" value="<%= cliente.getEndereco().getBairro()%>">
+                            <input requerid="" type="text" id="bairroCliente" maxlength="40" name="bairroCliente"class="form-control input-sm" value="<%= cliente.getEndereco().getBairro()%>">
                         </div>
                         <div class="cidadeCliente">
                             <label>Cidade: </label>
-                            <input type="text" id="cidadeCliente" maxlength="40" name="cidadeCliente"class="form-control input-sm" value="<%= cliente.getEndereco().getCidade()%>">
+                            <input requerid="" type="text" id="cidadeCliente" maxlength="40" name="cidadeCliente"class="form-control input-sm" value="<%= cliente.getEndereco().getCidade()%>">
                         </div>
 
                         <div class="estadoCliente">
                             <label>Estado: </label>
-                            <input size="6" type="text" id="estadoCliente" maxlength="2" name="estadoCliente"class="form-control input-sm" value="<%= cliente.getEndereco().getEstado()%>"></br>
+                            <input requerid="" size="6" type="text" id="estadoCliente" maxlength="2" name="estadoCliente"class="form-control input-sm" value="<%= cliente.getEndereco().getEstado()%>"></br>
                         </div>
 
                         <div class="botaoCadastrarCliente">
                             <input type="submit" class="btn btn-primary" value="Atualizar"></button>
-                             <c:if test="${not empty message}" >
-                                    <p>Message: ${message}</p>
-                                </c:if>
                         </div>
                         </form>
 
