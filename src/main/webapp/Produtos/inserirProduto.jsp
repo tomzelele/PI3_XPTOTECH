@@ -27,6 +27,7 @@
     </head>
     <body>
     <% List<Categoria> lista =  (List<Categoria>)session.getAttribute("listaCategoria") ;%>	
+    
         <div id="wrapper3">
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>

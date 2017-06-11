@@ -36,25 +36,42 @@
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
                 
-                <a type="button" class="btn btn-inserir" href="/XPTOTECH/Funcionarios/inserirFuncionario.jsp">Inserir Funcionario</a>
-             
-
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-suitcase"></span>
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Acessos</h2> </div>
                 </div>
-                
-                <div class="pesquisaNome">
-                    <form action="PesquisaFuncionario" method="POST" name="formPesquisarFuncionario"> 
-                    <label  for="pesquisaNome">Pesquisa por Nome: </label>	                           
-                    <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control input-sm"> 
-                    <input type="hidden" value="" name="idFuncionarioPesquisar">
-                    <a type="button" class="btn btn-pesq" >Pesquisar</a>
-                    
-                    </form>
+                <div class="voltar">
 
+                    <a id="button" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
+                </div>
+                
+                <div class="inserirFuncionario">
+                    <a type="button" class="btn btn-inserir" href="CadastraFuncionario">Inserir Funcionário</a>
+                </div>
+                
+                                           
+                 <div class="pesquisaNome">
+                     
+                     <form action="PesquisaFuncionario" method="POST" name="formPesquisarFuncionario"> 
+                        <div class="col-lg-3">
+
+                            <div  class="input-group custom-search-form">
+
+                                <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control" placeholder="Pesquisa" /> 
+
+                                <span class="input-group-btn">                             
+
+                                    <button type="button" class="btn btn-danger">
+
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                    
                 </div>
                
-                <a id="botaoCustom" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
+                
 
                 <div class="container">
                     <div class="row">

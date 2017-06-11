@@ -42,7 +42,8 @@
 
                             <fieldset class="fieldCliente">
                                 <legend>Dados Pessoais</legend>  
-                            </fieldset>       
+                            </fieldset>  
+                            
                             <div class="nomeCliente">
                                 <input type="hidden" value="<%= cliente.getId()%>" name="idClienteAtualiza"> 
                                 <label  for="nome">Nome: </label>			

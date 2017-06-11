@@ -10,6 +10,7 @@ import br.com.senac.pi3.db.utils.ConnectionUtils;
 import br.com.senac.pi3.db.dao.DaoFilial;
 import br.com.senac.pi3.db.dao.DaoFuncionario;
 import br.com.senac.pi3.model.cargo.Cargo;
+import br.com.senac.pi3.model.filial.Filial;
 import br.com.senac.pi3.model.funcionario.Funcionario;
 import br.com.senac.pi3.services.funcionarios.ServicoFuncionario;
 
@@ -41,6 +42,7 @@ public class EditarFuncionario extends HttpServlet{
            DaoFuncionario funcionarioDao = new DaoFuncionario(ConnectionUtils.getConnection());
            
            DaoCargo  cargoDao = new DaoCargo(ConnectionUtils.getConnection());
+           DaoFilial  filialDao = new DaoFilial(ConnectionUtils.getConnection());
            
            Funcionario funcionario = null;
         
@@ -51,6 +53,18 @@ public class EditarFuncionario extends HttpServlet{
         }
        
         
+        List<Filial> listaFilial = null;
+        
+       
+        try {
+            listaFilial = filialDao.listarFiliais();
+        } catch (Exception ex) {
+            Logger.getLogger(EditarFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        listaFilial.remove(funcionario.getFilial());
+        listaFilial.set(0, funcionario.getFilial());
+        
         List<Cargo> listaCargo = null;
         
         try {
@@ -60,9 +74,9 @@ public class EditarFuncionario extends HttpServlet{
         }
         
         listaCargo.remove(funcionario.getCargo());
-        
         listaCargo.set(0, funcionario.getCargo());
         
+        req.getSession().setAttribute("ListaFilialAtualiza", listaFilial);
         req.getSession().setAttribute("ListaCargoAtualiza", listaCargo);
         req.getSession().setAttribute("FuncionarioAtualiza", funcionario);
         req.getRequestDispatcher("/Funcionarios/editarFuncionario.jsp").forward(req, resp);

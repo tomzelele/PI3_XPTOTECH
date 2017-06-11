@@ -1,7 +1,8 @@
 
 <%@page import="br.com.senac.pi3.model.cargo.Cargo"%>
-<%@page import="java.util.List"%>
 <%@page import="br.com.senac.pi3.model.filial.Filial"%>
+<%@page import="br.com.senac.pi3.model.funcionario.Funcionario"%>
+<%@page import="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Inserir Perfil</title>
+        <title>Editar Funcionário</title>
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
@@ -21,43 +22,50 @@
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
-        <!-- Mensagens de alerta (CSS) -->
+
+		<!-- Mensagens de alerta (CSS) -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      
+
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
+
     </head>
     <body>
-        <% List<Filial> listaFilial =  (List<Filial>)session.getAttribute("listaFilial") ;%>
-        <% List<Cargo> listaCargo =  (List<Cargo>)session.getAttribute("listaCargo") ;%>
-
+        <% Funcionario funcionario = (Funcionario) session.getAttribute("FuncionarioAtualiza");
+            List<Filial> listaFilial = (List<Filial>) session.getAttribute("ListaFilialAtualiza");
+            List<Cargo> listaCargo = (List<Cargo>) session.getAttribute("ListaCargoAtualiza");
+        
+        %>
+        
         <div id="wrapper3">
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
 
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-group"></span>
-                    <div id="textCustom" class="title">	<h2>Cadastro de Funcionários</h2> </div>
+                    <div id="textCustom" class="title">	<h2>Editar Funcionário</h2> </div>
                 </div>
-                
+
                 <a id="botaoCustom" href="/XPTOTECH/ListarFuncionarios" class="button">Voltar</a>
 
                 <div class="container" >
 
-                    <div class="cadastroFormulario">
+                    <div class="cadastroFormulario" >
 
-                        <form method="post" action="CadastraFuncionario">
+                        <form method="post" action="EditarFuncionario">
 
                             <fieldset class="fieldFuncionario">
-                                <legend>Dados Pessoais</legend>  
-                            </fieldset>  
+                                <legend>Informações do Funcionário</legend>  
+                            </fieldset>   
                             
+                            
+                            <input type="hidden" value="<%= funcionario.getId()%>" name="idFuncionarioAtualiza"> </br>
+
+
                             <div class="codAcesso">					
-                                <label  for="codAcesso">Código de Acesso: </label>			
-                                <input  size="10" name="codAcesso" type="text" id="codAcesso" class="form-control input-sm" value="<%= request.getAttribute("codAcesso") != null ? request.getAttribute("codAcesso") : ""%>"> </br>
+                                <label  for="codAcesso">Código de Acesso: </label>	
+                                <input  requerid="" name="codAcesso" type="text" id="codAcesso" value="<%= funcionario.getCodAcesso()%>" class="form-control input-sm" > </br>
                             </div>
                             
                             <div class="cargo">					
@@ -80,113 +88,92 @@
                             
                             <div class="nomeFuncionario">					
                                 <label  for="nome">Nome: </label>			
-                                <input  size="30" name="nomeFuncionario" type="text" id="nomeFuncionario" class="form-control input-sm" value="<%= request.getAttribute("nomeFuncionario") != null ? request.getAttribute("nomeFuncionario") : ""%>"> </br>
+                                <input  requerid="" name="nomeFuncionario" type="text" id="nomeFuncionario" value="<%= funcionario.getNome()%>" class="form-control input-sm" > </br>
                             </div>
 
                             <div  class="sobreNomeFuncionario">
                                 <label  for="sobreNomeFuncionario">Sobrenome: </label>
-                                <input	name="sobreNomeFuncionario" type="text" size="40" id="sobreNomeFuncionario" class="form-control input-sm" value="<%= request.getAttribute("sobreNomeFuncionario") != null ? request.getAttribute("sobreNomeFuncionario") : ""%>"> </br>
+                                <input  requerid="" name="sobreNomeFuncionario" type="text" id="sobreNomeFuncionario" value="<%= funcionario.getSobrenome()%>" class="form-control input-sm" > </br>
                             </div>			
 
                             <div  class="dataNascimentoFuncionario">
                                 <label 	for="dataNascimentoFuncionario">Data Nascimento:  </label>
-                                <input 	maxlength="10" OnKeyPress="formatar('##/##/####', this)" name="dataNascimentoFuncionario" type="text" id="dataNascimentoFuncionario" class="form-control input-sm" value="<%= request.getAttribute("dataNascimentoFuncionario") != null ? request.getAttribute("dataNascimentoFuncionario") : ""%>"> </br>
+                                <input  maxlength="10" OnKeyPress="formatar('##/##/####', this)" requerid="" name="dataNascimentoFuncionario" type="text" id="dataNascimentoFuncionario" value="<%= funcionario.getDtNasc()%>" class="form-control input-sm" > </br>
                             </div>
                             
                             <div  class="cpfFuncionario">
                                 <label  for="cpfFuncionario">CPF:  </label>
-                                <input  maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" name="cpfFuncionario" type="text" id="cpfFuncionario" class="form-control input-sm" value="<%= request.getAttribute("cpfFuncionario") != null ? request.getAttribute("cpfFuncionario") : ""%>"> </br>
+                                <input  maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" requerid="" name="cpfFuncionario" type="text" id="cpfFuncionario" value="<%= funcionario.getCpf()%>" class="form-control input-sm" > </br>
                             </div>
 
                             <label  class="teste"  for="sexoFuncionario">Sexo:  </label>
                             <div  class="selectSexoFuncionario">
                                 <select class="form-control" name="selectSexoFuncionario" >
-                                    <option value="M">Masculino</option>
+                                    <% if (funcionario.getSexo().equals("M")) { %>
+                                    <option value="M" >Masculino</option>
                                     <option value="F">Feminino</option>
+                                    <% } else { %>
+                                    <option value="F">Feminino</option>
+                                    <option value="M" >Masculino</option>
+                                    <% }%>
                                 </select>
                             </div>
                             
-                            <div	class="celularFuncionario">  
+                            <div class="celularFuncionario">  
                                 <label  for="celularFuncionario">Celular:  </label>
-                                <input  maxlength="13" OnKeyPress="formatar('##-#####-####', this)" name="celularFuncionario" type="text" id="celularFuncionario" class="form-control input-sm" value="<%= request.getAttribute("celularFuncionario") != null ? request.getAttribute("celularFuncionario") : ""%>"> </br>
+                                <input  maxlength="13" OnKeyPress="formatar('##-#####-####', this)" requerid="" name="celularFuncionario" type="text" id="celularFuncionario" value="<%= funcionario.getCel()%>" class="form-control input-sm" > </br>
                             </div>
                                                    
                             <div class="emailFuncionario">  
-                                <label for="emailFuncionario">Email:  </label>
-                                <input size="50" name="emailFuncionario" type="text" id="emailFuncionario" class="form-control input-sm" value="<%= request.getAttribute("emailFuncionario") != null ? request.getAttribute("emailFuncionario") : ""%>"> </br></br>
+                                <label style="margin-right: 12px" for="emailFuncionario">Email:  </label>
+                                <input size="37" requerid="" name="emailFuncionario" type="text" id="emailFuncionario" value="<%= funcionario.getEmail()%>" class="form-control input-sm" > </br>
                             </div>
                             
                             <fieldset  class="fieldEndreco">
                                 <legend>Endereço - Funcionário</legend>
                             </fieldset> 
 
+                            <input type="hidden" value="<%= funcionario.getEndereco().getId()%>" name="idEnderecoAtualiza" > 
+                            
                             <div class="enderecoFuncionario">
                                 <label>Rua: </label> 
-                                <input requerid=""  type="text" id="enderecoFuncionario" maxlength="80" name="enderecoFuncionario" class="form-control input-sm">
+                                <input requerid="" size="30" type="text" id="enderecoFuncionario" maxlength="80" name="enderecoFuncionario" class="form-control input-sm" value="<%= funcionario.getEndereco().getRua()%>">
                             </div>
                             <div class="numEnderecoFuncionario">
                                 <label>Número: </label> 
-                                <input size="4" requerid=""  type="text" id="numEnderecoFuncionario" maxlength="5" name="numEnderecoFuncionario" class="form-control input-sm">
-                            </div>
-                            
-                            <div class="bairroFuncionario">
-                                <label>Bairro: </label> 
-                                <input requerid="" type="text" id="bairroFuncionario" maxlength="40" name="bairroFuncionario"class="form-control input-sm">
+                                <input requerid="" size="4" type="text" id="numEnderecoFuncionario" maxlength="5" name="numEnderecoFuncionario" class="form-control input-sm" value="<%= funcionario.getEndereco().getNumero()%>" >
                             </div>
                             
                             <div class="cepFuncionario">
                                 <label>Cep:</label>
-                                <input requerid="" type="text" id="cepFuncionario"  OnKeyPress="formatar('#####-###', this)"maxlength="9" name="cepFuncionario" class="form-control input-sm" > </br>
+                                <input OnKeyPress="formatar('#####-###', this)" requerid="" id="cepFuncionario"  type="text" maxlength="9" name="cepFuncionario" class="form-control input-sm" value="<%= funcionario.getEndereco().getCep()%>" > </br>
                             </div>
                             
+                            <div class="bairroFuncionario">
+                                <label>Bairro: </label> 
+                                <input requerid="" type="text" id="bairroFuncionario" maxlength="40" name="bairroFuncionario"class="form-control input-sm" value="<%= funcionario.getEndereco().getBairro()%>">
+                            </div>
+                                                        
                             <div class="cidadeFuncionario">
                                 <label>Cidade: </label>
-                                <input requerid="" type="text" id="cidadeFuncionario" maxlength="40" name="cidadeFuncionario"class="form-control input-sm">
+                                <input requerid="" type="text" id="cidadeFuncionario" maxlength="40" name="cidadeFuncionario"class="form-control input-sm" value="<%= funcionario.getEndereco().getCidade()%>">
                             </div>
+                            
                             <div class="estadoFuncionario">
                                 <label>Estado: </label>
-                                <input size="5" requerid="" type="text" id="estadoFuncionario" maxlength="2" name="estadoFuncionario"class="form-control input-sm"></br>
+                                <input requerid="" size="6" type="text" id="estadoFuncionario" maxlength="2" name="estadoFuncionario"class="form-control input-sm" value="<%= funcionario.getEndereco().getEstado()%>"></br>
                             </div>
-                            
+ 
 
-                            
-                            <div class="botaoCadastrarFuncionario">
-                                <input type="submit" class="btn btn-primary" value="Cadastrar"></button>
+                            <div class="botaoCadastrarProd">
+                                <input type="submit" class="btn btn-primary" value="Atualizar"></button>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
-            <c:if test="${not empty message}" >                    
-                    <div class="bs-example">
-                        <div class="alert alert-danger" id="myAlert">
-                            <a href="#" class="close" data-dismiss="alert">&times;</a>
-                            <p>${message}.</p>
-                        </div>
-                    </div>                                    
-            </c:if>
-        </div>            
+        </div>      
 
-        
-        <script>
-			function formatar(mascara, documento){
-				var i = documento.value.length;
-				var saida = mascara.substring(0,1);
-				var texto = mascara.substring(i)
-				
-				if (texto.substring(0,1) != saida){
-					documento.value += texto.substring(0,1);
-				}
-				
-			}
-			
-			$(document).ready(function(){
-                $("#myAlert").on('closed.bs.alert', function () {
-                    
-                });
-            });  
-        </script>  
         <c:import url="../Estrutura/footer.jsp"></c:import>
     </body>
 </html>

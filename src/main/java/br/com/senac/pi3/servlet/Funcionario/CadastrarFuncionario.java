@@ -61,11 +61,8 @@ public class CadastrarFuncionario extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        
-       // Connection connection = ConnectionUtils.getConnection();
-        
-        Funcionario funcionario = new Funcionario();
         DaoFuncionario funcionarioDao = new DaoFuncionario(ConnectionUtils.getConnection());
+        Funcionario funcionario = new Funcionario();
         
         funcionario.setCodAcesso(Integer.parseInt(req.getParameter("codAcesso")));
         
