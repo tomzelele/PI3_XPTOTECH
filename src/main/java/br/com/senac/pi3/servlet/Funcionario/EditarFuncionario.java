@@ -6,15 +6,18 @@
 package br.com.senac.pi3.servlet.Funcionario;
 
 import br.com.senac.pi3.db.dao.DaoCargo;
+import br.com.senac.pi3.db.dao.DaoEndereco;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
 import br.com.senac.pi3.db.dao.DaoFilial;
 import br.com.senac.pi3.db.dao.DaoFuncionario;
 import br.com.senac.pi3.model.cargo.Cargo;
+import br.com.senac.pi3.model.endereco.Endereco;
 import br.com.senac.pi3.model.filial.Filial;
 import br.com.senac.pi3.model.funcionario.Funcionario;
 import br.com.senac.pi3.services.funcionarios.ServicoFuncionario;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.function.Predicate;
@@ -85,15 +88,18 @@ public class EditarFuncionario extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        DaoFuncionario funcionarioDao = new DaoFuncionario(ConnectionUtils.getConnection());
+        Connection connection = ConnectionUtils.getConnection();
+        
+        DaoFuncionario funcionarioDao = new DaoFuncionario(connection);
+        DaoEndereco enderecoDao = new DaoEndereco(connection);
+        
         Funcionario funcionario = new Funcionario();
         
-        funcionario.setId(Integer.parseInt(req.getParameter("idFuncionario")));
+        funcionario.setId(Integer.parseInt(req.getParameter("idFuncionarioAtualiza")));
         
         funcionario.setCodAcesso(Integer.parseInt(req.getParameter("codAcesso")));
         
         int idCargo = Integer.parseInt(req.getParameter("cargo"));
-        
         try {
             funcionario.setCargo(new DaoCargo(ConnectionUtils.getConnection()).buscarPorId(idCargo));
         } catch (SQLException ex) {
@@ -101,7 +107,6 @@ public class EditarFuncionario extends HttpServlet{
         }
         
         int idFilial = Integer.parseInt(req.getParameter("filial"));
-               
         try {
             funcionario.setFilial(new DaoFilial(ConnectionUtils.getConnection()).buscarPorId(idFilial));
         } catch (SQLException ex) {
@@ -111,12 +116,27 @@ public class EditarFuncionario extends HttpServlet{
         funcionario.setNome(req.getParameter("nomeFuncionario"));
         funcionario.setSobrenome(req.getParameter("sobreNomeFuncionario"));
         funcionario.setDtNasc(req.getParameter("dataNascimentoFuncionario"));
-        funcionario.setCpf(req.getParameter("cpfFuncionario"));
         funcionario.setSexo(req.getParameter("selectSexoFuncionario"));
+        funcionario.setCpf(req.getParameter("cpfFuncionario"));
         funcionario.setCel(req.getParameter("celularFuncionario"));
         funcionario.setEmail(req.getParameter("emailFuncionario"));
         
-             
+        Endereco endereco = new Endereco();
+        endereco.setId(Integer.parseInt(req.getParameter("idEnderecoAtualiza")));
+        endereco.setRua(req.getParameter("enderecoFuncionario"));
+        endereco.setNumero(req.getParameter("numEnderecoFuncionario"));
+        endereco.setBairro(req.getParameter("bairroFuncionario"));
+        endereco.setCep(req.getParameter("cepFuncionario"));
+        endereco.setCidade(req.getParameter("cidadeFuncionario"));
+        endereco.setEstado(req.getParameter("estadoFuncionario"));
+        
+         
+        try {
+            enderecoDao.atualizarEndereco(endereco);
+        } catch (Exception ex) {
+            Logger.getLogger(EditarFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         try {
             funcionarioDao.atualizarFuncionario(funcionario);
         } catch (Exception ex) {

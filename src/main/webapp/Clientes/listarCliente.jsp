@@ -23,6 +23,7 @@
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
 

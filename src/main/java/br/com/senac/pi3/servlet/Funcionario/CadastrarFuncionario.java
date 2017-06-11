@@ -6,10 +6,12 @@
 package br.com.senac.pi3.servlet.Funcionario;
 
 import br.com.senac.pi3.db.dao.DaoCargo;
+import br.com.senac.pi3.db.dao.DaoEndereco;
 import br.com.senac.pi3.db.dao.DaoFilial;
 import br.com.senac.pi3.db.dao.DaoFuncionario;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
 import br.com.senac.pi3.exceptions.DataSourceException;
+import br.com.senac.pi3.model.endereco.Endereco;
 import br.com.senac.pi3.model.funcionario.Funcionario;
 import br.com.senac.pi3.services.funcionarios.ServicoFuncionario;
 import br.com.senac.pi3.services.produtos.ServicoProduto;
@@ -61,13 +63,16 @@ public class CadastrarFuncionario extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        DaoFuncionario funcionarioDao = new DaoFuncionario(ConnectionUtils.getConnection());
+        Connection connection = ConnectionUtils.getConnection();
+        
+        DaoFuncionario funcionarioDao = new DaoFuncionario(connection);
+        DaoEndereco enderecoDao = new DaoEndereco(connection);
+        
         Funcionario funcionario = new Funcionario();
         
         funcionario.setCodAcesso(Integer.parseInt(req.getParameter("codAcesso")));
         
         int idCargo = Integer.parseInt(req.getParameter("cargo"));
-        
         try {
             funcionario.setCargo(new DaoCargo(ConnectionUtils.getConnection()).buscarPorId(idCargo));
         } catch (SQLException ex) {
@@ -75,7 +80,6 @@ public class CadastrarFuncionario extends HttpServlet{
         }
         
         int idFilial = Integer.parseInt(req.getParameter("filial"));
-               
         try {
             funcionario.setFilial(new DaoFilial(ConnectionUtils.getConnection()).buscarPorId(idFilial));
         } catch (SQLException ex) {
@@ -85,17 +89,31 @@ public class CadastrarFuncionario extends HttpServlet{
         funcionario.setNome(req.getParameter("nomeFuncionario"));
         funcionario.setSobrenome(req.getParameter("sobreNomeFuncionario"));
         funcionario.setDtNasc(req.getParameter("dataNascimentoFuncionario"));
-        funcionario.setCpf(req.getParameter("cpfFuncionario"));
         funcionario.setSexo(req.getParameter("selectSexoFuncionario"));
+        funcionario.setCpf(req.getParameter("cpfFuncionario"));
         funcionario.setCel(req.getParameter("celularFuncionario"));
         funcionario.setEmail(req.getParameter("emailFuncionario"));
+                
+        Endereco endereco = new Endereco();
+        endereco.setRua(req.getParameter("enderecoFuncionario"));
+        endereco.setNumero(req.getParameter("numEnderecoFuncionario"));
+        endereco.setBairro(req.getParameter("bairroFuncionario"));
+        endereco.setCep(req.getParameter("cepFuncionario"));
+        endereco.setCidade(req.getParameter("cidadeFuncionario"));
+        endereco.setEstado(req.getParameter("estadoFuncionario"));
         
+        try {
+            endereco = enderecoDao.inserir(endereco);
+            funcionario.setEndereco(endereco);
+        } catch (Exception ex) {
+            Logger.getLogger(CadastrarFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
         try {
             funcionarioDao.inserirFuncionario(funcionario);
         } catch (Exception ex) {
             Logger.getLogger(CadastrarFuncionario.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        req.getRequestDispatcher("Funcionarios/listarFuncionario.jsp").forward(req, resp);
+        resp.sendRedirect("ListarFuncionarios");
     }
 }

@@ -51,7 +51,7 @@
 
                     <div class="cadastroFormulario">
 
-                        <form method="post" action="../CadastraFuncionario">
+                        <form method="post" action="CadastraFuncionario">
 
                             <fieldset class="fieldFuncionario">
                                 <legend>Dados Pessoais</legend>  
@@ -62,8 +62,8 @@
                                 <input  size="10" requerid="" name="codAcesso" type="text" id="codAcesso" class="form-control input-sm" > </br>
                             </div>
                             
+                            <label class="testeCargo" for="cargo">Cargo: </label>
                             <div class="cargo">					
-                                <label  for="cargo">Cargo: </label>
                                 <select class="form-control" name="cargo" id="cargo" >
                                     <% for(Cargo cargo : listaCargo){ %>
                                         <option value="<%= cargo.getIdCargo() %>"><%= cargo.getCargo() %></option>
@@ -71,8 +71,8 @@
                                 </select>
                             </div>
                             
+                            <label class="testeFilial"for="filial">Filial: </label>
                             <div  class="filial">
-                                <label  for="filial">Filial: </label>
                                 <select class="form-control" name="filial" id="filial" >
                                     <% for(Filial filial : listaFilial){ %>
                                         <option value="<%= filial.getIdFilial() %>"><%= filial.getNome() %></option>
@@ -103,23 +103,23 @@
                                 </select>
                             </div>
                             
-                            <div  class="cpfFuncionario">
-                                <label  for="cpfFuncionario">CPF:  </label>
-                                <input  requerid="" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" name="cpfFuncionario" type="text" id="cpfFuncionario" class="form-control input-sm" > </br>
-                            </div>
-
-                                                       
                             <div class="celularFuncionario">  
                                 <label  for="celularFuncionario">Celular:  </label>
                                 <input  maxlength="13" OnKeyPress="formatar('##-#####-####', this)" requerid="" name="celularFuncionario" type="text" id="celularFuncionario" class="form-control input-sm"> </br>
                             </div>
-                                                   
+                            
+                            <div  class="cpfFuncionario">
+                                <label  for="cpfFuncionario">CPF:  </label>
+                                <input  requerid="" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" name="cpfFuncionario" type="text" id="cpfFuncionario" class="form-control input-sm" > </br>
+                            </div>
+                            
+                                                                                                        
                             <div class="emailFuncionario">  
                                 <label for="emailFuncionario">Email:  </label>
                                 <input size="50" name="emailFuncionario" type="text" id="emailFuncionario" class="form-control input-sm"> </br></br>
                             </div>
                             
-                            <fieldset  class="fieldEndreco">
+                            <fieldset  class="fieldEnderecoFuncionario">
                                 <legend>Endereço - Funcionário</legend>
                             </fieldset> 
 

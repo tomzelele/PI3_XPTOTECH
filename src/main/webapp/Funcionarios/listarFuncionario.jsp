@@ -27,7 +27,7 @@
         <style><%@include file="../CSS/fonts.css" %></style>
     </head>
     <body>
-        <% List<Funcionario> listaFuncionarios = (List<Funcionario>) session.getAttribute("listaFuncionarios"); %>                           
+                                   
         
         <form action="ExcluiFuncionario" method="POST" name="formExcluirFuncionario">
             <input type="hidden" value="" name="idFuncionarioExcluir">
@@ -58,7 +58,7 @@
 
                             <div  class="input-group custom-search-form">
 
-                                <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control" placeholder="Pesquisa" /> 
+                                <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control" placeholder="Pesquisa por Nome" /> 
 
                                 <span class="input-group-btn">                             
 
@@ -88,6 +88,7 @@
                                     <thead>
 
                                     <th>Funcionário</th>
+                                    <th>CPF</th>
                                     <th>Filial</th>
                                     <th>Cargo</th>
                                     <th>Editar</th>
@@ -95,18 +96,18 @@
                                     <th>Deletar</th>
                                     </thead>
                                     <tbody>
-                                        
+                                        <% List<Funcionario> listaFuncionarios = (List<Funcionario>) session.getAttribute("listaFuncionarios"); %>
                                         <%for(Funcionario funcionario : listaFuncionarios){ %>    
                                         <tr>
-                                            <td><%= funcionario.getNome()+ " " + funcionario.getSobrenome()%></td>
+                                            <td><%= funcionario.getNome()%></td>
                                             
-                                            <% Filial filial = funcionario.getFilial();%>
-                                            <td><%= funcionario.getFilial()%></td>
+                                            <td><%= funcionario.getCpf()%></td>
                                             
-                                            <% Cargo cargo = funcionario.getCargo();%>
-                                            <td><%= funcionario.getCargo()%></td>
+                                            <td><%= funcionario.getFilial().getNome()%></td>
                                             
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditarFuncionario?idFuncionario=<%=funcionario.getId()%>" class="btn btn-primary btn-xs" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
+                                            <td><%= funcionario.getCargo().getCargo() %></td>
+                                            
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditarFuncionario?idFuncionario=<%= funcionario.getId()%>" class="btn btn-primary btn-xs" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-funcionario"  data-idFuncionario="<%=funcionario.getId()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                         </tr> 
                                         <%} %>
@@ -129,7 +130,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                                <h4 class="modal-title custom_align" id="Heading">Editar Funcionário</h4>
+                                <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
@@ -156,33 +157,32 @@
 
 
 
-                <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+                <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                                <h4 class="modal-title custom_align" id="Heading">Deletar Funcionário</h4>
+                                <h4 class="modal-title custom_align" id="Heading">Deletar Cliente</h4>
                             </div>
                             <div class="modal-body">
 
-                                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Tem certeza que deseja excluir esse registro?</div>
+                                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Você tem certeza que deseja excluir esse registro?</div>
 
                             </div>
                             <div class="modal-footer ">
                                 <button type="button" class="btn btn-success btn-confirm-excluir" ><span class="glyphicon glyphicon-ok-sign"></span> Sim</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Não</button>
+                                <button type="button" class="btn btn-default " data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Não</button>
                             </div>
                         </div>
                         <!-- /.modal-content --> 
                     </div>
-                    <!-- /.modal-dialog --> 
+                    <!-- /.modal-dialog -->  
                 </div>
 
             </div>
         </div>
-
-    <c:import url="Estrutura/footer.jsp"></c:import>
-    <script
+        <c:import url="../Estrutura/footer.jsp"></c:import>
+        <script
             src="https://code.jquery.com/jquery-1.12.4.min.js"
             integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
         crossorigin="anonymous"></script>
@@ -201,13 +201,12 @@
                 $('.btn-confirm-excluir').on('click', function () {
 
                     formExcluirFuncionario.submit();
-                });
+                })
 
 
             });
 
         </script>
-
-</body>
+    </body>
 </html>
 
