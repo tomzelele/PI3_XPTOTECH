@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet{
             if(daoUsuario.autentica(login,password)){
                 
                 
-                usuario =   daoUsuario.getUser(login) ;
+                usuario = daoUsuario.getUser(login) ;
                 
 
                 System.out.println("Autenticado");

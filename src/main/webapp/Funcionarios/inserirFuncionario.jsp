@@ -115,6 +115,8 @@
                                 <label for="emailFuncionario">Email:  </label>
                                 <input size="50" name="emailFuncionario" type="text" id="emailFuncionario" class="form-control input-sm" value="<%= request.getAttribute("emailFuncionario") != null ? request.getAttribute("emailFuncionario") : ""%>"> </br></br>
                             </div>
+                            
+                            
 
                             
                             <div class="botaoCadastrarFuncionario">

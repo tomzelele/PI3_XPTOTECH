@@ -70,7 +70,7 @@ public class DaoFuncionario {
         return  funcionario;
     }
      
-    public void inserir(Funcionario funcionario) throws SQLException, Exception {
+    public void inserirFuncionario(Funcionario funcionario) throws SQLException, Exception {
 
         String sql = "INSERT INTO funcionario (cod_acesso,cargo,id_filial,nome,sobrenome,"
                 + "dt_nasc,cpf,sexo,cel,email,enabled,fk_endereco) "+
