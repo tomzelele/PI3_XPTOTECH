@@ -1,3 +1,5 @@
+<%@page import="br.com.senac.pi3.model.cargo.Cargo"%>
+<%@page import="br.com.senac.pi3.model.filial.Filial"%>
 <%@page import="br.com.senac.pi3.model.funcionario.Funcionario"%>
 <%@page import="br.com.senac.pi3.model.endereco.Endereco"%>
 <%@page import="java.util.List"%>
@@ -97,8 +99,13 @@
                                         <%for(Funcionario funcionario : listaFuncionarios){ %>    
                                         <tr>
                                             <td><%= funcionario.getNome()+ " " + funcionario.getSobrenome()%></td>
+                                            
+                                            <% Filial filial = funcionario.getFilial();%>
                                             <td><%= funcionario.getFilial()%></td>
+                                            
+                                            <% Cargo cargo = funcionario.getCargo();%>
                                             <td><%= funcionario.getCargo()%></td>
+                                            
                                             <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditarFuncionario?idFuncionario=<%=funcionario.getId()%>" class="btn btn-primary btn-xs" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-funcionario"  data-idFuncionario="<%=funcionario.getId()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                         </tr> 

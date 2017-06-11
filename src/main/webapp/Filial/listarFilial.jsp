@@ -56,8 +56,8 @@
                                     <th>CNPJ</th>
                                     <th>Endereço</th>
                                     <th>Telefone</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th>Editar</th>
+                                    <th>Deletar</th>
                                     </thead>
                                     
                                     <tbody>
