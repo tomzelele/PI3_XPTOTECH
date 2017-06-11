@@ -62,7 +62,7 @@
 		<div class="title">
 			<h2>Gerenciamento de Vendas</h2>
 		</div>
-		<a href="gerVendas.jsp" class="buttonGerenciar">Gerenciar</a>
+		<a href="Vendas/RealizaVenda.jsp" class="buttonGerenciar">Gerenciar</a>
 	</div>
 	<div id="tbox3"> <span class="icon icon-signal"></span>
 		<div class="title">
