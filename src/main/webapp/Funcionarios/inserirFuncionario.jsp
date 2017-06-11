@@ -1,7 +1,9 @@
 
+
 <%@page import="br.com.senac.pi3.model.cargo.Cargo"%>
-<%@page import="java.util.List"%>
 <%@page import="br.com.senac.pi3.model.filial.Filial"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Inserir Perfil</title>
+        <title>Inserir Funcionário</title>
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
@@ -49,7 +51,7 @@
 
                     <div class="cadastroFormulario">
 
-                        <form method="post" action="CadastraFuncionario">
+                        <form method="post" action="../CadastraFuncionario">
 
                             <fieldset class="fieldFuncionario">
                                 <legend>Dados Pessoais</legend>  
@@ -57,7 +59,7 @@
                             
                             <div class="codAcesso">					
                                 <label  for="codAcesso">Código de Acesso: </label>			
-                                <input  size="10" name="codAcesso" type="text" id="codAcesso" class="form-control input-sm" value="<%= request.getAttribute("codAcesso") != null ? request.getAttribute("codAcesso") : ""%>"> </br>
+                                <input  size="10" requerid="" name="codAcesso" type="text" id="codAcesso" class="form-control input-sm" > </br>
                             </div>
                             
                             <div class="cargo">					
@@ -80,24 +82,19 @@
                             
                             <div class="nomeFuncionario">					
                                 <label  for="nome">Nome: </label>			
-                                <input  size="30" name="nomeFuncionario" type="text" id="nomeFuncionario" class="form-control input-sm" value="<%= request.getAttribute("nomeFuncionario") != null ? request.getAttribute("nomeFuncionario") : ""%>"> </br>
+                                <input  size="30" requerid="" name="nomeFuncionario" type="text" id="nomeFuncionario" class="form-control input-sm"</br>
                             </div>
 
                             <div  class="sobreNomeFuncionario">
                                 <label  for="sobreNomeFuncionario">Sobrenome: </label>
-                                <input	name="sobreNomeFuncionario" type="text" size="40" id="sobreNomeFuncionario" class="form-control input-sm" value="<%= request.getAttribute("sobreNomeFuncionario") != null ? request.getAttribute("sobreNomeFuncionario") : ""%>"> </br>
+                                <input	requerid="" size="40" name="sobreNomeFuncionario" type="text" size="40" id="sobreNomeFuncionario" class="form-control input-sm" > </br>
                             </div>			
 
                             <div  class="dataNascimentoFuncionario">
                                 <label 	for="dataNascimentoFuncionario">Data Nascimento:  </label>
-                                <input 	maxlength="10" OnKeyPress="formatar('##/##/####', this)" name="dataNascimentoFuncionario" type="text" id="dataNascimentoFuncionario" class="form-control input-sm" value="<%= request.getAttribute("dataNascimentoFuncionario") != null ? request.getAttribute("dataNascimentoFuncionario") : ""%>"> </br>
+                                <input 	maxlength="10" requerid="" OnKeyPress="formatar('##/##/####', this)" name="dataNascimentoFuncionario" type="text" id="dataNascimentoFuncionario" class="form-control input-sm" > </br>
                             </div>
-                            
-                            <div  class="cpfFuncionario">
-                                <label  for="cpfFuncionario">CPF:  </label>
-                                <input  maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" name="cpfFuncionario" type="text" id="cpfFuncionario" class="form-control input-sm" value="<%= request.getAttribute("cpfFuncionario") != null ? request.getAttribute("cpfFuncionario") : ""%>"> </br>
-                            </div>
-
+                                
                             <label  class="teste"  for="sexoFuncionario">Sexo:  </label>
                             <div  class="selectSexoFuncionario">
                                 <select class="form-control" name="selectSexoFuncionario" >
@@ -106,14 +103,20 @@
                                 </select>
                             </div>
                             
-                            <div	class="celularFuncionario">  
+                            <div  class="cpfFuncionario">
+                                <label  for="cpfFuncionario">CPF:  </label>
+                                <input  requerid="" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" name="cpfFuncionario" type="text" id="cpfFuncionario" class="form-control input-sm" > </br>
+                            </div>
+
+                                                       
+                            <div class="celularFuncionario">  
                                 <label  for="celularFuncionario">Celular:  </label>
-                                <input  maxlength="13" OnKeyPress="formatar('##-#####-####', this)" name="celularFuncionario" type="text" id="celularFuncionario" class="form-control input-sm" value="<%= request.getAttribute("celularFuncionario") != null ? request.getAttribute("celularFuncionario") : ""%>"> </br>
+                                <input  maxlength="13" OnKeyPress="formatar('##-#####-####', this)" requerid="" name="celularFuncionario" type="text" id="celularFuncionario" class="form-control input-sm"> </br>
                             </div>
                                                    
                             <div class="emailFuncionario">  
                                 <label for="emailFuncionario">Email:  </label>
-                                <input size="50" name="emailFuncionario" type="text" id="emailFuncionario" class="form-control input-sm" value="<%= request.getAttribute("emailFuncionario") != null ? request.getAttribute("emailFuncionario") : ""%>"> </br></br>
+                                <input size="50" name="emailFuncionario" type="text" id="emailFuncionario" class="form-control input-sm"> </br></br>
                             </div>
                             
                             <fieldset  class="fieldEndreco">

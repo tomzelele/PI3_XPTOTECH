@@ -24,7 +24,8 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Consultar Produto</title>
+        <title>Consultar Produtos</title>
+        
         <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
@@ -33,9 +34,6 @@
     </head>
     <body>
         <% List<Produto> listaProdutos = (List<Produto>) session.getAttribute("listaProdutos"); %>
-
-
-
 
         <form action="ExcluiProduto" method="POST" name="formExcluirProduto">
             <input type="hidden" value="" name="idProdutoExcluir">
@@ -49,6 +47,7 @@
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-suitcase"></span>
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Produtos</h2> </div>
                 </div>
+                
                 <div class="voltar">
 
                     <a id="button" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>

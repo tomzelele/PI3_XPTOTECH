@@ -16,6 +16,7 @@
         <link href="default.css" rel="stylesheet" type="text/css" media="all" />
         <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
         <title>Consultar Cliente</title>
+        
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -48,6 +49,7 @@
 
                     <a id="button" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
                 </div>
+                
                 <div class="inserirProd">
                     <a type="button" class="btn btn-inserir" href="CadastraCliente">Inserir Cliente</a>
                 </div>
@@ -87,9 +89,9 @@
                                     <th>Endereco</th>
                                     <th>Email</th>
                                     <th>Celular</th>
-                                    <th>Edit</th>
+                                    <th>Editar</th>
 
-                                    <th>Delete</th>
+                                    <th>Deletar</th>
                                     </thead>
                                     <tbody>
                                         <% List<Cliente> listaClientes = (List<Cliente>) session.getAttribute("listaClientes"); %>

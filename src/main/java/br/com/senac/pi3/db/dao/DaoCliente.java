@@ -52,8 +52,6 @@ public class DaoCliente {
             psComando.setInt(9, cliente.getEndereco().getId());
 
 
-
-
             psComando.execute();
 
        }catch (Exception erro) {
@@ -136,7 +134,8 @@ public class DaoCliente {
     }
 
     public Cliente buscarPorId(int idCliente) throws SQLException {
-         String sql = "SELECT * FROM Cliente WHERE id_cliente=?";
+        
+        String sql = "SELECT * FROM Cliente WHERE id_cliente=?";
         psComando = conBanco.prepareStatement(sql);
         psComando.setInt(1, idCliente);
         ResultSet rs =  psComando.executeQuery();
