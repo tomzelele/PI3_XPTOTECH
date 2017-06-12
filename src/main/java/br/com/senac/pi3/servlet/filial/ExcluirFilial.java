@@ -34,13 +34,14 @@ public class ExcluirFilial extends HttpServlet {
         
         int idFilial = Integer.parseInt(req.getParameter("idFilialExcluir"));
         
+        
         try {
             daoFilial.excluirFilial(idFilial);
         } catch (Exception ex) {
             Logger.getLogger(ExcluirFilial.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
+               
         resp.sendRedirect("ListarFilial");
 
     }

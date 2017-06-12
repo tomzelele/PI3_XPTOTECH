@@ -1,5 +1,6 @@
  package br.com.senac.pi3.servlet.filial;
 
+import br.com.senac.pi3.db.dao.DaoCliente;
 import br.com.senac.pi3.db.dao.DaoEndereco;
 import br.com.senac.pi3.services.filial.ServicoFilial;
 import br.com.senac.pi3.db.dao.DaoFilial;
@@ -31,17 +32,15 @@ public class CadastrarFilial extends HttpServlet{
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Connection connection = ConnectionUtils.getConnection();
 
-        DaoFilial filialDao = new DaoFilial(connection);
         DaoEndereco enderecoDao = new DaoEndereco(connection);
         
         Filial filial = new Filial();
-        Endereco endereco = new Endereco();
-
+        filial.setCnpj(req.getParameter("cnpj"));
         filial.setNome(req.getParameter("desc_nome"));
         filial.setFantasia(req.getParameter("desc_fantasia"));
-        filial.setCnpj(req.getParameter("cnpj"));
         filial.setTelefone(req.getParameter("telefone"));
         
+        Endereco endereco = new Endereco();
         endereco.setBairro(req.getParameter("bairroCliente"));
         endereco.setRua(req.getParameter("enderecoCliente"));
         endereco.setCep(req.getParameter("cepCliente"));
@@ -77,25 +76,24 @@ public class CadastrarFilial extends HttpServlet{
                 } catch (Exception ex) {
                 }
             
+            
+                
             try {
+                Connection connection1 = ConnectionUtils.getConnection();
+                DaoFilial filialDao = new DaoFilial(connection1);
                 filialDao.inserirFilial(filial);
                 message = "Inclusão efetuada com sucesso";
                 req.setAttribute("message", message);
-                resp.sendRedirect("ListarFilial");        
-            } catch (FilialException ex) {
+                resp.sendRedirect("ListarFilial"); 
+            } catch (Exception ex) {
                 message = "Erro na fonte de dados";
                 req.setAttribute("message", message);
-                Logger.getLogger(CadastrarFilial.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (DataSourceException ex) {
-                message = "Erro na fonte de dados";
-                req.setAttribute("message", message);
-                Logger.getLogger(CadastrarFilial.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Exception ex) { 
-                message = "Erro na fonte de dados";
-                req.setAttribute("message", message);
-                Logger.getLogger(CadastrarFilial.class.getName()).log(Level.SEVERE, null, ex);
+                        
+                req.getRequestDispatcher("Filial/inserirFilial.jsp").forward(req, resp);
+            }
+                        
+          
             }
         }
     
     }       
-}

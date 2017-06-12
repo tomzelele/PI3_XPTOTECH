@@ -60,7 +60,7 @@ CREATE TABLE Endereco (
 
 CREATE TABLE Filial(
     id_filial INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-    cnpj VARCHAR(14) NOT NULL,
+    cnpj VARCHAR(19) NOT NULL,
     desc_nome VARCHAR(50),
     desc_fantasia VARCHAR(50),
     telefone VARCHAR(15),

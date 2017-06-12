@@ -33,12 +33,13 @@ public class ExcluirCliente extends HttpServlet{
         
         idCliente = Integer.parseInt(req.getParameter("idClienteExcluir"));
 
-        
+                
         try {
             clienteDao.excluirCliente(idCliente);
         } catch (Exception ex) {
             Logger.getLogger(ExcluirCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         
         
         resp.sendRedirect("ListarClientes");
