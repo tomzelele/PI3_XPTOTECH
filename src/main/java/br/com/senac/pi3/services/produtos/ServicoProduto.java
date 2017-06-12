@@ -176,6 +176,6 @@ public class ServicoProduto {
     		return msgErro;
     	}
     	
-    	return null;
+    	return msgErro;
     }
 }

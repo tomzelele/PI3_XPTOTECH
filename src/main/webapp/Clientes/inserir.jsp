@@ -67,18 +67,16 @@
                                 </select>
                             </div>
                             
+                            <div  class="cpfCliente">
+                                <label  for="cpfCliente">CPF:  </label>
+                                <input requerid=""  maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" name="cpfCliente" type="text" id="cpfCliente" class="form-control input-sm" > </br>
+                            </div>
                             
                             <div required="" class="celularCliente">  
                                 <label  for="celularCliente">Celular:  </label>
                                 <input  maxlength="13" OnKeyPress="formatar('##-#####-####', this)" requerid="" name="celularCliente" type="text" id="celularCliente" class="form-control input-sm" </br>
                             </div>
-
-                            <div  class="cpfCliente">
-                                <label  for="cpfCliente">CPF:  </label>
-                                <input requerid=""  maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" name="cpfCliente" type="text" id="cpfCliente" class="form-control input-sm" > </br>
-                            </div>
-                                                      
-
+                            
                             <div class="emailCliente">  
                                 <label for="emailCliente">Email:  </label>
                                 <input size="50" name="emailCliente" type="text" id="emailCliente" class="form-control input-sm" </br></br>

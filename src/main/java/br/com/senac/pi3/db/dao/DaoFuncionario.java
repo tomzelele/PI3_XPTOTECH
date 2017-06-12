@@ -31,50 +31,41 @@ public class DaoFuncionario {
     }
     
     
-     public Funcionario buscarPorId(int id) throws SQLException{
+     public Funcionario buscarPorId(int idFuncionario) throws SQLException{
+        String sql = "SELECT * FROM FUNCIONARIO WHERE id_funcionario=?";
+        psComando = conBanco.prepareStatement(sql);
+        psComando.setInt(1, idFuncionario);
+        ResultSet rs = psComando.executeQuery(); 
         
         Funcionario funcionario = new Funcionario();
         
-          ResultSet rs = null; 
-        try {
-            String sql = "SELECT * FROM FUNCIONARIO WHERE id_funcionario=?";
-            psComando = conBanco.prepareStatement(sql);
-            
-            psComando.setInt(1, id);
-            
-            rs = psComando.executeQuery();
-        }
-
-         catch (Exception erro) {
-            erro.printStackTrace();
-            return null;
-        }
-        
         while(rs.next()){
-            
-            
-            funcionario.setId(rs.getInt("id_funcionario"));
-            funcionario.setCargo(new DaoCargo(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("id_cargo")));
-            funcionario.setNome(rs.getString("nome"));
-            funcionario.setEmail(rs.getString("email"));
-            
-            
-            
-            //usuario.setFuncionario(funcionario);
-          
+                        
+            funcionario.setId(rs.getInt("ID_FUNCIONARIO"));
+            funcionario.setCodAcesso(rs.getInt("COD_ACESSO"));
+            funcionario.setCargo(new DaoCargo(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("ID_CARGO")));
+            funcionario.setFilial(new DaoFilial(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("ID_FILIAL")));
+            funcionario.setNome(rs.getString("NOME"));
+            funcionario.setSobrenome(rs.getString("SOBRENOME"));
+            funcionario.setDtNasc(rs.getString("DT_NASC"));
+            funcionario.setCpf(rs.getString("CPF"));
+            funcionario.setSexo(rs.getString("SEXO"));
+            funcionario.setCel(rs.getString("CEL"));
+            funcionario.setEmail(rs.getString("EMAIL"));
 
-                    
+            funcionario.setEndereco(new DaoEndereco(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ENDERECO")));
+
         }
         
         
         return  funcionario;
     }
      
-    public void inserir(Funcionario funcionario) throws SQLException, Exception {
+    public void inserirFuncionario(Funcionario funcionario) throws SQLException, Exception {
 
-        String sql = "INSERT INTO funcionario (cod_acesso,cargo,id_filial,nome,sobrenome,"
+        String sql = "INSERT INTO funcionario (cod_acesso,id_cargo,id_filial,nome,sobrenome,"
                 + "dt_nasc,cpf,sexo,cel,email,enabled,fk_endereco) "+
-               " VALUES (?,?,?,?,?,?,?,?,?,?)";
+               " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
             psComando = conBanco.prepareStatement(sql);
@@ -103,7 +94,7 @@ public class DaoFuncionario {
     
     public void atualizarFuncionario(Funcionario funcionario) throws SQLException, Exception {
 
-        String sql = "UPDATE funcionario set cod_acesso=?,cargo=?, id_filial=?,"
+        String sql = "UPDATE funcionario set cod_acesso=?,id_cargo=?, id_filial=?,"
                 + "nome=?,sobrenome=?,dt_nasc=?,cpf=?,sexo=?,cel=?,email=? WHERE id_funcionario=?";
               
 
@@ -120,8 +111,7 @@ public class DaoFuncionario {
             psComando.setString(8, funcionario.getSexo());
             psComando.setString(9, funcionario.getCel());
             psComando.setString(10, funcionario.getEmail());
-            psComando.setBoolean(11, true);
-            psComando.setInt(12, funcionario.getEndereco().getId());
+            psComando.setInt(11, funcionario.getId());
         
 
             psComando.executeUpdate();
@@ -151,17 +141,15 @@ public class DaoFuncionario {
            
            ArrayList<Funcionario> listaFuncionario  = new ArrayList<Funcionario>();
            
-           
-           DaoEndereco  daoEndereco = new DaoEndereco(ConnectionUtils.getConnection());
-           DaoFilial daoFilial = new DaoFilial(ConnectionUtils.getConnection());
-           
+                                 
            while(rs.next()){
                Funcionario funcionario = new Funcionario();
                
                            
                funcionario.setId(rs.getInt("ID_FUNCIONARIO"));
+               funcionario.setCodAcesso(rs.getInt("COD_ACESSO"));
                funcionario.setCargo(new DaoCargo(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("ID_CARGO")));
-               funcionario.setFilial(daoFilial.buscarPorId(rs.getInt("FK_FILIAL")));
+               funcionario.setFilial(new DaoFilial(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("ID_FILIAL")));
                funcionario.setNome(rs.getString("NOME"));
                funcionario.setSobrenome(rs.getString("SOBRENOME"));
                funcionario.setDtNasc(rs.getString("DT_NASC"));
@@ -171,7 +159,7 @@ public class DaoFuncionario {
                funcionario.setEmail(rs.getString("EMAIL"));
                
               
-               funcionario.setEndereco(daoEndereco.buscarPorId(rs.getInt("FK_ENDERECO")));
+               funcionario.setEndereco(new DaoEndereco(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ENDERECO")));
                listaFuncionario.add(funcionario);
                
            }
@@ -194,9 +182,11 @@ public class DaoFuncionario {
            while(rs.next()){
                
                Funcionario funcionario =  new Funcionario();
+               
                funcionario.setId(rs.getInt("ID_FUNCIONARIO"));
+               funcionario.setCodAcesso(rs.getInt("COD_ACESSO"));
                funcionario.setCargo(new DaoCargo(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("ID_CARGO")));
-               funcionario.setFilial(new DaoFilial(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_FILIAL")));
+               funcionario.setFilial(new DaoFilial(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("ID_FILIAL")));
                funcionario.setNome(rs.getString("NOME"));
                funcionario.setSobrenome(rs.getString("SOBRENOME"));
                funcionario.setDtNasc(rs.getString("DT_NASC"));
@@ -207,6 +197,7 @@ public class DaoFuncionario {
                              
                funcionario.setEndereco(new DaoEndereco(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ENDERECO")));
                
+               listaFuncionario.add(funcionario);
            }
            
            return listaFuncionario;

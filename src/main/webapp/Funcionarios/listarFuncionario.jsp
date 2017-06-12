@@ -1,4 +1,7 @@
+<%@page import="br.com.senac.pi3.model.cargo.Cargo"%>
+<%@page import="br.com.senac.pi3.model.filial.Filial"%>
 <%@page import="br.com.senac.pi3.model.funcionario.Funcionario"%>
+<%@page import="br.com.senac.pi3.model.endereco.Endereco"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,15 +21,13 @@
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar Funcionários</title>
-
+        
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
     </head>
     <body>
-        <% List<Funcionario> listaFuncionarios = (List<Funcionario>) session.getAttribute("listaFuncionarios"); %>
-        
-          
-            
+        <% List<Funcionario> listaFuncionarios = (List<Funcionario>) session.getAttribute("listaFuncionarios"); %>                           
         
         <form action="ExcluiFuncionario" method="POST" name="formExcluirFuncionario">
             <input type="hidden" value="" name="idFuncionarioExcluir">
@@ -36,25 +37,43 @@
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
                 
-                <a type="button" class="btn btn-inserir" href="/XPTOTECH/Funcionarios/inserirFuncionario.jsp">Inserir Funcionario</a>
-             
-
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-suitcase"></span>
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Acessos</h2> </div>
                 </div>
                 
-                <div class="pesquisaNome">
-                    <form action="PesquisaFuncionario" method="POST" name="formPesquisarFuncionario"> 
-                    <label  for="pesquisaNome">Pesquisa por Nome: </label>	                           
-                    <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control input-sm"> 
-                    <input type="hidden" value="" name="idFuncionarioPesquisar">
-                    <a type="button" class="btn btn-pesq" >Pesquisar</a>
-                    
-                    </form>
+                <div class="voltar">
 
+                    <a id="button" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
+                </div>
+                
+                <div class="inserirFuncionario">
+                    <a type="button" class="btn btn-inserir" href="CadastraFuncionario">Inserir Funcionário</a>
+                </div>
+                
+                                           
+                 <div class="pesquisaNome">
+                     
+                     <form action="PesquisaFuncionario" method="POST" name="formPesquisarFuncionario"> 
+                        <div class="col-lg-3">
+
+                            <div  class="input-group custom-search-form">
+
+                                <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control" placeholder="Pesquisa" /> 
+
+                                <span class="input-group-btn">                             
+
+                                    <button type="button" class="btn btn-danger">
+
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                    
                 </div>
                
-                <a id="botaoCustom" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
+                
 
                 <div class="container">
                     <div class="row">
@@ -76,13 +95,19 @@
                                     <th>Deletar</th>
                                     </thead>
                                     <tbody>
+                                        
                                         <%for(Funcionario funcionario : listaFuncionarios){ %>    
                                         <tr>
                                             <td><%= funcionario.getNome()+ " " + funcionario.getSobrenome()%></td>
+                                            
+                                            <% Filial filial = funcionario.getFilial();%>
                                             <td><%= funcionario.getFilial()%></td>
+                                            
+                                            <% Cargo cargo = funcionario.getCargo();%>
                                             <td><%= funcionario.getCargo()%></td>
+                                            
                                             <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditarFuncionario?idFuncionario=<%=funcionario.getId()%>" class="btn btn-primary btn-xs" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-produto"  data-idProduto="<%=funcionario.getId()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-funcionario"  data-idFuncionario="<%=funcionario.getId()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                         </tr> 
                                         <%} %>
                                     </tbody>
@@ -104,7 +129,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                                <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+                                <h4 class="modal-title custom_align" id="Heading">Editar Funcionário</h4>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
@@ -136,7 +161,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                                <h4 class="modal-title custom_align" id="Heading">Deletar Produto</h4>
+                                <h4 class="modal-title custom_align" id="Heading">Deletar Funcionário</h4>
                             </div>
                             <div class="modal-body">
 

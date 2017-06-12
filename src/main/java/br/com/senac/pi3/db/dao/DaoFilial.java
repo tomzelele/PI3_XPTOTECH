@@ -20,125 +20,120 @@ public class DaoFilial {
         this.conBanco = conBanco;
     }
     
-    public static void inserirFilial(Filial filial) throws SQLException, Exception {
+    public void inserirFilial(Filial filial) throws SQLException, Exception {
         //Monta a string de inserção de um produto no BD,
         //utilizando os dados do produtos passados como parâmetro
-        String sql = "INSERT INTO FILIAL ( CNPJ, DESC_NOME, "
-                + "DESC_FANTASIA, TELEFONE, FK_ENDERECO) VALUES ("
-                + "'" +filial.getCnpj()+ "', "
-                + "'" +filial.getNome()+ "', "
-                + "'" +filial.getFantasia()+ "', "
-                + "'" +filial.getTelefone()+ "', "
-                + " " + 1
-                + ")";
+        String sql = "INSERT INTO FILIAL (CNPJ,DESC_NOME,DESC_FANTASIA,TELEFONE, FK_ENDERECO, ENABLED) "
+                + "VALUES (?,?,?,?,?,?)";
+        
+        try{
+            psComando = conBanco.prepareStatement(sql);
 
-        //Executa o SQL
-        executarSQL(sql);
-        System.out.println("inserido com sucesso");
+            psComando.setString(1, filial.getCnpj());
+            psComando.setString(2, filial.getNome());
+            psComando.setString(3, filial.getFantasia());
+            psComando.setString(4, filial.getTelefone());
+            psComando.setInt(5, filial.getEndereco().getId());
+            psComando.setBoolean(6, true);
+            
+            psComando.execute();
+
+        } catch(Exception erro) {
+           erro.printStackTrace();
+       }
+    
     }
 
-    public static void atualizarFilial(Filial filial)
-            throws SQLException, Exception {
-        String sql = "UPDATE filial SET "
-                + "CNPJ='" + filial.getCnpj()+ "', "
-                + "NOME='" + filial.getNome()+ "', "
-                + "NOME_FANTASIA=" + filial.getFantasia()+ ","
-                + "TELEFONE=" + filial.getTelefone()+ " "
-                + " WHERE (ID_FILIAL=" + filial.getIdFilial() + ")";
+    public void atualizarFilial(Filial filial) throws SQLException, Exception {
+        String sql = "UPDATE filial SET CNPJ=?,DESC_NOME=?,DESC_FANTASIA=?,TELEFONE=?, "
+                + "FK_ENDERECO=? WHERE id_filial=?)";
+                
+        try{
+            psComando = conBanco.prepareStatement(sql);
 
-        //Executa o SQL
-        executarSQL(sql);
+            psComando.setString(1, filial.getCnpj());
+            psComando.setString(2, filial.getNome());
+            psComando.setString(3, filial.getFantasia());
+            psComando.setString(4, filial.getTelefone());
+            psComando.setInt(5, filial.getEndereco().getId());
+            psComando.setBoolean(6, true);
+            
+            psComando.executeUpdate();
+
+        } catch(Exception erro) {
+           erro.printStackTrace();
+       }
+
+        
+        
     }
 
-    public static void excluirFilial(Integer id) throws SQLException, Exception {
-        String sql = "DELETE FILIAL SET "
-                + " WHERE (ID_FILIAL = " + id + ")";
-
-        //Executa o SQL
-        executarSQL(sql);
+    public void excluirFilial(Integer id) throws SQLException, Exception {
+        String sql = "UPDATE FILIAL SET enabled=false WHERE id_filial=?"; 
+        
+        psComando = conBanco.prepareStatement(sql);
+        psComando.setInt(1, id);
+        psComando.executeUpdate();
+        
     }
 
-    public static List<Filial> listarFiliais()
-            throws SQLException, Exception {
+    public ArrayList<Filial> listarFiliais() throws SQLException{
+        
         String sql = "SELECT * FROM FILIAL WHERE ENABLED = TRUE";
 
-        return executarConsulta(sql);
-    }
-
-     public static List<Filial> procurarFilialPorCNPJ(String cnpj)
-            throws SQLException, Exception {
-        String sql = "SELECT * FROM FILIAL WHERE CNPJ = " + cnpj;
-
-        //Retorna o resultado da execução da consulta SQL montada
-        return executarConsulta(sql);
-    }
-
-    
-    private static void executarSQL(String sql) throws
-            SQLException, Exception {
-        Connection connection = null;
-        Statement statement = null;
-        try {
-            connection = ConnectionUtils.getConnection();
-            statement = connection.createStatement();
-            System.out.println("Executando COMANDO SQL: " + sql);
-            statement.execute(sql);
-        } finally {
-            if (statement != null && !statement.isClosed()) {
-                statement.close();
-            }
-            if (connection != null && !connection.isClosed()) {
-                connection.close();
-            }
+        psComando = conBanco.prepareStatement(sql);
+        ResultSet rs =  psComando.executeQuery();
+        
+        ArrayList<Filial> listaFilial  = new ArrayList<Filial>();
+        
+        while(rs.next()){
+            Filial filial = new Filial ();
+            
+            filial.setIdFilial(rs.getInt("ID_FILIAL"));
+            filial.setCnpj(rs.getString("CNPJ"));
+            filial.setNome(rs.getString("DESC_NOME"));
+            filial.setFantasia(rs.getString("DESC_FANTASIA"));
+            filial.setTelefone(rs.getString("TELEFONE"));
+            filial.setEndereco(new DaoEndereco(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ENDERECO")));
+            
+            listaFilial.add(filial);
+            
         }
+       
+        return listaFilial;
     }
 
-    public static List<Filial> executarConsulta(String sql) throws
-        SQLException, Exception {
-        List<Filial> listaFilial = null;
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet result = null;
-        try {
-            connection = ConnectionUtils.getConnection();
-            statement = connection.createStatement();
-            System.out.println("Executando CONSULTA SQL: " + sql);
-            result = statement.executeQuery(sql);
-            while (result.next()) {
-                if (listaFilial == null) {
-                    listaFilial= new ArrayList<>();
-                }
-                Filial filial = new Filial();
-                filial.setCnpj(result.getString("CNPJ"));
-                filial.setNome(result.getString("NOME"));
-                filial.setFantasia(result.getString("NOME_FANTASIA"));
-                filial.setTelefone(result.getString("TELEFONE"));
-                
-                //Adiciona a instância na lista
-                listaFilial.add(filial);
-            }
-        } finally {
-            if (result != null && !result.isClosed()) {
-                result.close();
-            }
-            if (statement != null && !statement.isClosed()) {
-                statement.close();
-            }
-            if (connection != null && !connection.isClosed()) {
-                connection.close();
-            }
+     public ArrayList<Filial> procurarFilialPorCNPJ(String cnpj)
+            throws SQLException, Exception {
+        String sql = "SELECT * FROM FILIAL WHERE UPPER (nome) LIKE UPPER ('%" + cnpj + "%') AND enabled=true";
+        
+        psComando = conBanco.prepareStatement(sql);
+        ResultSet rs =  psComando.executeQuery();
+        
+        ArrayList<Filial> listaFilial  = new ArrayList<Filial>();
+        
+        while(rs.next()){
+            Filial filial = new Filial ();
+            
+            filial.setIdFilial(rs.getInt("ID_FILIAL"));
+            filial.setCnpj(rs.getString("CNPJ"));
+            filial.setNome(rs.getString("DESC_NOME"));
+            filial.setFantasia(rs.getString("DESC_FANTASIA"));
+            filial.setTelefone(rs.getString("TELEFONE"));
+            filial.setEndereco(new DaoEndereco(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ENDERECO")));
+            
+            listaFilial.add(filial);
+        
         }
         return listaFilial;
     }
-    
-        public ArrayList<Filial> listarFilial() throws SQLException{
+     
+    public ArrayList<Filial> listarFilial() throws SQLException{
            String sql = "SELECT * FROM FILIAL WHERE enabled=true";
            psComando = conBanco.prepareStatement(sql);
            ResultSet rs =  psComando.executeQuery();
 
            ArrayList<Filial> listaFilial  = new ArrayList<>();           
-
-           DaoEndereco  daoEndereco = new DaoEndereco(ConnectionUtils.getConnection());
 
            while(rs.next()){
                Filial filial = new Filial();
@@ -149,7 +144,7 @@ public class DaoFilial {
                filial.setTelefone(rs.getString("TELEFONE"));
                filial.setCnpj(rs.getString("CNPJ"));
                              
-               filial.setEndereco(daoEndereco.buscarPorId(rs.getInt("FK_ENDERECO")));
+               filial.setEndereco(new DaoEndereco(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ENDERECO")));
                listaFilial.add(filial);
            }
            
@@ -165,11 +160,12 @@ public class DaoFilial {
             Filial filial = new Filial();
             while(rs.next()) {
                filial.setIdFilial(rs.getInt("ID_FILIAL"));
-               filial.setNome(rs.getString("NOME"));
-               filial.setFantasia(rs.getString("NOME_FANTASIA"));
-               filial.setTelefone(rs.getString("TELEFONE"));
                filial.setCnpj(rs.getString("CNPJ"));
-               //filial.setEstoque(new DaoEstoque(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ID_CATEGORIA")));
+               filial.setNome(rs.getString("DESC_NOME"));
+               filial.setFantasia(rs.getString("DESC_FANTASIA"));
+               filial.setTelefone(rs.getString("TELEFONE"));
+               filial.setEndereco(new DaoEndereco(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ENDERECO")));
+               
             }
         return filial;
     } 

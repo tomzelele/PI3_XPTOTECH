@@ -1042,6 +1042,12 @@ ul.contact li a:before
     margin-top: 100px;  
     margin-left: 280px;
 }
+.clicpf{
+    position: absolute;
+    margin-top: 100px;  
+    margin-left: 98px;
+}
+
 .prod{
     position: absolute;
     margin-top: 100px;  

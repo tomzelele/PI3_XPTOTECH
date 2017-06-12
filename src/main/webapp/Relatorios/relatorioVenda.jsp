@@ -34,114 +34,33 @@
         </div>
 
         <div class="container">
-                    <div class="row">
+            <div class="row">
 
 
-                        <div class="col-md-12">
-                            <div style="margin-top: -250px;" class="table-responsive">
-
-
-                                <table     id="mytable" class="table table-bordred table-striped">
-
-                                    <thead>
-
-                                    <th>ID Produto</th>
-                                    <th>Produto</th>
-                                    <th>Categoria</th>
-                                    <th>Qtd. Produto</th>
-                                    <th>Valor</th>
-                                   
-                                    <th>Excluir</th>
-                                    </thead>
-                                    <tbody>
-                                       
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-produto"  data-idProduto="" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-                                        </tr> 
-                                    
-                                    </tbody>
-
-                                </table>
-
-                                <div class="clearfix"></div>
-
-
-                            </div>
-                            <a type="button" class="btn btn-inserir" href="RealizarVenda">Registrar Venda</a>
-                        </div>
+                <div class="col-md-12">
+                    <div style="margin-top: -250px;" class="table-responsive">
+                        <table     id="mytable" class="table table-bordred table-striped">
+                            <thead>
+                                <th>Filial</th>
+                                <th>Data Inicial</th>
+                                <th>Data Final</th>
+                                <th>Procurar</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td  class="form-group" > <input type="text" class="form-control" placeholder="Filial"> </td>
+                                    <td  class="form-group" > <input type="date" class="form-control" placeholder="Data Inicial"> </td>
+                                    <td  class="form-group" > <input type="date" class="form-control" placeholder="Data Final"> </td>
+                                    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="#" class="btn btn-success" data-title="Edit"  ><span class="glyphicon glyphicon-eye-open"></span></a></p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="clearfix"></div>
                     </div>
-                    
+
                 </div>
-
-
-                <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                                <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <input class="form-control " type="text" placeholder="Mohsin">
-                                </div>
-                                <div class="form-group">
-
-                                    <input class="form-control " type="text" placeholder="Irshad">
-                                </div>
-                                <div class="form-group">
-                                    <textarea rows="2" class="form-control" placeholder="CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan"></textarea>
-
-
-                                </div>
-                            </div>
-                            <div class="modal-footer ">
-                                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
-                            </div>
-                        </div>
-                        <!-- /.modal-content --> 
-                    </div>
-                    <!-- /.modal-dialog --> 
-                </div>
-
-
-
-                <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                                <h4 class="modal-title custom_align" id="Heading">Deletar Produto</h4>
-                            </div>
-                            <div class="modal-body">
-
-                                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Tem certeza que deseja excluir esse registro?</div>
-
-                            </div>
-                            <div class="modal-footer ">
-                                <button type="button" class="btn btn-success btn-confirm-excluir" ><span class="glyphicon glyphicon-ok-sign"></span> Sim</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Não</button>
-                            </div>
-                        </div>
-                        <!-- /.modal-content --> 
-                    </div>
-                    <!-- /.modal-dialog --> 
-                </div>
-
             </div>
         </div>
-
-    <c:import url="Estrutura/footer.jsp"></c:import>
-    <script
-            src="https://code.jquery.com/jquery-1.12.4.min.js"
-            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-        crossorigin="anonymous"></script>
-
+    </div>
 </body>
 </html>
-

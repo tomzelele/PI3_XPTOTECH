@@ -22,8 +22,11 @@
 
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
+    </head>
+    
     <body>
         <% Cliente cliente = (Cliente) session.getAttribute("clienteAtualiza");%> 
+        
         <div id="wrapper3">
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
@@ -42,7 +45,8 @@
 
                             <fieldset class="fieldCliente">
                                 <legend>Dados Pessoais</legend>  
-                            </fieldset>       
+                            </fieldset>  
+                            
                             <div class="nomeCliente">
                                 <input type="hidden" value="<%= cliente.getId()%>" name="idClienteAtualiza"> 
                                 <label  for="nome">Nome: </label>			
@@ -88,6 +92,7 @@
                         </fieldset> 
 
                         <input type="hidden" value="<%= cliente.getEndereco().getId()%>" name="idEnderecoAtualiza" > 
+                        
                         <div class="enderecoCliente">
                             <label>Rua: </label> 
                             <input requerid="" size="30" type="text" id="enderecoCliente" maxlength="80" name="enderecoCliente" class="form-control input-sm" value="<%= cliente.getEndereco().getRua()%>">

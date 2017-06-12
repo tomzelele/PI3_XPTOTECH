@@ -76,7 +76,7 @@ public class ServicoFuncionario {
             
         }
         
-        return null;
+        return msgErro;
     }
     
     /**

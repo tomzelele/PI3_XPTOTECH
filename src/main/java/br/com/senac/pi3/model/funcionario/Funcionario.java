@@ -9,7 +9,6 @@ import br.com.senac.pi3.model.filial.Filial;
 import br.com.senac.pi3.model.Pessoa.Pessoa;
 import br.com.senac.pi3.model.cargo.Cargo;
 import br.com.senac.pi3.model.categoria.Categoria;
-import br.com.senac.pi3.model.perfil.Perfil;
 
 /**
  *

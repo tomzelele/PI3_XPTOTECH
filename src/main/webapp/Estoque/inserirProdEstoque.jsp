@@ -26,8 +26,6 @@
 
     </head>
     <body>
-    <% List<Categoria> lista =  (List<Categoria>)session.getAttribute("listaCategoria") ;%>	
-    
         <div id="wrapper3">
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
@@ -59,9 +57,7 @@
                                 <label  for="categoriaProd">Categoria: </label>
                                 <select class="form-control" name="categoriaProd" id="categoriaProd" >
                                 
-                                    <% for(Categoria categoria : lista){ %>
-                                        <option value="<%= categoria.getIdCategoria() %>"><%= categoria.getCategoria() %></option>
-                                    <% } %>
+                                        <option value=""><</option>
                                 </select>
                             
                             </div>							
@@ -78,7 +74,7 @@
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>      
 
         <c:import url="../Estrutura/footer.jsp"></c:import>
     </body>

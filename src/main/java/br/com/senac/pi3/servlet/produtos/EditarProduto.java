@@ -85,19 +85,26 @@ public class EditarProduto extends HttpServlet{
         ServicoProduto utilProduto = new ServicoProduto();
         String message = utilProduto.validarCampos(produto);
         if (!message.equals("")) {
-        	// Obtendo os valores do formulário p/ manter o mesmo preenchido 
+            // Obtendo os valores do formulário p/ manter o mesmo preenchido 
             req.setAttribute("nomeProd", produto.getProduto());
             req.setAttribute("vlProd", produto.getVlProd());
             
             // Passando mensagem para página jsp
             req.setAttribute("message", message);
             req.getRequestDispatcher("/Produtos/editarProduto.jsp").forward(req, resp);
-        }
-        
-        try {
-            produtoDao.atualizarProduto(produto);
-        } catch (Exception ex) {
-
+        } else {
+            try {
+                // Realiza a alteração do registro e envia mensagem para jsp
+                produtoDao.atualizarProduto(produto);
+                message = "Alteração efetuada com sucesso";
+                req.setAttribute("message", message);
+                req.getRequestDispatcher("/Produtos/editarProduto.jsp").forward(req, resp);
+                
+            } catch (Exception ex) {
+                message = "Erro na fonte de dados";
+                req.setAttribute("message", message);
+                req.getRequestDispatcher("/Produtos/editarProduto.jsp").forward(req, resp);
+            }
         }
         
         

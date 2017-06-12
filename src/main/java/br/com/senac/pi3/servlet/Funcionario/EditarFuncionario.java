@@ -10,6 +10,7 @@ import br.com.senac.pi3.db.utils.ConnectionUtils;
 import br.com.senac.pi3.db.dao.DaoFilial;
 import br.com.senac.pi3.db.dao.DaoFuncionario;
 import br.com.senac.pi3.model.cargo.Cargo;
+import br.com.senac.pi3.model.filial.Filial;
 import br.com.senac.pi3.model.funcionario.Funcionario;
 import br.com.senac.pi3.services.funcionarios.ServicoFuncionario;
 
@@ -41,6 +42,7 @@ public class EditarFuncionario extends HttpServlet{
            DaoFuncionario funcionarioDao = new DaoFuncionario(ConnectionUtils.getConnection());
            
            DaoCargo  cargoDao = new DaoCargo(ConnectionUtils.getConnection());
+           DaoFilial  filialDao = new DaoFilial(ConnectionUtils.getConnection());
            
            Funcionario funcionario = null;
         
@@ -51,6 +53,18 @@ public class EditarFuncionario extends HttpServlet{
         }
        
         
+        List<Filial> listaFilial = null;
+        
+       
+        try {
+            listaFilial = filialDao.listarFiliais();
+        } catch (Exception ex) {
+            Logger.getLogger(EditarFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        listaFilial.remove(funcionario.getFilial());
+        listaFilial.set(0, funcionario.getFilial());
+        
         List<Cargo> listaCargo = null;
         
         try {
@@ -59,13 +73,10 @@ public class EditarFuncionario extends HttpServlet{
             Logger.getLogger(EditarFuncionario.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
-        
-        
         listaCargo.remove(funcionario.getCargo());
-        
         listaCargo.set(0, funcionario.getCargo());
         
+        req.getSession().setAttribute("ListaFilialAtualiza", listaFilial);
         req.getSession().setAttribute("ListaCargoAtualiza", listaCargo);
         req.getSession().setAttribute("FuncionarioAtualiza", funcionario);
         req.getRequestDispatcher("/Funcionarios/editarFuncionario.jsp").forward(req, resp);
@@ -105,38 +116,15 @@ public class EditarFuncionario extends HttpServlet{
         funcionario.setCel(req.getParameter("celularFuncionario"));
         funcionario.setEmail(req.getParameter("emailFuncionario"));
         
-        // Validar campos
-        ServicoFuncionario utilFuncionario = new ServicoFuncionario();
-        String message = utilFuncionario.validarCampos(funcionario);
-        if (!message.equals("")) {
-        	// Obtendo os valores do formulário p/ manter o mesmo preenchido 
-        	req.setAttribute("codAcesso", funcionario.getCargo());
-        	req.setAttribute("nomeFuncionario", funcionario.getNome());
-        	req.setAttribute("sobreNomeFuncionario", funcionario.getSobrenome());
-        	req.setAttribute("dataNascimentoFuncionario", funcionario.getDtNasc());
-        	req.setAttribute("cpfFuncionario", funcionario.getCpf());
-        	req.setAttribute("selectSexoFuncionario", funcionario.getSexo());
-        	req.setAttribute("celularFuncionario", funcionario.getCel());
-        	req.setAttribute("emailFuncionario", funcionario.getEmail());
-        	// Passando mensagem para página jsp
-            req.setAttribute("message", message);
-        	req.getRequestDispatcher("Funcionarios/editarFuncionario.jsp").forward(req, resp);
-        }
-        
+             
         try {
             funcionarioDao.atualizarFuncionario(funcionario);
         } catch (Exception ex) {
-
+            Logger.getLogger(EditarFuncionario.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+                
         resp.sendRedirect("ListarFuncionarios");
         
     }
-    
-    
-    
-    
-    
-    
-    
 }

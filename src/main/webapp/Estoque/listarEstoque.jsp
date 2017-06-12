@@ -21,10 +21,10 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Consultar Produtos</title>
-        
+        <title>Consultar Produto</title>
         <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
@@ -32,7 +32,6 @@
 
     </head>
     <body>
-        <% List<Produto> listaProdutos = (List<Produto>) session.getAttribute("listaProdutos"); %>
 
         <form action="ExcluiProduto" method="POST" name="formExcluirProduto">
             <input type="hidden" value="" name="idProdutoExcluir">
@@ -44,9 +43,8 @@
 
 
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-suitcase"></span>
-                    <div id="textCustom" class="title">	<h2>Gerenciamento de Produtos</h2> </div>
+                    <div id="textCustom" class="title">	<h2>Gerenciamento de Estoque</h2> </div>
                 </div>
-                
                 <div class="voltar">
 
                     <a id="button" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
@@ -73,6 +71,7 @@
                             </div>
                         </div>
                     </form>
+
                 </div>
 
 
@@ -97,14 +96,13 @@
                                     <th>Deletar</th>
                                     </thead>
                                     <tbody>
-                                        <%for (Produto produto : listaProdutos) {%>    
                                         <tr>
-                                            <td><%= produto.getId()%></td>
-                                            <td><%= produto.getProduto()%></td>
-                                            <td><%= produto.getCategoria().getCategoria()%></td>
-                                            <td><%= produto.getVlProd()%></td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditarProduto?idProduto=<%=produto.getId()%>" class="btn btn-primary btn-xs" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-produto"  data-idProduto="<%=produto.getId()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                            <td><</td>
+                                            <td><</td>
+                                            <td><</td>
+                                            <td><</td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="" class="btn btn-primary btn-xs" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-produto"  data-idProduto="" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                         </tr> 
                                         <%}%>
                                     </tbody>

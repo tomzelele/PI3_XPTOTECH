@@ -49,7 +49,11 @@ public class CadastrarCliente extends HttpServlet {
         cliente.setDtNasc(request.getParameter("dataNascimentoCliente"));
         cliente.setSexo(request.getParameter("selectSexoCliente"));
         cliente.setCel(request.getParameter("celularCliente"));
-        cliente.setCpf(request.getParameter("cpfCliente"));
+        
+        String cpf = request.getParameter("cpfCliente");
+        
+        cpf = cpf.replace(".", "").replace("-", "");
+        cliente.setCpf(cpf);
         cliente.setEmail(request.getParameter("emailCliente"));
         
         Endereco endereco = new Endereco();
@@ -92,21 +96,29 @@ public class CadastrarCliente extends HttpServlet {
         } catch (Exception ex) {
             
         }
+            
+            System.out.println("1");
         try {
             Connection connection1 = ConnectionUtils.getConnection();
             DaoCliente clienteDao = new DaoCliente(connection1);
             clienteDao.inserir(cliente);
             message = "Inclusão efetuada com sucesso";
             request.setAttribute("message", message);
-            request.getRequestDispatcher("Clientes/inserir.jsp").forward(request, response);
+            
+            response.sendRedirect("ListarClientes");
+           // request.getRequestDispatcher("Clientes/inserir.jsp").forward(request, response);
+                        System.out.println("2");
+
         } catch (Exception ex) {
             message = "Erro na fonte de dados";
             request.setAttribute("message", message);
+                        System.out.println("3");
+
             request.getRequestDispatcher("Clientes/inserir.jsp").forward(request, response);
         }
         }
                 
         
-        response.sendRedirect("ListarClientes");
+        //response.sendRedirect("ListarClientes");
     }
  }

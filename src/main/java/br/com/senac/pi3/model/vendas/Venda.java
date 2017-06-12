@@ -6,6 +6,8 @@
 package br.com.senac.pi3.model.vendas;
 
 import br.com.senac.pi3.model.Pessoa.Pessoa;
+import br.com.senac.pi3.model.cliente.Cliente;
+import br.com.senac.pi3.model.funcionario.Funcionario;
 import br.com.senac.pi3.model.produto.Produto;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,49 +19,10 @@ public class Venda {
 
     
     private Integer cod_venda;   
-    private double valorVenda;
-    private Pessoa cliente;
-    private Integer idFuncionario;
-    private Produto produto;
-    private ArrayList<Produto> produtos;
+    private Cliente cliente;
+    private Funcionario funcionario;
+    private ArrayList<ItemVenda> itens;
     private String  data;
-
-  
-    /**
-     * @param produto the produto to set
-     */
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
-
-    /**
-     * @return the valorVenda
-     */
-    public double getValorVenda() {
-        return valorVenda;
-    }
-
-    /**
-     * @param valorVenda the valorVenda to set
-     */
-    public void setValorVenda(double valorVenda) {
-        this.valorVenda = valorVenda;
-    }
-
-
-    /**
-     * @return the cliente
-     */
-    public Pessoa getCliente() {
-        return cliente;
-    }
-
-    /**
-     * @param cliente the cliente to set
-     */
-    public void setCliente(Pessoa cliente) {
-        this.cliente = cliente;
-    }
 
     /**
      * @return the cod_venda
@@ -76,33 +39,84 @@ public class Venda {
     }
 
     /**
-     * @return the produto
+     * @return the valorVenda
      */
-    public ArrayList<Produto> getProduto() {
-        return produtos;
+    
+
+    /**
+     * @return the cliente
+     */
+    public Cliente getCliente() {
+        return cliente;
     }
 
     /**
-     * @param produto the produto to set
+     * @param cliente the cliente to set
      */
-    public void setProduto(ArrayList<Produto> produto) {
-        this.produtos = produto;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    /**
+     * @return the funcionario
+     */
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    /**
+     * @param funcionario the funcionario to set
+     */
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    /**
+     * @return the itens
+     */
+    public ArrayList<ItemVenda> getItens() {
+        return itens;
+    }
+
+    /**
+     * @param itens the itens to set
+     */
+    public void setItens(ArrayList<ItemVenda> itens) {
+        this.itens = itens;
     }
 
     /**
      * @return the data
      */
-    public String  getData() {
+    public String getData() {
         return data;
     }
 
     /**
      * @param data the data to set
      */
-    public void setData(String  data) {
+    public void setData(String data) {
         this.data = data;
     }
+
     
+    
+    
+    
+    public Double calcularValorTotal(){
+        
+        double vlTotal =0.0;
+        
+        for(ItemVenda item : itens ){
+            
+            vlTotal+=  (item.getProduto().getVlProd() * item.getQtd()  ) ;
+        }
+        System.out.print(vlTotal);
+        return vlTotal;
+    }
+  
+   
+   
     
     
 }

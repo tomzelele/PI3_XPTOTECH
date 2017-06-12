@@ -34,13 +34,36 @@
         <div id="wrapper3">
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
-                <a type="button" class="btn btn-inserir" href="CadastrarFilial">Inserir Filial</a>
 
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-group"></span>
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Filiais</h2> </div>
                 </div>
 
-                <a id="botaoCustom" href="/XPTOTECH/dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
+                <div class="voltar">
+                    <a id="button" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
+                </div>
+                <div class="inserirProd">
+                    <a type="button" class="btn btn-inserir" href="CadastrarFilial">Inserir Filial</a>
+                </div>
+                <div class="pesquisaNome">
+                    <form action="PesquisaFilial" method="POST" name="formPesquisarFilial"> 
+                        <div class="col-lg-3">
+
+                            <div  class="input-group custom-search-form">
+
+                                <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control" placeholder="Pesquisa" /> 
+
+                                <span class="input-group-btn">                             
+
+                                    <button type="button" class="btn btn-danger">
+
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
                 <div class="container">
                     <div class="row">
@@ -56,24 +79,24 @@
                                     <th>CNPJ</th>
                                     <th>Endereço</th>
                                     <th>Telefone</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th>Editar</th>
+                                    <th>Deletar</th>
                                     </thead>
-                                    
+
                                     <tbody>
                                         <% List<Filial> listaFiliais = (List<Filial>) session.getAttribute("listFilial"); %>
                                         <% for (Filial filial : listaFiliais) {%>
-                                            <tr>
-                                                 <td><%= filial.getIdFilial()%></td>
-                                                <td><%= filial.getFantasia()%></td>
-                                                <td><%= filial.getCnpj()%></td>
-                                                <% Endereco endereco = filial.getEndereco();%>
+                                        <tr>
+                                            <td><%= filial.getIdFilial()%></td>
+                                            <td><%= filial.getFantasia()%></td>
+                                            <td><%= filial.getCnpj()%></td>
+                                            <% Endereco endereco = filial.getEndereco();%>
 
-                                                <td> <%= endereco.getRua() + " " + endereco.getNumero() + " " + endereco.getCidade() + "/" + endereco.getEstado()%> </td>
-                                                <td><%= filial.getTelefone()%></td>
-                                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditarFilial?idFilial=<%= filial.getIdFilial()%>" class="btn btn-primary btn-xs" data-title="Edit"  ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
-                                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-cliente" data-idCliente="<%=filial.getIdFilial()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-                                            </tr>    
+                                            <td> <%= endereco.getRua() + " " + endereco.getNumero() + " " + endereco.getCidade() + "/" + endereco.getEstado()%> </td>
+                                            <td><%= filial.getTelefone()%></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditarFilial?idFilial=<%= filial.getIdFilial()%>" class="btn btn-primary btn-xs" data-title="Edit"  ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-cliente" data-idCliente="<%=filial.getIdFilial()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                        </tr>    
 
 
                                         <% }%>

@@ -1,6 +1,7 @@
 
 <%@page import="java.util.List"%>
 <%@page import="br.com.senac.pi3.model.categoria.Categoria"%>
+<%@page import="br.com.senac.pi3.model.produto.Produto"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -8,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Inserir Produto</title>
+        <title>Editar Produto</title>
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
@@ -21,19 +22,25 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
+		<!-- Mensagens de alerta (CSS) -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
 
     </head>
     <body>
-    <% List<Categoria> lista =  (List<Categoria>)session.getAttribute("listaCategoria") ;%>	
-    
+        
+        
+  
         <div id="wrapper3">
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
 
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-group"></span>
-                    <div id="textCustom" class="title">	<h2>Cadastro de Produtos</h2> </div>
+                    <div id="textCustom" class="title">	<h2>Editar Produto</h2> </div>
                 </div>
 
                 <a id="botaoCustom" href="/XPTOTECH/ListarProdutos" class="button">Voltar</a>
@@ -42,44 +49,63 @@
 
                     <div class="cadastroFormulario" >
 
-                        <form method="post" action="CadastraProduto">
+                        <form method="post" action="EditarProduto">
 
                             <fieldset class="fieldProd">
                                 <legend>Informações do produto</legend>  
                             </fieldset>   
+                            
+                            
+                            <input value="" name="idProd" type="hidden" id="idProd" class="form-control input-sm"> </br>
 
 
                             <div class="nomeProd">
-                                <label  for="nomeProd">Nome: </label>	
-                                
-                                <input required="" name="nomeProd" type="text" id="nomeProd" class="form-control input-sm"> </br>
+                                <label  for="nomeProd">Nome: </label>			
+                                <input  value="" required="" name="nomeProd" type="text" id="nomeProd" class="form-control input-sm"> </br>
                             </div>
 
                             <div  class="categoriaProd">
                                 <label  for="categoriaProd">Categoria: </label>
-                                <select class="form-control" name="categoriaProd" id="categoriaProd" >
+                            <select class="form-control" name="categoriaProd" id="categoriaProd" >
                                 
-                                    <% for(Categoria categoria : lista){ %>
-                                        <option value="<%= categoria.getIdCategoria() %>"><%= categoria.getCategoria() %></option>
-                                    <% } %>
-                                </select>
+                                    <option value=""></option>
+                         
+                            </select>
                             
                             </div>							
 							
                             <div  class="vlProd">
                                 <label  for="vlProd">Valor: </label>
-                                <input required="" name="vlProd"  type="text" id="vlProd" class="form-control input-sm"> </br>
+                                <input  name="vlProd" value=""  type="text" id="vlProd" class="form-control input-sm"> </br>
                             </div>
-                            
+                          
+ 
+
                             <div class="botaoCadastrarProd">
-                                <input type="submit" class="btn btn-primary" value="Cadastrar"></button>
+                                <input type="submit" class="btn btn-primary" value="Atualizar"></button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>    
-
+            <c:if test="${not empty message}" >                    
+                <div class="bs-example">
+                    <div class="alert alert-danger" id="myAlert">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <p>${message}.</p>
+                        </div>
+                    </div>                                    
+            </c:if>
+        </div>      
+        
+		<script>
+                $(document).ready(function(){
+                    $("#myAlert").on('closed.bs.alert', function () {
+                        
+                    });
+                });      
+                
+        </script>
         <c:import url="../Estrutura/footer.jsp"></c:import>
     </body>
 </html>

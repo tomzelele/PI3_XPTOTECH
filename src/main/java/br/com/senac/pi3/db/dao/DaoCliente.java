@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
+   
 /**
  *
  * @author Souza08
@@ -50,8 +50,6 @@ public class DaoCliente {
             psComando.setString(7, cliente.getEmail());
             psComando.setBoolean(8, true);
             psComando.setInt(9, cliente.getEndereco().getId());
-
-
 
 
             psComando.execute();
@@ -136,7 +134,8 @@ public class DaoCliente {
     }
 
     public Cliente buscarPorId(int idCliente) throws SQLException {
-         String sql = "SELECT * FROM Cliente WHERE id_cliente=?";
+        
+        String sql = "SELECT * FROM Cliente WHERE id_cliente=?";
         psComando = conBanco.prepareStatement(sql);
         psComando.setInt(1, idCliente);
         ResultSet rs =  psComando.executeQuery();
@@ -199,4 +198,74 @@ public class DaoCliente {
            return listaCliente;
     }
 
+    public String buscarPorCPF(String cpf) throws SQLException {
+        
+        String nomeCliente ="" ;
+        
+        
+        String sql = "SELECT * FROM Cliente WHERE cpf =?";
+        psComando = conBanco.prepareStatement(sql);
+        psComando.setString(1, cpf);
+        ResultSet rs =  psComando.executeQuery();
+           
+           
+        Cliente cliente =  new Cliente();
+
+
+        while(rs.next()){
+
+            cliente.setId(rs.getInt("ID_CLIENTE"));
+            cliente.setDtCadastro(rs.getString("DT_CADASTRO"));
+            cliente.setNome(rs.getString("NOME"));
+            cliente.setSobrenome(rs.getString("SOBRENOME"));
+            cliente.setDtNasc(rs.getString("DT_NASC"));
+            cliente.setCpf(rs.getString("CPF"));
+            cliente.setSexo(rs.getString("SEXO"));
+            cliente.setCel(rs.getString("CEL"));
+            cliente.setEmail(rs.getString("EMAIL"));
+
+             cliente.setEndereco(new DaoEndereco(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ENDERECO")));
+
+        }
+           
+        if(cliente == null){
+            return "Cliente não encontrado!";
+        }else
+        
+        return cliente.getNome();
+    }
+
+    
+     public Cliente buscarPorCPFobject(String cpf) throws SQLException {
+        
+        
+        
+        String sql = "SELECT * FROM Cliente WHERE cpf =?";
+        psComando = conBanco.prepareStatement(sql);
+        psComando.setString(1, cpf);
+        ResultSet rs =  psComando.executeQuery();
+           
+           
+        Cliente cliente =  new Cliente();
+
+
+        while(rs.next()){
+
+            cliente.setId(rs.getInt("ID_CLIENTE"));
+            cliente.setDtCadastro(rs.getString("DT_CADASTRO"));
+            cliente.setNome(rs.getString("NOME"));
+            cliente.setSobrenome(rs.getString("SOBRENOME"));
+            cliente.setDtNasc(rs.getString("DT_NASC"));
+            cliente.setCpf(rs.getString("CPF"));
+            cliente.setSexo(rs.getString("SEXO"));
+            cliente.setCel(rs.getString("CEL"));
+            cliente.setEmail(rs.getString("EMAIL"));
+
+             cliente.setEndereco(new DaoEndereco(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ENDERECO")));
+
+        }
+           
+        
+        return cliente;
+    }
 }

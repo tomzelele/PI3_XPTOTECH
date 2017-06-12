@@ -56,7 +56,7 @@ public class PesquisarFuncionario extends HttpServlet {
         }
         
 
-        req.getRequestDispatcher("Produtos/listarProduto.jsp").forward(req, resp);
+        req.getRequestDispatcher("Funcionarios/listarFuncionario.jsp").forward(req, resp);
 
     }
 
