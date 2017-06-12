@@ -77,7 +77,7 @@
                                                 <td> <%= endereco.getRua() + " " + endereco.getNumero() + " " + endereco.getCidade() + "/" + endereco.getEstado()%> </td>
                                                 <td><%= filial.getTelefone()%></td>
                                                 <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditarFilial?idFilial=<%= filial.getIdFilial()%>" class="btn btn-primary btn-xs" data-title="Edit"  ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
-                                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-cliente" data-idCliente="<%=filial.getIdFilial()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-filial" data-idFilial="<%=filial.getIdFilial()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                             </tr>    
 
 

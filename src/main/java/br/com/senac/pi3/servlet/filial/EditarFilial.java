@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,29 +41,36 @@ public class EditarFilial extends HttpServlet {
         
         req.getSession().setAttribute("Endereco", endereco);
         req.getSession().setAttribute("FilialAtualiza", filial);
-        req.getRequestDispatcher("filial/editarFilial.jsp").forward(req, resp);
+        req.getRequestDispatcher("Filial/editarFilial.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+         
         DaoFilial filialDao = new DaoFilial(ConnectionUtils.getConnection());
+        DaoEndereco enderecoDao = new DaoEndereco(ConnectionUtils.getConnection());
         Filial filial = new Filial();
+        filial.setIdFilial(Integer.parseInt(req.getParameter("FilialAtualiza")));
         
-        filial.setIdFilial(Integer.parseInt(req.getParameter("idFilial")));
         filial.setNome(req.getParameter("desc_nome"));
         filial.setFantasia(req.getParameter("desc_fantasia"));
         filial.setCnpj(req.getParameter("cnpj"));
         filial.setTelefone(req.getParameter("telefone"));
-        /*
-        int idEnd = Integer.parseInt(req.getParameter("categoriaProd"));
-        try {        
-            filial.setCategoria(new DaoCategoria(ConnectionUtils.getConnection()).buscarPorId(idCategoria));
-        } catch (SQLException ex) {
-            //Logger.getLogger(CadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
+        Endereco endereco = new Endereco();
+        endereco.setId(Integer.parseInt(req.getParameter("idEnderecoAtualiza")));
+        endereco.setBairro(req.getParameter("bairroCliente"));
+        endereco.setRua(req.getParameter("enderecoCliente"));
+        endereco.setCep(req.getParameter("cepCliente"));
+        endereco.setCidade(req.getParameter("cidadeCliente"));
+        endereco.setEstado(req.getParameter("estadoCliente"));
+        endereco.setNumero(req.getParameter("numEnderecoCliente"));
+       
+        try {
+            enderecoDao.atualizarEndereco(endereco);
+        } catch (Exception ex) {
+            Logger.getLogger(EditarFilial.class.getName()).log(Level.SEVERE, null, ex);
         }
-        filial.setVlProd(Double.parseDouble(req.getParameter("vlProd")));
-        */
+        
         try {
             filialDao.atualizarFilial(filial);
         } catch (Exception ex) {

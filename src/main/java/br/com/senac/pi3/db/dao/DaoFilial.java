@@ -49,8 +49,8 @@ public class DaoFilial {
     }
 
     public void atualizarFilial(Filial filial) throws SQLException, Exception {
-        String sql = "UPDATE filial SET CNPJ=?,DESC_NOME=?,DESC_FANTASIA=?,TELEFONE=?, "
-                + "FK_ENDERECO=? WHERE id_filial=?)";
+        String sql = "UPDATE FILIAL SET CNPJ=?,DESC_NOME=?,DESC_FANTASIA=?,TELEFONE=? WHERE ID_FILIAL=?";
+        
                 
         try{
             psComando = conBanco.prepareStatement(sql);
@@ -59,8 +59,7 @@ public class DaoFilial {
             psComando.setString(2, filial.getNome());
             psComando.setString(3, filial.getFantasia());
             psComando.setString(4, filial.getTelefone());
-            psComando.setInt(5, filial.getEndereco().getId());
-            psComando.setBoolean(6, true);
+            psComando.setInt(5, filial.getIdFilial());
             
             psComando.executeUpdate();
 

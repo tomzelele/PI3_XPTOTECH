@@ -28,17 +28,16 @@
     </head>
     <body>
         <% Filial filial = (Filial) session.getAttribute("FilialAtualiza");
-        
-           //List<Categoria> listaCategoria = (List<Categoria>) session.getAttribute("ListaCategoriaAtualiza");
-        
-        
+
+            //List<Categoria> listaCategoria = (List<Categoria>) session.getAttribute("ListaCategoriaAtualiza");
+
         %>
         <div id="wrapper3">
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
 
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-group"></span>
-                    <div id="textCustom" class="title">	<h2>Editar Filail</h2> </div>
+                    <div id="textCustom" class="title">	<h2>Editar Filial</h2> </div>
                 </div>
 
                 <a id="botaoCustom" href="/XPTOTECH/dashboard.jsp" class="button">Voltar</a>
@@ -48,6 +47,8 @@
                     <div class="cadastroFormulario" >
 
                         <form method="post" action="EditarFilial">
+                            <input type="hidden" value="<%= filial.getIdFilial()%>" name="FilialAtualiza"> </br>
+
 
                             <div class="cnpj">					
                                 <label  for="nome">CNPJ: </label>			
@@ -68,16 +69,54 @@
                                 <label  for="telefone">Telefone:  </label>
                                 <input value="<%= filial.getTelefone()%>" requerid=""  maxlength="10"  name="telefone" type="text" id="telefone" class="form-control input-sm" > </br>
                             </div>
-                            
-                            <div class="botaoCadastrarFilial">
-                                <input type="submit" class="btn btn-primary" value="Cadastrar"></button>
+                            <fieldset  class="fieldEndreco">
+                                <legend>Endereço - Filial</legend>
+                            </fieldset> 
+
+                            <input type="hidden" value="<%= filial.getEndereco().getId()%>" name="idEnderecoAtualiza" > 
+
+                            <div class="enderecoCliente">
+                                <label>Rua: </label> 
+                                <input size="30" type="text" id="enderecoCliente" maxlength="80" name="enderecoCliente" class="form-control input-sm" value="<%= filial.getEndereco().getRua()%>">
+                            </div>
+                            <div class="numEnderecoCliente">
+                                <label>Número: </label> 
+                                <input size="4" type="text" id="numEnderecoCliente" maxlength="5" name="numEnderecoCliente" class="form-control input-sm" value="<%= filial.getEndereco().getNumero()%>" >
+                            </div>
+                            <div class="cepCliente">
+                                <label>Cep:</label>
+                                <input OnKeyPress="formatar('#####-###', this)" id="cepCliente"  type="cepCliente" maxlength="9" name="cepCliente" class="form-control input-sm" value="<%= filial.getEndereco().getCep()%>" > </br>
+                            </div>
+                            <div class="bairroCliente">
+                                <label>Bairro: </label> 
+                                <input type="text" id="bairroCliente" maxlength="40" name="bairroCliente"class="form-control input-sm" value="<%= filial.getEndereco().getBairro()%>">
+                            </div>
+                            <div class="cidadeCliente">
+                                <label>Cidade: </label>
+                                <input type="text" id="cidadeCliente" maxlength="40" name="cidadeCliente"class="form-control input-sm" value="<%= filial.getEndereco().getCidade()%>">
+                            </div>
+
+                            <div class="estadoCliente">
+                                <label>Estado: </label>
+                                <input size="6" type="text" id="estadoCliente" maxlength="2" name="estadoCliente"class="form-control input-sm" value="<%= filial.getEndereco().getEstado()%>"></br>
+                            </div>
+
+                            <div class="botaoCadastrarCliente">
+                                <input type="submit" class="btn btn-primary" value="Atualizar"></button>
                             </div>
                         </form>
+
                     </div>
                 </div>
-            </div>
-        </div>      
 
-        <c:import url="../Estrutura/footer.jsp"></c:import>
-    </body>
-</html>
+
+            </div>
+            <c:if test="${not empty message}" >                    
+                <div class="bs-example">
+                    <div class="alert alert-danger" id="myAlert">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <p>${message}.</p>
+                    </div>
+                </div>                                    
+            </c:if>
+        </div>

@@ -44,7 +44,7 @@
 
                     <div class="cadastroFormulario">
 
-                        <form method="post" action="CadastrarFilial">
+                        <form method="post" action="../CadastrarFilial">
 
                             <div class="cnpj">					
                                 <label  for="nome">CNPJ: </label>			

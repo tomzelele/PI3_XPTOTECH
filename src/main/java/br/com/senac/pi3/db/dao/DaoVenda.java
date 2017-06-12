@@ -34,7 +34,7 @@ public class DaoVenda {
     public void inserirVenda(Venda venda) throws SQLException, Exception {
 
         String sql = "INSERT INTO VENDA(DT_VENDA,VALOR_COMPRA,CLIENTE_ID,FILIAL_ID) "+
-               " VALUES (?,?,?,?)";
+               " VALUES (CURRENT_DATE,?,?,?)";
 
         try {
             
