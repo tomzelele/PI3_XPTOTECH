@@ -40,7 +40,7 @@
                 </div>
                 
                 <div class="inserirFilial">
-                    <a type="button" class="btn btn-inserir" href="CadastrarFilial">Inserir Filial</a>
+                    <a type="button" class="btn btn-inserir" href="CadastraFilial">Inserir Filial</a>
                 </div>
                 
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-truck"></span>
