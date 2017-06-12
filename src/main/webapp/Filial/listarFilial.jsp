@@ -39,7 +39,7 @@
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Filiais</h2> </div>
                 </div>
                 
-                <div class="voltarFilial">
+                <div class="voltar">
                     <a id="button" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
                 </div>
                 

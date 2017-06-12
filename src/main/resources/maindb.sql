@@ -158,3 +158,9 @@ GROUP BY
     FK_ESTOQUE,
     FK_PRODUTO
 ;
+CREATE TABLE VENDA_PRODUTO (
+    qtdund INTEGER NOT NULL,
+    id_venda INTEGER NOT NULL REFERENCES venda(id_venda),      
+    produto_id INTEGER NOT NULL REFERENCES produto(id_produto) 
+);
+
