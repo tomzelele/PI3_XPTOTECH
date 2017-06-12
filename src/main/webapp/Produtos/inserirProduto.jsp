@@ -83,8 +83,23 @@
                     </div>
                 </div>
             </div>
+            <c:if test="${not empty message}" >                    
+                <div class="bs-example">
+                    <div class="alert alert-danger" id="myAlert">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <p>${message}.</p>
+                        </div>
+                    </div>                                    
+            </c:if>
         </div>    
-
+        <script>
+                $(document).ready(function(){
+                    $("#myAlert").on('closed.bs.alert', function () {
+                        
+                    });
+                });      
+                
+        </script>
         <c:import url="../Estrutura/footer.jsp"></c:import>
     </body>
 </html>
