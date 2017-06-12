@@ -86,9 +86,6 @@ public class CadastrarProduto extends HttpServlet{
                 produtoDao.inserirProduto(produto);
                 message = "Inclusão efetuada com sucesso";
                 req.setAttribute("message", message);
-                
-
-                
                 resp.sendRedirect("ListarProdutos");
                 
             } catch (ProdutoException ex) {

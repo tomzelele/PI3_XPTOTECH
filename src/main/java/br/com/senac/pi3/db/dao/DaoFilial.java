@@ -130,9 +130,9 @@ public class DaoFilial {
         }
         return listaFilial;
     }
-     public ArrayList<Filial> procurarFilial(String cnpj)
+     public ArrayList<Filial> procurarFilial(String nome)
             throws SQLException, Exception {
-        String sql = "SELECT * FROM FILIAL WHERE UPPER (nome) LIKE UPPER ('%" + cnpj + "%') AND enabled=true";
+        String sql = "SELECT * FROM FILIAL WHERE UPPER (nome) LIKE UPPER ('%" + nome + "%') AND enabled=true";
         
         psComando = conBanco.prepareStatement(sql);
         ResultSet rs =  psComando.executeQuery();

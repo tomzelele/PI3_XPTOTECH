@@ -916,6 +916,13 @@ ul.contact li a:before
     margin-top: 275px;    
 
 }
+
+.testeCliente{
+
+    position: absolute;
+    margin-top: 260px; 	
+
+}
 .teste{
 
     position: absolute;
@@ -1084,48 +1091,48 @@ ul.contact li a:before
 }
 .codAcesso{
     position: absolute;
-    margin-top: 190px;
+    margin-top: 175px;
 }
 
 .testeCargo{
     position: absolute;
     margin-left: 220px;
-    margin-top: 190px;
+    margin-top: 175px;
 }
 .cargo{
     position: absolute;
     margin-left: 220px;
-    margin-top: 200px;
+    margin-top: 185px;
 }
 
 .testeFilial{
     position: absolute;
     margin-left: 500px;
-    margin-top: 190px;
+    margin-top: 175px;
 }
 .filial{
     position: absolute;
     margin-left: 500px;
-    margin-top: 200px;
+    margin-top: 185px;
 }
 
 .nomeFuncionario{
     position: absolute;
-    margin-top: 260px;
+    margin-top: 240px;
 }
 
 
 .sobreNomeFuncionario {
     position: absolute;
     margin-left: 220px;
-    margin-top: 260px;   
+    margin-top: 240px;   
 }
 
 .dataNascimentoFuncionario{
 
     position: absolute;
     margin-left: 500px;
-    margin-top: 260px; 
+    margin-top: 240px; 
 
 }
 
@@ -1133,33 +1140,34 @@ ul.contact li a:before
 
     position: absolute;
     margin-left: 500px;
-    margin-top: 325px; 
+    margin-top: 305px; 
 
 }
 
 .celularFuncionario{
     position: absolute;
     margin-left: 220px;
-    margin-top: 325px;     
+    margin-top: 305px;     
 
 }
+
 
 .selectSexoFuncionario{
 
     position: absolute;
-    margin-top: 335px;    
+    margin-top: 315px;    
 
 }
 .teste{
 
     position: absolute;
-    margin-top: 325px; 	
+    margin-top: 305px; 	
 
 }
 
 .emailFuncionario{
     position: absolute;
-    margin-top: 390px;      
+    margin-top: 370px;      
 }
 
 .cadastroFormulario{    
@@ -1168,40 +1176,40 @@ ul.contact li a:before
 
 .fieldEnderecoFuncionario{
     width: 900px;
-    margin-top: 470px;    
+    margin-top: 450px;    
     position: absolute ; 
     margin-left: -115px;
 }
 
 .enderecoFuncionario{    
     position: absolute;
-    margin-top: 535px;     
+    margin-top: 505px;     
 }
 .numEnderecoFuncionario{
     position: absolute;  
     margin-left: 220px;
-    margin-top: 535px; 
+    margin-top: 505px; 
     size:4px;
 }
 
 .bairroFuncionario{
     position: absolute;
-    margin-top: 535px; 
+    margin-top: 505px; 
     margin-left: 330px;      
 }
 
 .cepFuncionario{
     position: absolute;
-    margin-top: 535px; 
+    margin-top: 505px; 
     margin-left: 500px;    
 }
 .cidadeFuncionario{
     position: absolute;
-    margin-top: 600px;     
+    margin-top: 580px;     
 }
 .estadoFuncionario{
     position: absolute;
-    margin-top: 600px; 
+    margin-top: 580px; 
     margin-left: 220px;  
 }
 .botaoCadastrarFuncionario{

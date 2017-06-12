@@ -14,7 +14,7 @@
         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
         <link href="default.css" rel="stylesheet" type="text/css" media="all" />
         <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
-        <title>Consultar Filial</title>
+        <title>Consultar Filiais</title>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -35,17 +35,40 @@
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
                 
+                <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-truck"></span>
+                    <div id="textCustom" class="title">	<h2>Gerenciamento de Filiais</h2> </div>
+                </div>
+                
                 <div class="voltarFilial">
                     <a id="button" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
                 </div>
                 
                 <div class="inserirFilial">
-                    <a type="button" class="btn btn-inserir" href="CadastrarFilial">Inserir Filial</a>
+                    <a type="button" class="btn btn-inserir" href="CadastraFilial">Inserir Filial</a>
                 </div>
                 
-                <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-truck"></span>
-                    <div id="textCustom" class="title">	<h2>Gerenciamento de Filiais</h2> </div>
+                 <div class="pesquisaNome">
+                     
+                     <form action="PesquisaFilial" method="POST" name="formPesquisarFilial"> 
+                        <div class="col-lg-3">
+
+                            <div  class="input-group custom-search-form">
+
+                                <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control" placeholder="Pesquisa por Nome" /> 
+
+                                <span class="input-group-btn">                             
+
+                                    <button type="button" class="btn btn-danger">
+
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                    
                 </div>
+                
 
                 <div class="container">
                     <div class="row">
@@ -66,7 +89,7 @@
                                     </thead>
                                     
                                     <tbody>
-                                        <% List<Filial> listaFiliais = (List<Filial>) session.getAttribute("listFilial"); %>
+                                        <% List<Filial> listaFiliais = (List<Filial>) session.getAttribute("listaFiliais"); %>
                                         <% for (Filial filial : listaFiliais) {%>
                                             <tr>
                                                  <td><%= filial.getIdFilial()%></td>
@@ -162,7 +185,7 @@
             $(function () {
                 $(".excluir-filial").on('click', function () {
                     let idFilial = $(this).attr('data-idFilial');
-                    formExcluirFilial.idClienteExcluir.value = idFilial;
+                    formExcluirFilial.idFilialExcluir.value = idFilial;
                 });
                 $('.btn-confirm-excluir').on('click', function () {
                     formExcluirFilial.submit();

@@ -64,7 +64,7 @@
                                 <input maxlength="10" requerid="" OnKeyPress="formatar('##/##/####', this)" name="dataNascimentoCliente" type="text" id="dataNascimentoCliente" class="form-control input-sm"> </br>
                             </div>
 
-                            <label  class="teste"  for="sexoCliente">Sexo:  </label>
+                            <label  class="testeCliente"  for="sexoCliente">Sexo:  </label>
                             <div  class="selectSexoCliente">
                                 <select class="form-control" name="selectSexoCliente" >
                                     <option value="M">Masculino</option>
