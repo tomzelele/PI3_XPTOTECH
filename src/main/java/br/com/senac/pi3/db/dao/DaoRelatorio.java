@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.senac.pi3.db.dao;
 
+package br.com.senac.pi3.db.dao;
+/*
 import br.com.senac.pi3.model.relatorios.RelatorioCliente;
 import br.com.senac.pi3.model.relatorios.RelatorioFilial;
 import br.com.senac.pi3.model.relatorios.RelatorioVenda;
@@ -13,13 +14,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+*/
 /**
  *
  * @author Nataly
  */
 public class DaoRelatorio {
-
+}
+/*
     private Connection conBanco;
     private PreparedStatement psComando;
     private ResultSet rsRegistros;
@@ -158,3 +160,4 @@ public class DaoRelatorio {
         return listaVendas;
     }
 }
+*/

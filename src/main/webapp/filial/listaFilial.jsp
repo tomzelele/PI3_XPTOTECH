@@ -34,13 +34,18 @@
         <div id="wrapper3">
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
-                <a type="button" class="btn btn-inserir" href="CadastrarFilial">Inserir Filial</a>
-
-                <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-group"></span>
+                
+                <div class="voltarFilial">
+                    <a id="button" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
+                </div>
+                
+                <div class="inserirFilial">
+                    <a type="button" class="btn btn-inserir" href="CadastraFilial">Inserir Filial</a>
+                </div>
+                
+                <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-truck"></span>
                     <div id="textCustom" class="title">	<h2>Gerenciamento de Filiais</h2> </div>
                 </div>
-
-                <a id="botaoCustom" href="/XPTOTECH/dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
 
                 <div class="container">
                     <div class="row">

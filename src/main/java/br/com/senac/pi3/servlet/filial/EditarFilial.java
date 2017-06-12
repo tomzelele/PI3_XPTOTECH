@@ -1,11 +1,14 @@
 package br.com.senac.pi3.servlet.filial;
 
-import br.com.senac.pi3.db.dao.DaoEstoque;
+import br.com.senac.pi3.db.dao.DaoEndereco;
 import br.com.senac.pi3.db.dao.DaoFilial;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
+import br.com.senac.pi3.model.endereco.Endereco;
 import br.com.senac.pi3.model.filial.Filial;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,34 +20,27 @@ public class EditarFilial extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-           int idFilial = Integer.parseInt( req.getParameter("idFilial") );
+        int idFilial = Integer.parseInt( req.getParameter("idFilial") );
+        DaoFilial filialDao = new DaoFilial(ConnectionUtils.getConnection());
+        DaoEndereco enderecoDao = new DaoEndereco(ConnectionUtils.getConnection());
            
-           DaoFilial dao = new DaoFilial(ConnectionUtils.getConnection());
-           
-           DaoEstoque  estoqueDao = new DaoEstoque(ConnectionUtils.getConnection());
-           
-           Filial filial = null;
+        Filial filial = null;
         try {
-           filial = dao.buscarPorId(idFilial);
+           filial = filialDao.buscarPorId(idFilial);
         } catch (SQLException ex) {
-            //Logger.getLogger(EditarProduto.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(EditarFilial.class.getName()).log(Level.SEVERE, null, ex);
         }
-        /*
-        List<Categoria> listaCategoria = null;
+        
+        Endereco endereco = new Endereco();
         try {
-            listaCategoria = categoriaDao.listarCategoria();
+            endereco = enderecoDao.buscarPorId(filial.endereco.getId());
         } catch (SQLException ex) {
-            Logger.getLogger(EditarProduto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditarFilial.class.getName()).log(Level.SEVERE, null, ex);
         }     
-        listaCategoria.remove(produto.getCategoria());
         
-        listaCategoria.set(0, produto.getCategoria());
-        
-        req.getSession().setAttribute("ListaCategoriaAtualiza", listaCategoria);
-        */
+        req.getSession().setAttribute("Endereco", endereco);
         req.getSession().setAttribute("FilialAtualiza", filial);
-        req.getRequestDispatcher("/Filial/editarFilial.jsp").forward(req, resp);
+        req.getRequestDispatcher("filial/editarFilial.jsp").forward(req, resp);
     }
 
     @Override
@@ -54,10 +50,12 @@ public class EditarFilial extends HttpServlet {
         Filial filial = new Filial();
         
         filial.setIdFilial(Integer.parseInt(req.getParameter("idFilial")));
-        
-        filial.setNome(req.getParameter("nome"));
+        filial.setNome(req.getParameter("desc_nome"));
+        filial.setFantasia(req.getParameter("desc_fantasia"));
+        filial.setCnpj(req.getParameter("cnpj"));
+        filial.setTelefone(req.getParameter("telefone"));
         /*
-        int idCategoria = Integer.parseInt(req.getParameter("categoriaProd"));
+        int idEnd = Integer.parseInt(req.getParameter("categoriaProd"));
         try {        
             filial.setCategoria(new DaoCategoria(ConnectionUtils.getConnection()).buscarPorId(idCategoria));
         } catch (SQLException ex) {

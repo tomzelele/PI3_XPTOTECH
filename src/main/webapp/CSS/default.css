@@ -1032,6 +1032,15 @@ ul.contact li a:before
     margin-top: 300px; 
 }
 
+.inserirFilial{
+    margin-top: -70px;
+    margin-left: 1040px;  
+}
+.voltarFilial{
+    margin-top: -70px;
+    margin-left: 1040px;   
+}
+
 .botaoCadastrarCliente{
     position: absolute;
     margin-top: 570px;  

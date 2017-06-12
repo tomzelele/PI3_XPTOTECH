@@ -9,7 +9,7 @@ public class Filial {
     private String Fantasia;
     private String Telefone;
     private String cnpj;
-    private Endereco endereco;
+    public Endereco endereco;
 
     public Integer getIdFilial() {
         return idFilial;

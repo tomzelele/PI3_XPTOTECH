@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ListarFilial", urlPatterns = {"/ListarFilial"})
-public class ListarFilial extends HttpServlet {
+@WebServlet(name = "ListaFilial", urlPatterns = {"/ListarFilial"})
+public class ListarFilial extends HttpServlet{
  
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,7 +28,7 @@ public class ListarFilial extends HttpServlet {
         }
 
         req.getSession().setAttribute("listFilial", listaFilial);
-        req.getRequestDispatcher("Filial/listarFilial.jsp").forward(req, resp);
+        req.getRequestDispatcher("filial/listaFilial.jsp").forward(req, resp);
     }    
    
 }
