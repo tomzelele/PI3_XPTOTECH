@@ -24,7 +24,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      
+
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
     </head>
@@ -37,9 +37,9 @@
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-group"></span>
                     <div id="textCustom" class="title">	<h2>Cadastro de Filiais</h2> </div>
                 </div>
-                
-                <a id="botaoCustom" href="/XPTOTECH/ListarFilial" class="button">Voltar</a>
-
+                <div class="voltar">
+                    <a id="botaoCustom" href="/XPTOTECH/ListarFilial" class="button">Voltar</a>
+                </div>
                 <div class="container" >
 
                     <div class="cadastroFormulario">
@@ -86,7 +86,7 @@
                                 <label>Cep:</label>
                                 <input maxlength="9" OnKeyPress="formatar('#####-###', this)" requerid="" id="cepCliente"  type="cepCliente" maxlength="8" name="cepCliente" class="form-control input-sm" > </br>
                             </div>
-                            
+
                             <div class="cidadeCliente">
                                 <label>Cidade: </label>
                                 <input requerid="" type="text" id="cidadeCliente" maxlength="40" name="cidadeCliente"class="form-control input-sm">
@@ -108,14 +108,14 @@
             </div>
         </div>            
 
-        
+
         <script>
-            function formatar(mascara, documento){
+            function formatar(mascara, documento) {
                 var i = documento.value.length;
-                var saida = mascara.substring(0,1);
+                var saida = mascara.substring(0, 1);
                 var texto = mascara.substring(i)
-                if (texto.substring(0,1) != saida){
-                        documento.value += texto.substring(0,1);
+                if (texto.substring(0, 1) != saida) {
+                    documento.value += texto.substring(0, 1);
                 }
             }
         </script>  

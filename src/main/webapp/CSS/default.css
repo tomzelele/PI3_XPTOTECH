@@ -1220,11 +1220,11 @@ ul.contact li a:before
 }
 .cidadeFuncionario{
     position: absolute;
-    margin-top: 580px;     
+    margin-top:562px;     
 }
 .estadoFuncionario{
     position: absolute;
-    margin-top: 580px; 
+    margin-top: 562px; 
     margin-left: 220px;  
 }
 .botaoCadastrarFuncionario{
@@ -1299,4 +1299,11 @@ ul.contact li a:before
      color: #a94442;
      background-color: #f2dede;
      border-color: #ebccd1;
+}
+
+.inserirFilial{
+    
+    margin-top: -70px;
+    margin-left: 1040px;
+    
 }

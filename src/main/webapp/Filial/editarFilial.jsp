@@ -35,9 +35,9 @@
                 <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-group"></span>
                     <div id="textCustom" class="title">	<h2>Editar Filial</h2> </div>
                 </div>
-
+                <div class="voltar">   
                 <a id="botaoCustom" href="/XPTOTECH/ListarFilial" class="button">Voltar</a>
-
+                </div>          
                 <div class="container" >
 
                     <div class="cadastroFormulario" >
@@ -73,7 +73,7 @@
 
                             <div class="enderecoCliente">
                                 <label>Rua: </label> 
-                                <input size="30" type="text" id="enderecoCliente" maxlength="80" name="enderecoCliente" class="form-control input-sm" value="<%= filial.getEndereco().getRua()%>">
+                                <input size="30" type="text" id="enderecoCliente" maxlength="60" name="enderecoCliente" class="form-control input-sm" value="<%= filial.getEndereco().getRua()%>">
                             </div>
                             <div class="numEnderecoCliente">
                                 <label>Número: </label> 
