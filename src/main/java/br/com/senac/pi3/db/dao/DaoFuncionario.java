@@ -141,11 +141,11 @@ public class DaoFuncionario {
            
            ArrayList<Funcionario> listaFuncionario  = new ArrayList<Funcionario>();
            
-                                 
+           DaoEndereco  daoEndereco = new DaoEndereco(ConnectionUtils.getConnection());
+           
            while(rs.next()){
                Funcionario funcionario = new Funcionario();
-               
-                           
+             
                funcionario.setId(rs.getInt("ID_FUNCIONARIO"));
                funcionario.setCodAcesso(rs.getInt("COD_ACESSO"));
                funcionario.setCargo(new DaoCargo(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("ID_CARGO")));
@@ -159,7 +159,7 @@ public class DaoFuncionario {
                funcionario.setEmail(rs.getString("EMAIL"));
                
               
-               funcionario.setEndereco(new DaoEndereco(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ENDERECO")));
+               funcionario.setEndereco(daoEndereco.buscarPorId(rs.getInt("FK_ENDERECO")));
                listaFuncionario.add(funcionario);
                
            }

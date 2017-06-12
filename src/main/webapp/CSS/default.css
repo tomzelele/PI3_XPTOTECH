@@ -822,6 +822,13 @@ ul.contact li a:before
    
 }
 
+.inserirFuncionario{
+    margin-top: -70px;
+    margin-left: 1040px;
+
+   
+}
+
 .form-login{
 
     display : table;
@@ -872,6 +879,7 @@ ul.contact li a:before
     position: absolute;
     margin-top: 200px;
 }
+
 
 .sobreNomeCliente {
     position: absolute;
@@ -1068,7 +1076,139 @@ ul.contact li a:before
     margin-left: 280px;
 
 }
+.codAcesso{
+    position: absolute;
+    margin-top: 190px;
+}
 
+.testeCargo{
+    position: absolute;
+    margin-left: 220px;
+    margin-top: 190px;
+}
+.cargo{
+    position: absolute;
+    margin-left: 220px;
+    margin-top: 200px;
+}
+
+.testeFilial{
+    position: absolute;
+    margin-left: 500px;
+    margin-top: 190px;
+}
+.filial{
+    position: absolute;
+    margin-left: 500px;
+    margin-top: 200px;
+}
+
+.nomeFuncionario{
+    position: absolute;
+    margin-top: 260px;
+}
+
+
+.sobreNomeFuncionario {
+    position: absolute;
+    margin-left: 220px;
+    margin-top: 260px;   
+}
+
+.dataNascimentoFuncionario{
+
+    position: absolute;
+    margin-left: 500px;
+    margin-top: 260px; 
+
+}
+
+.cpfFuncionario{
+
+    position: absolute;
+    margin-left: 500px;
+    margin-top: 325px; 
+
+}
+
+.celularFuncionario{
+    position: absolute;
+    margin-left: 220px;
+    margin-top: 325px;     
+
+}
+
+.selectSexoFuncionario{
+
+    position: absolute;
+    margin-top: 335px;    
+
+}
+.teste{
+
+    position: absolute;
+    margin-top: 325px; 	
+
+}
+
+.emailFuncionario{
+    position: absolute;
+    margin-top: 390px;      
+}
+
+.cadastroFormulario{    
+    display: table;
+}
+
+.fieldEnderecoFuncionario{
+    width: 900px;
+    margin-top: 470px;    
+    position: absolute ; 
+    margin-left: -115px;
+}
+
+.enderecoFuncionario{    
+    position: absolute;
+    margin-top: 535px;     
+}
+.numEnderecoFuncionario{
+    position: absolute;  
+    margin-left: 220px;
+    margin-top: 535px; 
+    size:4px;
+}
+
+.bairroFuncionario{
+    position: absolute;
+    margin-top: 535px; 
+    margin-left: 330px;      
+}
+
+.cepFuncionario{
+    position: absolute;
+    margin-top: 535px; 
+    margin-left: 500px;    
+}
+.cidadeFuncionario{
+    position: absolute;
+    margin-top: 600px;     
+}
+.estadoFuncionario{
+    position: absolute;
+    margin-top: 600px; 
+    margin-left: 220px;  
+}
+.botaoCadastrarFuncionario{
+    position: absolute;
+    margin-top: 570px;  
+    margin-left: 750px;
+}
+.fieldFuncionario{
+    width: 900px;
+    margin-top: 130px;    
+    position: absolute ; 
+    margin-left: -115px;
+}
 
 #custom-search-input {
         margin:0;
@@ -1108,3 +1248,26 @@ ul.contact li a:before
     .search-query:focus + button {
         z-index: 3;   
     }
+
+    div.alert {
+        position: relative;
+        margin: 30%;
+        margin-left: 36%;
+        margin-top: 5%; 
+        margin-bottom: 0%;
+    }
+     .alert {
+        padding: 15px;
+        margin-bottom: 10px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+     .alert-danger {
+    position: relative;
+     color: #a94442;
+     background-color: #f2dede;
+     border-color: #ebccd1;
+}

@@ -5,25 +5,27 @@ insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES('04833-001','Av
 insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES('01122-333','Avenida Hum','Interlagos','são paulo','SP','10');
 insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES('33221-000','Rua Dois','Santo Amaro','são paulo','SP','20');
 
-insert into filial(CNPJ,DESC_NOME,DESC_FANTASIA,TELEFONE,FK_ENDERECO,ENABLED) values('0634270980001','MATRIZ','MATRIZ','51235456',1,true);
-insert into filial(CNPJ,DESC_NOME,DESC_FANTASIA,TELEFONE,FK_ENDERECO,ENABLED) values('0123456780001','FILIAL','FILIAL1','43211234',2,true);
-insert into filial(CNPJ,DESC_NOME,DESC_FANTASIA,TELEFONE,FK_ENDERECO,ENABLED) values('0123456780001','FILIAL','FILIAL2','43211234',2,true);
+insert into filial(CNPJ,DESC_NOME,DESC_FANTASIA,TELEFONE,FK_ENDERECO,ENABLED) values('0634270980001','Matriz','Matriz','51235456',1,true);
+insert into filial(CNPJ,DESC_NOME,DESC_FANTASIA,TELEFONE,FK_ENDERECO,ENABLED) values('0123456780001','Filial1','Filial1','43211234',2,true);
+insert into filial(CNPJ,DESC_NOME,DESC_FANTASIA,TELEFONE,FK_ENDERECO,ENABLED) values('0333222010001','Filial2','Filial2','43211200',3,true);
 
+insert into cargo(cargo,enabled) values('Selecione',true);
 insert into cargo(cargo,enabled) values('Administrador',true);
 insert into cargo(cargo,enabled) values('Gerente',true);
 insert into cargo(cargo,enabled) values('Vendedor',true);
 
 insert into funcionario (COD_ACESSO,ID_CARGO,ID_FILIAL,NOME,SOBRENOME,DT_NASC,CPF,SEXO,CEL,EMAIL,ENABLED,FK_ENDERECO)
-values (1,2,1,'Joao','Souza','27/12/90','36342709858','M','959668809','jazoniel@gmail.com',true,1);
+values (1,2,1,'Administrador','Santos','27/12/1990','123.456.789-00','M','11-95966-8809','joaol@gmail.com',true,1);
 insert into funcionario (COD_ACESSO,ID_CARGO,ID_FILIAL,NOME,SOBRENOME,DT_NASC,CPF,SEXO,CEL,EMAIL,ENABLED,FK_ENDERECO)
-values (2,1,1,'Kelly','Cristina','27/12/90','45612378900','F','999991234','kel0705@gmail.com',true,2);
+values (2,3,2,'Gerente','Silva','01/01/2000','456.123.789-00','F','11-99999-1234','maria@gmail.com',true,2);
 insert into funcionario (COD_ACESSO,ID_CARGO,ID_FILIAL,NOME,SOBRENOME,DT_NASC,CPF,SEXO,CEL,EMAIL,ENABLED,FK_ENDERECO)
-values (3,3,1,'Vendedor','Cristina','27/12/90','12345678900','F','999991234','kel0705@gmail.com',true,2);
+values (3,4,3,'Vendedor','Ferreira','03/04/1992','123.000.789-00','M','11-99999-0034','jose@gmail.com',true,2);
 
-insert into USUARIO(login,senha,id_funcionario) values('gerente','gerente',1);
-insert into USUARIO(login,senha,id_funcionario) values('kelly','kelly',2);
+insert into USUARIO(login,senha,id_funcionario) values('admin','admin',1);
+insert into USUARIO(login,senha,id_funcionario) values('gerente','gerente',2);
 insert into USUARIO(login,senha,id_funcionario) values('vendedor','vendedor',3);
 
+insert into Categoria(desc_prod,enabled) values('Selecione',true);
 insert into Categoria(desc_prod,enabled) values('Acessórios',true);
 insert into Categoria(desc_prod,enabled) values('Cartuchos',true);
 insert into Categoria(desc_prod,enabled) values('Computadores',true);

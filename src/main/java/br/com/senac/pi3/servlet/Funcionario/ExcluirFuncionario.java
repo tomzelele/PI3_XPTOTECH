@@ -32,7 +32,6 @@ public class ExcluirFuncionario extends HttpServlet {
         
         int idFuncionario = Integer.parseInt(req.getParameter("idFuncionarioExcluir"));
         
-        
         try {
             funcionarioDao.excluirFuncionario(idFuncionario);
         } catch (Exception ex) {

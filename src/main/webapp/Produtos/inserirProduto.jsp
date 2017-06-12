@@ -21,6 +21,11 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
+        <!-- Mensagens de alerta (CSS) -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
 
@@ -52,7 +57,7 @@
                             <div class="nomeProd">
                                 <label  for="nomeProd">Nome: </label>	
                                 
-                                <input required="" name="nomeProd" type="text" id="nomeProd" class="form-control input-sm"> </br>
+                                <input name="nomeProd" type="text" id="nomeProd" class="form-control input-sm"> </br>
                             </div>
 
                             <div  class="categoriaProd">
@@ -68,7 +73,7 @@
 							
                             <div  class="vlProd">
                                 <label  for="vlProd">Valor: </label>
-                                <input required="" name="vlProd"  type="text" id="vlProd" class="form-control input-sm"> </br>
+                                <input  name="vlProd"  type="text" id="vlProd" class="form-control input-sm"> </br>
                             </div>
                             
                             <div class="botaoCadastrarProd">
@@ -78,8 +83,23 @@
                     </div>
                 </div>
             </div>
+            <c:if test="${not empty message}" >                    
+                <div class="bs-example">
+                    <div class="alert alert-danger" id="myAlert">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <p>${message}.</p>
+                    </div>
+                </div>                                    
+            </c:if>
         </div>      
-
+        <script>
+                $(document).ready(function(){
+                    $("#myAlert").on('closed.bs.alert', function () {
+                        
+                    });
+                });      
+                
+        </script>
         <c:import url="../Estrutura/footer.jsp"></c:import>
     </body>
 </html>
