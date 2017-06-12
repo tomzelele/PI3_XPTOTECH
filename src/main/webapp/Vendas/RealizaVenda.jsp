@@ -136,7 +136,7 @@
                             
                                     <form method="post" action="../CadastraVenda" >
                                         
-                                        <input type="hidden" name="cpfClienteVendaCD" id="cpfClienteVendaCD" value="" >
+                                        <input type="hidden" name="cpfClienteVendaCD" id="cpfClienteVendaCD" value="281824838" >
                                         <button  class="btn btn-inserir">Registrar Venda</button>
 
                                     </form>        
@@ -165,6 +165,8 @@
             
             $("#cpfClienteVenda").on('change',function(){
                 
+                $("#cpfClienteVendaCD").val($("#cpfClienteVenda").val());
+                            
                 
                 urlR = window.location.origin+'/XPTOTECH/ConsultaClienteCpf?cpf='+$("#cpfClienteVenda").val()
                 
@@ -175,9 +177,7 @@
                             
                             
                             $("#clienteVenda").val(resultado);
-                            $("#cpfClienteVendaCD").val($("#cpfClienteVenda").val());
                             
-                            alert( $("#cpfClienteVendaCD").val())
                             
                         
                     },

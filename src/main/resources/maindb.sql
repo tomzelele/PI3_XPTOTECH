@@ -1,9 +1,9 @@
 
 /*
-insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES('04940-010','Rua Afonso rui','santa lucia','são paulo','SP','55');
-insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES('04833-001','Avenida Teotonio Vilela','Vila São José','são paulo','SP','4029');
-insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES('01122-333','Avenida Hum','Interlagos','são paulo','SP','10');
-insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES('33221-000','Rua Dois','Santo Amaro','são paulo','SP','20');
+insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES('04940-010','Rua Afonso rui','santa lucia','sao paulo','SP','55');
+insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES('04833-001','Avenida Teotonio Vilela','Vila Sao Jose','são paulo','SP','4029');
+insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES('01122-333','Avenida Hum','Interlagos','sao paulo','SP','10');
+insert into ENDERECO(CEP,RUA,BAIRRO,CIDADE,ESTADO,NUMERO) VALUES('33221-000','Rua Dois','Santo Amaro','sao paulo','SP','20');
 
 insert into filial(CNPJ,DESC_NOME,DESC_FANTASIA,TELEFONE,FK_ENDERECO,ENABLED) values('0634270980001','Matriz','Matriz','51235456',1,true);
 insert into filial(CNPJ,DESC_NOME,DESC_FANTASIA,TELEFONE,FK_ENDERECO,ENABLED) values('0123456780001','Filial1','Filial1','43211234',2,true);
@@ -33,16 +33,16 @@ insert into Categoria(desc_prod,enabled) values('Impressoras',true);
 insert into Categoria(desc_prod,enabled) values('Notes e Tablets',true);
 
 insert into cliente (dt_cadastro,nome,sobrenome,dt_nasc, cpf, sexo, cel, email, enabled, fk_endereco) 
-values('01/01/2017','Teste01','Silva','01/01/2001','12345678900','F','1191234-5678','teste1@',true,3); 
+values('01/01/2017','Teste01','Silva','01/01/2001','29821824838','F','1191234-5678','teste1@',true,3); 
 insert into cliente (dt_cadastro,nome,sobrenome,dt_nasc, cpf, sexo, cel, email, enabled, fk_endereco) 
 values('02/02/2017','Teste02','Sousa','02/02/2002','12300078900','M','1192222-5678','teste2@',true,2); 
 insert into cliente (dt_cadastro,nome,sobrenome,dt_nasc, cpf, sexo, cel, email, enabled, fk_endereco) 
 values('03/03/2017','Teste03','Santos','03/03/2003','12345600000','F','1195555-5678','teste3@',true,4); 
 
 
-insert into produto (vl_prod,desc_prod,fk_id_categoria,enabled) values(10,'pen drive',1,true); 
-insert into produto (vl_prod,desc_prod,fk_id_categoria,enabled) values(50,'mouse',1,true); 
-insert into produto (vl_prod,desc_prod,fk_id_categoria,enabled) values(1000,'computador',3,true); 
+insert into produto (vl_prod,desc_prod,fk_id_categoria,enabled) values(10,'pen drive',2,true); 
+insert into produto (vl_prod,desc_prod,fk_id_categoria,enabled) values(50,'mouse',2,true); 
+insert into produto (vl_prod,desc_prod,fk_id_categoria,enabled) values(1000,'computador',4,true); 
 
 
 INSERT INTO ESTOQUE(DESC_ESTOQUE,FK_FILIAL,ENABLED)VALUES('Estoque Filial 2', 2,true);

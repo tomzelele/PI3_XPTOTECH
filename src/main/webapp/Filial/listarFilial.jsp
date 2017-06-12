@@ -56,7 +56,7 @@
 
                             <div  class="input-group custom-search-form">
 
-                                <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control" placeholder="Pesquisa por Nome" /> 
+                                <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control" placeholder="Pesquisa por Nome Fantasia" /> 
 
                                 <span class="input-group-btn">                             
 

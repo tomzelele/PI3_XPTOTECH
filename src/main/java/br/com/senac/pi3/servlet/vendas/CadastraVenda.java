@@ -10,6 +10,7 @@ import br.com.senac.pi3.db.dao.DaoVenda;
 import br.com.senac.pi3.db.utils.ConnectionUtils;
 import br.com.senac.pi3.model.cliente.Cliente;
 import br.com.senac.pi3.model.funcionario.Funcionario;
+import br.com.senac.pi3.model.user.Usuario;
 import br.com.senac.pi3.model.vendas.ItemVenda;
 import br.com.senac.pi3.model.vendas.Venda;
 import java.io.IOException;
@@ -36,8 +37,9 @@ public class CadastraVenda extends HttpServlet implements Serializable{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
+        
+        
             String cpf = req.getParameter("cpfClienteVendaCD");
-            System.out.println(cpf);
         
         DaoVenda daoVenda = new DaoVenda(ConnectionUtils.getConnection());
         DaoCliente daoCliente = new DaoCliente(ConnectionUtils.getConnection());
@@ -46,14 +48,17 @@ public class CadastraVenda extends HttpServlet implements Serializable{
         Cliente cliente= null;
         try {
             cliente = daoCliente.buscarPorCPFobject(cpf);
-            
+                        
             
         } catch (SQLException ex) {
             Logger.getLogger(CadastraVenda.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         Venda venda = new Venda();
-        Funcionario funcionario = (Funcionario) session.getAttribute("logado");
+                
+        Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+        
+        Funcionario funcionario = usuario.getFuncionario();
 
         venda.setItens( (ArrayList<ItemVenda>) session.getAttribute("carrinho")  );
         

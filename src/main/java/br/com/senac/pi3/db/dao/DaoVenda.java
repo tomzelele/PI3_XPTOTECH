@@ -41,10 +41,11 @@ public class DaoVenda {
             psComando = conBanco.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 
             
-            psComando.setString(1, venda.getData());
-            psComando.setDouble(2, venda.calcularValorTotal());
-            psComando.setInt(3,venda.getCliente().getId());
-            psComando.setInt(4, venda.getFuncionario().getFilial().getIdFilial());
+            System.out.println(venda.getCliente());
+            
+            psComando.setDouble(1, venda.calcularValorTotal());
+            psComando.setInt(2,venda.getCliente().getId());
+            psComando.setInt(3, venda.getFuncionario().getFilial().getIdFilial());
 
             psComando.execute();
             
