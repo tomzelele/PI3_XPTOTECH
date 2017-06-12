@@ -19,6 +19,11 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
+        <!-- Mensagens de alerta (CSS) -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
     </head>
@@ -125,6 +130,14 @@
 
 
             </div>
+            <c:if test="${not empty message}" >                    
+                    <div class="bs-example">
+                        <div class="alert alert-danger" id="myAlert">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <p>${message}.</p>
+                       </div>
+                   </div>                                    
+            </c:if>
         </div>            
 
         
@@ -139,6 +152,12 @@
 			}
 			
 		}
+                
+                $(document).ready(function(){
+                    $("#myAlert").on('closed.bs.alert', function () {
+                        
+                    });
+                });
         </script>  
         <c:import url="../Estrutura/footer.jsp"></c:import>
     </body>

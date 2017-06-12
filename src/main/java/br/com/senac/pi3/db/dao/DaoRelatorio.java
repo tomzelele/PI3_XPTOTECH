@@ -5,9 +5,9 @@
  */
 package br.com.senac.pi3.db.dao;
 
-import br.com.senac.pi3.model.relatorio.RelatorioCliente;
-import br.com.senac.pi3.model.relatorio.RelatorioFilial;
-import br.com.senac.pi3.model.relatorio.RelatorioVenda;
+import br.com.senac.pi3.model.relatorios.RelatorioCliente;
+import br.com.senac.pi3.model.relatorios.RelatorioFilial;
+import br.com.senac.pi3.model.relatorios.RelatorioVenda;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,7 +30,8 @@ public class DaoRelatorio {
 
     // --------------------------- Relatorios de Clientes --------------------------- //
     public RelatorioCliente buscaClientePorId(int idCliente) throws SQLException {
-        String sql = "SELECT ID_CLIENTE, NOME, DT_CADASTRO, ENABLED, (SELECT COUNT(*) FROM VENDA WHERE CLIENTE_ID = ?) AS QUANT_COMPRAS FROM CLIENTE WHERE ID_CLIENTE = ?";
+        String sql = "SELECT ID_CLIENTE, NOME, DT_CADASTRO, ENABLED, (SELECT COUNT(*) FROM VENDA "
+                + "WHERE CLIENTE_ID = ?) AS QUANT_COMPRAS FROM CLIENTE WHERE ID_CLIENTE = ?";
         psComando = conBanco.prepareStatement(sql);
         psComando.setInt(1, idCliente);
         ResultSet rs = psComando.executeQuery();
@@ -55,7 +56,8 @@ public class DaoRelatorio {
     }
 
     public ArrayList<RelatorioCliente> RelatorioCliente() throws SQLException {
-        String sql = "SELECT ID_CLIENTE, NOME, DT_CADASTRO, ENABLED, (SELECT COUNT(*) FROM VENDA WHERE CLIENTE_ID = ID_CLIENTE) AS QUANT_COMPRAS FROM CLIENTE";
+        String sql = "SELECT ID_CLIENTE, NOME, DT_CADASTRO, ENABLED, (SELECT COUNT(*) "
+                + "FROM VENDA WHERE CLIENTE_ID = ID_CLIENTE) AS QUANT_COMPRAS FROM CLIENTE";
         psComando = conBanco.prepareStatement(sql);
         ResultSet rs = psComando.executeQuery();
 
@@ -83,7 +85,8 @@ public class DaoRelatorio {
 
     // --------------------------- Relatorios de Filial --------------------------- //
     public RelatorioFilial buscaFilialPorId(int idFilial) throws SQLException {
-        String sql = "SELECT CNPJ, DESC_NOME, DESC_FANTASIA, (SELECT COUNT(*) FROM VENDA WHERE FILIAL_ID = ?) AS QUANT_VENDAS FROM FILIAL WHERE ID_FILIAL = ?";
+        String sql = "SELECT CNPJ, DESC_NOME, DESC_FANTASIA, (SELECT COUNT(*) FROM VENDA WHERE FILIAL_ID = ?) "
+                + "AS QUANT_VENDAS FROM FILIAL WHERE ID_FILIAL = ?";
         psComando = conBanco.prepareStatement(sql);
         psComando.setInt(1, idFilial);
         ResultSet rs = psComando.executeQuery();
@@ -104,7 +107,8 @@ public class DaoRelatorio {
     }
 
     public ArrayList<RelatorioFilial> RelatorioFilial() throws SQLException {
-        String sql = "SELECT ID_CLIENTE, NOME, DT_CADASTRO, ENABLED, (SELECT COUNT(*) FROM VENDA WHERE CLIENTE_ID = ID_CLIENTE) AS QUANT_VENDAS FROM CLIENTE";
+        String sql = "SELECT CNPJ, DESC_NOME, DESC_FANTASIA, (SELECT COUNT(*) FROM VENDA) AS"
+                + " QUANT_VENDAS FROM FILIAL";
         psComando = conBanco.prepareStatement(sql);
         ResultSet rs = psComando.executeQuery();
 
@@ -132,7 +136,7 @@ public class DaoRelatorio {
                 + "INNER JOIN VENDA V ON VD.ID_VENDA = V.ID_VENDA\n"
                 + "INNER JOIN FILIAL F ON V.FILIAL_ID = F.ID_FILIAL\n"
                 + "INNER JOIN CLIENTE C ON V.CLIENTE_ID = C.ID_CLIENTE\n"
-                + "WHERE V.DT_VENDA BETWEEN" + dtInicial + " AND " + dtFinal;
+                + "WHERE V.DT_VENDA BETWEEN" +dtInicial+ " AND "+ dtFinal;
         psComando = conBanco.prepareStatement(sql);
         ResultSet rs = psComando.executeQuery();
 
