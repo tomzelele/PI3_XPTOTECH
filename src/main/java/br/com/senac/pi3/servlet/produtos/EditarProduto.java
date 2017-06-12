@@ -91,14 +91,15 @@ public class EditarProduto extends HttpServlet{
             
             // Passando mensagem para página jsp
             req.setAttribute("message", message);
-             resp.sendRedirect("ListarProdutos");
+            req.getRequestDispatcher("/Produtos/editarProduto.jsp").forward(req, resp);
+            //resp.sendRedirect("ListarProdutos");
         } else {
             try {
                 // Realiza a alteração do registro e envia mensagem para jsp
                 produtoDao.atualizarProduto(produto);
                 message = "Alteração efetuada com sucesso";
                 req.setAttribute("message", message);
-                 resp.sendRedirect("ListarProdutos");
+                resp.sendRedirect("ListarProdutos");
                 
             } catch (Exception ex) {
                 message = "Erro na fonte de dados";
