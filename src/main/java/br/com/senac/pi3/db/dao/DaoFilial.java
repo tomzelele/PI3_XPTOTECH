@@ -27,8 +27,8 @@ public class DaoFilial {
     public void inserirFilial(Filial filial) throws SQLException, Exception {
         //Monta a string de inserção de um produto no BD,
         //utilizando os dados do produtos passados como parâmetro
-        String sql = "INSERT INTO FILIAL (CNPJ,DESC_NOME,DESC_FANTASIA,TELEFONE, FK_ENDERECO, ENABLED) "
-                + "VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO filial (cnpj,desc_nome,desc_fantasia,telefone,fk_endereco,enabled) "+
+                " VALUES (?,?,?,?,?,?)";
         
         try{
             psComando = conBanco.prepareStatement(sql);
@@ -132,7 +132,7 @@ public class DaoFilial {
     }
      public ArrayList<Filial> procurarFilial(String nome)
             throws SQLException, Exception {
-        String sql = "SELECT * FROM FILIAL WHERE UPPER (nome) LIKE UPPER ('%" + nome + "%') AND enabled=true";
+        String sql = "SELECT * FROM FILIAL WHERE UPPER (desc_nome) LIKE UPPER ('%" + nome + "%') AND enabled=true";
         
         psComando = conBanco.prepareStatement(sql);
         ResultSet rs =  psComando.executeQuery();

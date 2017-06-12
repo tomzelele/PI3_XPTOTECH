@@ -808,8 +808,23 @@ ul.contact li a:before
 
 }
 
+.pesquisaFilial{
+
+    margin-top: 40px;
+    margin-left: 0px;
+    position: absolute;
+
+}
+
 .voltar{
     margin-top: 25px;
+    margin-left: 980px;
+
+   
+}
+
+.voltarFilial{
+    margin-top: 200px;
     margin-left: 980px;
 
    
@@ -1048,7 +1063,7 @@ ul.contact li a:before
 }
 
 .inserirFilial{
-    margin-top: -70px;
+    margin-top: -50px;
     margin-left: 1040px;  
 }
 .voltarFilial{

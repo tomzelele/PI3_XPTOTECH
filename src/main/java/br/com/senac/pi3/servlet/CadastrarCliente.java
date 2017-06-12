@@ -41,6 +41,7 @@ public class CadastrarCliente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         Connection connection = ConnectionUtils.getConnection();
+        
         DaoEndereco enderecoDao = new DaoEndereco(connection);
         
         Cliente cliente = new Cliente();

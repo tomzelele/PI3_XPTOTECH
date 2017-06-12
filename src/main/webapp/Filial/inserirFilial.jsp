@@ -48,7 +48,7 @@
 
                             <div class="cnpj">					
                                 <label  for="cnpj">CNPJ: </label>			
-                                <input  requerid="" maxlength="18" name="cnpj" type="text" id="cnpj" OnKeyPress="formatar('##.###.###/####-##', this)" class="form-control input-sm"> </br>
+                                <input  requerid="" maxlength="19" name="cnpj" type="text" id="cnpj" OnKeyPress="formatar('##.###.###/####-##', this)" class="form-control input-sm"> </br>
                             </div>
 
                             <div class="desc_nome">
@@ -63,7 +63,7 @@
 
                             <div  class="telefone">
                                 <label  for="telefone">Telefone:  </label>
-                                <input requerid="" maxlength="13" OnKeyPress="formatar('##-#####-####', this)" maxlength="10"  name="telefone" type="text" id="telefone" class="form-control input-sm" > </br>
+                                <input requerid="" maxlength="13" OnKeyPress="formatar('##-#####-####', this)" name="telefone" type="text" id="telefone" class="form-control input-sm" > </br>
                             </div>
 
                             <fieldset  class="fieldEndreco">

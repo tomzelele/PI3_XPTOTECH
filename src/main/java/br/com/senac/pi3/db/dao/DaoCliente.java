@@ -89,7 +89,7 @@ public class DaoCliente {
 
     }
         
-        public  void excluirCliente(Integer id) throws SQLException, Exception {
+        public void excluirCliente(Integer id) throws SQLException, Exception {
         //Monta a string de atualização do cliente no BD, utilizando
         //o ID do cliente passado como parâmetro para desativá-lo
         String sql = "UPDATE cliente SET enabled=false WHERE id_cliente=?";        

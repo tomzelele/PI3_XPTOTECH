@@ -14,17 +14,19 @@
         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
         <link href="default.css" rel="stylesheet" type="text/css" media="all" />
         <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
-        <title>Consultar Filiais</title>
+                
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Consultar Filiais</title>
+        
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
-        <meta name="keywords" content="" />
-        <meta name="description" content="" />
-        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+        
     </head>
     <body>   
         <form action="ExcluiFilial" method="post" name="formExcluirFilial">
@@ -43,7 +45,7 @@
                     <a id="button" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
                 </div>
                 
-                <div class="inserirFilial">
+                <div class="inserirFuncionario">
                     <a type="button" class="btn btn-inserir" href="CadastraFilial">Inserir Filial</a>
                 </div>
                 
@@ -125,7 +127,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                                <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+                                <h4 class="modal-title custom_align" id="Heading">Editar Filial</h4>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
@@ -142,7 +144,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer ">
-                                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+                                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
                             </div>
                         </div>
                         <!-- /.modal-content --> 
@@ -165,8 +167,8 @@
 
                             </div>
                             <div class="modal-footer ">
-                                <button type="button" class="btn btn-success btn-confirm-excluir" ><span class="glyphicon glyphicon-ok-sign"></span> Sim</button>
-                                <button type="button" class="btn btn-default " data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Não</button>
+                                <button type="button" class="btn btn-success btn-confirm-excluir" ><span class="glyphicon glyphicon-ok-sign"></span> Sim</button>
+                                <button type="button" class="btn btn-default " data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Não</button>
                             </div>
                         </div>
                         <!-- /.modal-content --> 
@@ -183,11 +185,16 @@
         crossorigin="anonymous"></script>
         <script>
             $(function () {
+                
                 $(".excluir-filial").on('click', function () {
+                    
                     let idFilial = $(this).attr('data-idFilial');
+                    
                     formExcluirFilial.idFilialExcluir.value = idFilial;
                 });
+                
                 $('.btn-confirm-excluir').on('click', function () {
+                    
                     formExcluirFilial.submit();
                 })
             });
