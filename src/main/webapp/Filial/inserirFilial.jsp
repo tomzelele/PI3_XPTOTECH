@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Inserir Filial</title>
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
@@ -44,11 +44,11 @@
 
                     <div class="cadastroFormulario">
 
-                        <form method="post" action="../CadastrarFilial">
+                        <form method="post" action="CadastraFilial">
 
                             <div class="cnpj">					
-                                <label  for="nome">CNPJ: </label>			
-                                <input  requerid="" maxlength="17" name="cnpj" type="text" id="cnpj" OnKeyPress="formatar('##.###.###/####-##', this)" class="form-control input-sm"> </br>
+                                <label  for="cnpj">CNPJ: </label>			
+                                <input  requerid="" maxlength="18" name="cnpj" type="text" id="cnpj" OnKeyPress="formatar('##.###.###/####-##', this)" class="form-control input-sm"> </br>
                             </div>
 
                             <div class="desc_nome">
@@ -78,14 +78,15 @@
                                 <label>Número: </label> 
                                 <input requerid="" size="4" type="text" id="numEnderecoCliente" maxlength="5" name="numEnderecoCliente" class="form-control input-sm">
                             </div>
-                            <div class="cepCliente">
-                                <label>Cep:</label>
-                                <input maxlength="9" OnKeyPress="formatar('#####-###', this)" requerid="" id="cepCliente"  type="cepCliente" maxlength="8" name="cepCliente" class="form-control input-sm" > </br>
-                            </div>
                             <div class="bairroCliente">
                                 <label>Bairro: </label> 
                                 <input requerid="" type="text" id="bairroCliente" maxlength="40" name="bairroCliente"class="form-control input-sm">
                             </div>
+                            <div class="cepCliente">
+                                <label>Cep:</label>
+                                <input maxlength="9" OnKeyPress="formatar('#####-###', this)" requerid="" id="cepCliente"  type="cepCliente" maxlength="8" name="cepCliente" class="form-control input-sm" > </br>
+                            </div>
+                            
                             <div class="cidadeCliente">
                                 <label>Cidade: </label>
                                 <input requerid="" type="text" id="cidadeCliente" maxlength="40" name="cidadeCliente"class="form-control input-sm">
@@ -95,7 +96,7 @@
                                 <input requerid="" size="6"type="text" id="estadoCliente" maxlength="2" name="estadoCliente"class="form-control input-sm"></br>
                             </div>
 
-                            <div class="botaoCadastrarFilial">
+                            <div class="botaoCadastrarCliente">
                                 <input type="submit" class="btn btn-primary" value="Cadastrar"></button>
                             </div>
                         </form>

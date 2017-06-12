@@ -50,7 +50,7 @@ public class EditarFilial extends HttpServlet {
         DaoFilial filialDao = new DaoFilial(ConnectionUtils.getConnection());
         DaoEndereco enderecoDao = new DaoEndereco(ConnectionUtils.getConnection());
         Filial filial = new Filial();
-        filial.setIdFilial(Integer.parseInt(req.getParameter("FilialAtualiza")));
+        filial.setIdFilial(Integer.parseInt(req.getParameter("IdFilialAtualiza")));
         
         filial.setNome(req.getParameter("desc_nome"));
         filial.setFantasia(req.getParameter("desc_fantasia"));

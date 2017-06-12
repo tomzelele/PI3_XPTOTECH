@@ -27,11 +27,7 @@
 
     </head>
     <body>
-        <% Filial filial = (Filial) session.getAttribute("FilialAtualiza");
-
-            //List<Categoria> listaCategoria = (List<Categoria>) session.getAttribute("ListaCategoriaAtualiza");
-
-        %>
+        <% Filial filial = (Filial) session.getAttribute("FilialAtualiza");%>
         <div id="wrapper3">
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
@@ -40,18 +36,18 @@
                     <div id="textCustom" class="title">	<h2>Editar Filial</h2> </div>
                 </div>
 
-                <a id="botaoCustom" href="/XPTOTECH/dashboard.jsp" class="button">Voltar</a>
+                <a id="botaoCustom" href="/XPTOTECH/ListarFilial" class="button">Voltar</a>
 
                 <div class="container" >
 
                     <div class="cadastroFormulario" >
 
                         <form method="post" action="EditarFilial">
-                            <input type="hidden" value="<%= filial.getIdFilial()%>" name="FilialAtualiza"> </br>
+                            <input type="hidden" value="<%= filial.getIdFilial()%>" name="IdFilialAtualiza"> </br>
 
 
                             <div class="cnpj">					
-                                <label  for="nome">CNPJ: </label>			
+                                <label  for="cnpj">CNPJ: </label>			
                                 <input  value="<%= filial.getCnpj()%>" requerid="" name="cnpj" type="text" id="cnpj" OnKeyPress="formatar('##.###.###/####-##', this)" class="form-control input-sm"> </br>
                             </div>
 

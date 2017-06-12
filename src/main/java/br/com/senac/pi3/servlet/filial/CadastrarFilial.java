@@ -1,4 +1,4 @@
-package br.com.senac.pi3.servlet.filial;
+ package br.com.senac.pi3.servlet.filial;
 
 import br.com.senac.pi3.db.dao.DaoEndereco;
 import br.com.senac.pi3.services.filial.ServicoFilial;
@@ -24,7 +24,7 @@ public class CadastrarFilial extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {        
-        req.getRequestDispatcher("filial/inserirFilial.jsp").forward(req, resp);
+        req.getRequestDispatcher("Filial/inserirFilial.jsp").forward(req, resp);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class CadastrarFilial extends HttpServlet{
             req.setAttribute("numEnderecoCliente", endereco.getNumero());
             // Passando mensagem para página jsp
             req.setAttribute("message", message);
-            req.getRequestDispatcher("filial/inserirFilial.jsp").forward(req, resp);
+            req.getRequestDispatcher("Filial/inserirFilial.jsp").forward(req, resp);
         } else {
             try {
                 endereco = enderecoDao.inserir(endereco);
@@ -81,7 +81,7 @@ public class CadastrarFilial extends HttpServlet{
                 filialDao.inserirFilial(filial);
                 message = "Inclusão efetuada com sucesso";
                 req.setAttribute("message", message);
-                req.getRequestDispatcher("filial/inserirFilial.jsp").forward(req, resp);
+                resp.sendRedirect("ListarFilial");        
             } catch (FilialException ex) {
                 message = "Erro na fonte de dados";
                 req.setAttribute("message", message);
@@ -97,6 +97,5 @@ public class CadastrarFilial extends HttpServlet{
             }
         }
     
-        req.getRequestDispatcher("filial/listarFilial.jsp").forward(req, resp);
     }       
 }
