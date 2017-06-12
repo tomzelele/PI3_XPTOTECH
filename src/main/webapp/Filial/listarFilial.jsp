@@ -34,35 +34,17 @@
         <div id="wrapper3">
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
-
-                <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-group"></span>
-                    <div id="textCustom" class="title">	<h2>Gerenciamento de Filiais</h2> </div>
-                </div>
-
-                <div class="voltar">
+                
+                <div class="voltarFilial">
                     <a id="button" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
                 </div>
-                <div class="inserirProd">
+                
+                <div class="inserirFilial">
                     <a type="button" class="btn btn-inserir" href="CadastrarFilial">Inserir Filial</a>
                 </div>
-                <div class="pesquisaNome">
-                    <form action="PesquisaFilial" method="POST" name="formPesquisarFilial"> 
-                        <div class="col-lg-3">
-
-                            <div  class="input-group custom-search-form">
-
-                                <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control" placeholder="Pesquisa" /> 
-
-                                <span class="input-group-btn">                             
-
-                                    <button type="button" class="btn btn-danger">
-
-                                        <span class=" glyphicon glyphicon-search"></span>
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
-                    </form>
+                
+                <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-truck"></span>
+                    <div id="textCustom" class="title">	<h2>Gerenciamento de Filiais</h2> </div>
                 </div>
 
                 <div class="container">
@@ -82,21 +64,21 @@
                                     <th>Editar</th>
                                     <th>Deletar</th>
                                     </thead>
-
+                                    
                                     <tbody>
                                         <% List<Filial> listaFiliais = (List<Filial>) session.getAttribute("listFilial"); %>
                                         <% for (Filial filial : listaFiliais) {%>
-                                        <tr>
-                                            <td><%= filial.getIdFilial()%></td>
-                                            <td><%= filial.getFantasia()%></td>
-                                            <td><%= filial.getCnpj()%></td>
-                                            <% Endereco endereco = filial.getEndereco();%>
+                                            <tr>
+                                                 <td><%= filial.getIdFilial()%></td>
+                                                <td><%= filial.getFantasia()%></td>
+                                                <td><%= filial.getCnpj()%></td>
+                                                <% Endereco endereco = filial.getEndereco();%>
 
-                                            <td> <%= endereco.getRua() + " " + endereco.getNumero() + " " + endereco.getCidade() + "/" + endereco.getEstado()%> </td>
-                                            <td><%= filial.getTelefone()%></td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditarFilial?idFilial=<%= filial.getIdFilial()%>" class="btn btn-primary btn-xs" data-title="Edit"  ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-cliente" data-idCliente="<%=filial.getIdFilial()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-                                        </tr>    
+                                                <td> <%= endereco.getRua() + " " + endereco.getNumero() + " " + endereco.getCidade() + "/" + endereco.getEstado()%> </td>
+                                                <td><%= filial.getTelefone()%></td>
+                                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditarFilial?idFilial=<%= filial.getIdFilial()%>" class="btn btn-primary btn-xs" data-title="Edit"  ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
+                                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-cliente" data-idCliente="<%=filial.getIdFilial()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                            </tr>    
 
 
                                         <% }%>
@@ -137,7 +119,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer ">
-                                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+                                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
                             </div>
                         </div>
                         <!-- /.modal-content --> 
@@ -160,8 +142,8 @@
 
                             </div>
                             <div class="modal-footer ">
-                                <button type="button" class="btn btn-success btn-confirm-excluir" ><span class="glyphicon glyphicon-ok-sign"></span> Sim</button>
-                                <button type="button" class="btn btn-default " data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Não</button>
+                                <button type="button" class="btn btn-success btn-confirm-excluir" ><span class="glyphicon glyphicon-ok-sign"></span> Sim</button>
+                                <button type="button" class="btn btn-default " data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Não</button>
                             </div>
                         </div>
                         <!-- /.modal-content --> 
@@ -177,27 +159,16 @@
             integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
         crossorigin="anonymous"></script>
         <script>
-
             $(function () {
-
                 $(".excluir-filial").on('click', function () {
-
                     let idFilial = $(this).attr('data-idFilial');
-
-
                     formExcluirFilial.idClienteExcluir.value = idFilial;
                 });
-
                 $('.btn-confirm-excluir').on('click', function () {
-
                     formExcluirFilial.submit();
                 })
-
-
             });
-
         </script>
     </body>
 </html>
-
 

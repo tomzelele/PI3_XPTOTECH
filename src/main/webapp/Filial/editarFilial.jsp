@@ -28,9 +28,10 @@
     </head>
     <body>
         <% Filial filial = (Filial) session.getAttribute("FilialAtualiza");
-
-            //List<Categoria> listaCategoria = (List<Categoria>) session.getAttribute("ListaCategoriaAtualiza");
-
+        
+           //List<Categoria> listaCategoria = (List<Categoria>) session.getAttribute("ListaCategoriaAtualiza");
+        
+        
         %>
         <div id="wrapper3">
             <div id="three-column" class="container">
@@ -44,68 +45,38 @@
 
                 <div class="container" >
 
-                    <div class="cadastroFormulario">
+                    <div class="cadastroFormulario" >
 
-                        <form method="post" action="CadastrarFilial">
+                        <form method="post" action="EditarFilial">
 
                             <div class="cnpj">					
                                 <label  for="nome">CNPJ: </label>			
-                                <input  requerid="" maxlength="17" name="cnpj" type="text" id="cnpj" OnKeyPress="formatar('##.###.###/####-##', this)" class="form-control input-sm"> </br>
+                                <input  value="<%= filial.getCnpj()%>" requerid="" name="cnpj" type="text" id="cnpj" OnKeyPress="formatar('##.###.###/####-##', this)" class="form-control input-sm"> </br>
                             </div>
 
-                            <div class="desc_nome">
+                            <div  class="desc_nome">
                                 <label  for="desc_nome">Razão social: </label>
-                                <input requerid="" name="desc_nome" type="text" maxlength="50" id="desc_nome" class="form-control input-sm"> </br>
+                                <input value="<%= filial.getNome()%>"  requerid="" name="desc_nome" type="text" maxlength="50" id="desc_nome" class="form-control input-sm"> </br>
                             </div>			
 
                             <div  class="desc_fantasia">
                                 <label  for="desc_fantasia">Fantasia:  </label>
-                                <input  requerid="" name="desc_fantasia" maxlength="50" type="text" id="desc_fantasia" class="form-control input-sm"> </br>
+                                <input  value="<%= filial.getFantasia()%>" requerid="" name="desc_fantasia" maxlength="50" type="text" id="desc_fantasia" class="form-control input-sm"> </br>
                             </div>
 
                             <div  class="telefone">
                                 <label  for="telefone">Telefone:  </label>
-                                <input requerid="" maxlength="13" OnKeyPress="formatar('##-#####-####', this)" maxlength="10"  name="telefone" type="text" id="telefone" class="form-control input-sm" > </br>
+                                <input value="<%= filial.getTelefone()%>" requerid=""  maxlength="10"  name="telefone" type="text" id="telefone" class="form-control input-sm" > </br>
                             </div>
-
-                            <fieldset  class="fieldEndreco">
-                                <legend>Endereço</legend>
-                            </fieldset> 
-
-                            <div class="enderecoCliente">
-                                <label>Rua: </label> 
-                                <input requerid="" size="30" type="text" id="enderecoFilial" maxlength="80" name="enderecoFilial" class="form-control input-sm">
-                            </div>
-                            <div class="numEnderecoCliente">
-                                <label>Número: </label> 
-                                <input requerid="" size="4" type="text" id="numEnderecoFilial" maxlength="5" name="numEnderecoFilial" class="form-control input-sm">
-                            </div>
-                            <div class="cepCliente">
-                                <label>Cep:</label>
-                                <input maxlength="9" OnKeyPress="formatar('#####-###', this)" requerid="" id="cepCliente"  type="cepFilial" maxlength="8" name="cepCliente" class="form-control input-sm" > </br>
-                            </div>
-                            <div class="bairroCliente">
-                                <label>Bairro: </label> 
-                                <input requerid="" type="text" id="bairroCliente" maxlength="40" name="bairroFilial"class="form-control input-sm">
-                            </div>
-                            <div class="cidadeCliente">
-                                <label>Cidade: </label>
-                                <input requerid="" type="text" id="cidadeCliente" maxlength="40" name="cidadeFilial"class="form-control input-sm">
-                            </div>
-                            <div class="estadoCliente">
-                                <label>Estado: </label>
-                                <input requerid="" size="6"type="text" id="estadoCliente" maxlength="2" name="estadoFilial"class="form-control input-sm"></br>
-                            </div>
-
+                            
                             <div class="botaoCadastrarFilial">
                                 <input type="submit" class="btn btn-primary" value="Cadastrar"></button>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
-        </div>                
+        </div>      
 
         <c:import url="../Estrutura/footer.jsp"></c:import>
     </body>

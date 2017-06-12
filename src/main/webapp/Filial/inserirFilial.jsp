@@ -72,27 +72,27 @@
 
                             <div class="enderecoCliente">
                                 <label>Rua: </label> 
-                                <input requerid="" size="30" type="text" id="enderecoFilial" maxlength="80" name="enderecoFilial" class="form-control input-sm">
+                                <input requerid="" size="30" type="text" id="enderecoCliente" maxlength="80" name="enderecoCliente" class="form-control input-sm">
                             </div>
                             <div class="numEnderecoCliente">
                                 <label>Número: </label> 
-                                <input requerid="" size="4" type="text" id="numEnderecoFilial" maxlength="5" name="numEnderecoFilial" class="form-control input-sm">
+                                <input requerid="" size="4" type="text" id="numEnderecoCliente" maxlength="5" name="numEnderecoCliente" class="form-control input-sm">
                             </div>
                             <div class="cepCliente">
                                 <label>Cep:</label>
-                                <input maxlength="9" OnKeyPress="formatar('#####-###', this)" requerid="" id="cepCliente"  type="cepFilial" maxlength="8" name="cepCliente" class="form-control input-sm" > </br>
+                                <input maxlength="9" OnKeyPress="formatar('#####-###', this)" requerid="" id="cepCliente"  type="cepCliente" maxlength="8" name="cepCliente" class="form-control input-sm" > </br>
                             </div>
                             <div class="bairroCliente">
                                 <label>Bairro: </label> 
-                                <input requerid="" type="text" id="bairroCliente" maxlength="40" name="bairroFilial"class="form-control input-sm">
+                                <input requerid="" type="text" id="bairroCliente" maxlength="40" name="bairroCliente"class="form-control input-sm">
                             </div>
                             <div class="cidadeCliente">
                                 <label>Cidade: </label>
-                                <input requerid="" type="text" id="cidadeCliente" maxlength="40" name="cidadeFilial"class="form-control input-sm">
+                                <input requerid="" type="text" id="cidadeCliente" maxlength="40" name="cidadeCliente"class="form-control input-sm">
                             </div>
                             <div class="estadoCliente">
                                 <label>Estado: </label>
-                                <input requerid="" size="6"type="text" id="estadoCliente" maxlength="2" name="estadoFilial"class="form-control input-sm"></br>
+                                <input requerid="" size="6"type="text" id="estadoCliente" maxlength="2" name="estadoCliente"class="form-control input-sm"></br>
                             </div>
 
                             <div class="botaoCadastrarFilial">
@@ -105,7 +105,7 @@
 
 
             </div>
-        </div>             
+        </div>            
 
         
         <script>
@@ -113,7 +113,6 @@
                 var i = documento.value.length;
                 var saida = mascara.substring(0,1);
                 var texto = mascara.substring(i)
-
                 if (texto.substring(0,1) != saida){
                         documento.value += texto.substring(0,1);
                 }
