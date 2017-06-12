@@ -141,11 +141,11 @@ public class DaoFuncionario {
            
            ArrayList<Funcionario> listaFuncionario  = new ArrayList<Funcionario>();
            
-                                 
+           DaoEndereco  daoEndereco = new DaoEndereco(ConnectionUtils.getConnection());
+           
            while(rs.next()){
                Funcionario funcionario = new Funcionario();
-               
-                           
+             
                funcionario.setId(rs.getInt("ID_FUNCIONARIO"));
                funcionario.setCodAcesso(rs.getInt("COD_ACESSO"));
                funcionario.setCargo(new DaoCargo(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("ID_CARGO")));

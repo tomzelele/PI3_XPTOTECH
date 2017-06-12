@@ -44,11 +44,5 @@ public class ListarFuncionario extends HttpServlet{
         
         req.getSession().setAttribute("listaFuncionarios", listaFuncionarios);
         req.getRequestDispatcher("Funcionarios/listarFuncionario.jsp").forward(req, resp);
-
-
     }
-    
-    
-    
-    
 }

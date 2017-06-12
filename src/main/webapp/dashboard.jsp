@@ -37,7 +37,8 @@
 <div id="wrapper3">
 <div id="three-column" class="container">
 	<div><span class="arrow-down"></span></div>
-
+        
+        
 	<div id="tbox1"> <span class="icon icon-group"></span>
 		<div class="title">
 			<h2>Gerenciar seus Clientes</h2>
@@ -51,31 +52,38 @@
 		<a href="ListarProdutos" class="buttonGerenciar">Gerenciar</a>
 	</div>
         
+        <% if (logado.getFuncionario().getCargo().getIdCargo() == 2 || logado.getFuncionario().getCargo().getIdCargo() == 3){%>
 	<div id="tbox3"> <span class="icon icon-truck"></span>
 		<div class="title">
 			<h2>Gerenciamento de Filiais</h2>
 		</div>
 		<a href="ListarFilial" class="buttonGerenciar">Gerenciar</a>
 	</div>
-
+        <%} %>
+        
 	<div id="tbox3"> <span class="icon icon-bar-chart"></span>
 		<div class="title">
 			<h2>Gerenciamento de Vendas</h2>
 		</div>
 		<a href="Vendas/RealizaVenda.jsp" class="buttonGerenciar">Gerenciar</a>
 	</div>
+        <% if (logado.getFuncionario().getCargo().getIdCargo() == 2 || logado.getFuncionario().getCargo().getIdCargo() == 3){%>
 	<div id="tbox3"> <span class="icon icon-signal"></span>
 		<div class="title">
 			<h2>Gerar seus Relatorios</h2>
 		</div>
 		<a href="Relatorios/gerRelatorio.jsp" class="buttonGerenciar">Gerenciar</a>
 	</div>
+        <%} %>
+        
+        <% if (logado.getFuncionario().getCargo().getIdCargo() == 2){%>
 	<div id="tbox3"> <span class="icon icon-cog"></span>
 		<div class="title">
 			<h2>Gerenciamento de Acessos</h2>
 		</div>
 		<a href="ListarFuncionarios" class="buttonGerenciar">Gerenciar</a>
 	</div>
+        <%} %>
 </div>
 </div>
 

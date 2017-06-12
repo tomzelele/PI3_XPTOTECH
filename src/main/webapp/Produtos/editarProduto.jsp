@@ -64,7 +64,7 @@
 
                             <div class="nomeProd">
                                 <label  for="nomeProd">Nome: </label>			
-                                <input  value="<%= produto.getProduto() %>" required="" name="nomeProd" type="text" id="nomeProd" class="form-control input-sm"> </br>
+                                <input  value="<%= produto.getProduto() %>" name="nomeProd" type="text" id="nomeProd" class="form-control input-sm"> </br>
                             </div>
 
                             <div  class="categoriaProd">
@@ -102,7 +102,7 @@
             </c:if>
         </div>      
         
-		<script>
+        <script>
                 $(document).ready(function(){
                     $("#myAlert").on('closed.bs.alert', function () {
                         

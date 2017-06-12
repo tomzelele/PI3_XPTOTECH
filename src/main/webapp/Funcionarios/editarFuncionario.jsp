@@ -63,8 +63,8 @@
                                 <input  requerid="" name="codAcesso" type="text" id="codAcesso" value="<%= funcionario.getCodAcesso()%>" class="form-control input-sm" > </br>
                             </div>
                             
+                            <label class="testeCargo" for="cargo">Cargo: </label>
                             <div class="cargo">					
-                                <label  for="cargo">Cargo: </label>
                                 <select class="form-control" name="cargo" id="cargo" >
                                     <% for(Cargo cargo : listaCargo){ %>
                                         <option value="<%= cargo.getIdCargo() %>"><%= cargo.getCargo() %></option>
@@ -72,8 +72,8 @@
                                 </select>
                             </div>
                             
+                            <label class="testeFilial"for="filial">Filial: </label>
                             <div  class="filial">
-                                <label  for="filial">Filial: </label>
                                 <select class="form-control" name="filial" id="filial" >
                                     <% for(Filial filial : listaFilial){ %>
                                         <option value="<%= filial.getIdFilial() %>"><%= filial.getNome() %></option>
@@ -124,7 +124,7 @@
                                 <input size="37" requerid="" name="emailFuncionario" type="text" id="emailFuncionario" value="<%= funcionario.getEmail()%>" class="form-control input-sm" > </br>
                             </div>
                             
-                            <fieldset  class="fieldEndreco">
+                            <fieldset  class="fieldEnderecoFuncionario">
                                 <legend>Endereço - Funcionário</legend>
                             </fieldset> 
 
@@ -160,7 +160,7 @@
                             </div>
  
 
-                            <div class="botaoCadastrarProd">
+                            <div class="botaoCadastrarFuncionario">
                                 <input type="submit" class="btn btn-primary" value="Atualizar"></button>
                             </div>
                         </form>

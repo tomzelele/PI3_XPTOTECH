@@ -19,6 +19,10 @@ public class DaoFilial {
     public DaoFilial(Connection conBanco) {
         this.conBanco = conBanco;
     }
+
+    public DaoFilial() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public void inserirFilial(Filial filial) throws SQLException, Exception {
         //Monta a string de inserção de um produto no BD,
@@ -104,6 +108,30 @@ public class DaoFilial {
     }
 
      public ArrayList<Filial> procurarFilialPorCNPJ(String cnpj)
+            throws SQLException, Exception {
+        String sql = "SELECT * FROM FILIAL WHERE UPPER (nome) LIKE UPPER ('%" + cnpj + "%') AND enabled=true";
+        
+        psComando = conBanco.prepareStatement(sql);
+        ResultSet rs =  psComando.executeQuery();
+        
+        ArrayList<Filial> listaFilial  = new ArrayList<Filial>();
+        
+        while(rs.next()){
+            Filial filial = new Filial ();
+            
+            filial.setIdFilial(rs.getInt("ID_FILIAL"));
+            filial.setCnpj(rs.getString("CNPJ"));
+            filial.setNome(rs.getString("DESC_NOME"));
+            filial.setFantasia(rs.getString("DESC_FANTASIA"));
+            filial.setTelefone(rs.getString("TELEFONE"));
+            filial.setEndereco(new DaoEndereco(ConnectionUtils.getConnection()).buscarPorId(rs.getInt("FK_ENDERECO")));
+            
+            listaFilial.add(filial);
+        
+        }
+        return listaFilial;
+    }
+     public ArrayList<Filial> procurarFilial(String cnpj)
             throws SQLException, Exception {
         String sql = "SELECT * FROM FILIAL WHERE UPPER (nome) LIKE UPPER ('%" + cnpj + "%') AND enabled=true";
         

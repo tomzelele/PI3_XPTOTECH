@@ -1,9 +1,8 @@
-
 <%@page import="java.util.List"%>
 <%@page import="br.com.senac.pi3.model.endereco.Endereco"%>
-<%@page import="br.com.senac.pi3.model.cliente.Cliente"%>
+<%@page import="br.com.senac.pi3.model.filial.Filial"%>
 <%@page import="br.com.senac.pi3.db.utils.ConnectionUtils"%>
-<%@page import="br.com.senac.pi3.db.dao.DaoCliente"%>
+<%@page import="br.com.senac.pi3.db.dao.DaoFilial"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,63 +14,38 @@
         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
         <link href="default.css" rel="stylesheet" type="text/css" media="all" />
         <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
-        <title>Consultar Cliente</title>
-        
+        <title>Consultar Filial</title>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <style><%@include file="../CSS/default.css" %></style>
         <style><%@include file="../CSS/fonts.css" %></style>
-
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
     </head>
-    <body>
-
-        <form action="ExcluiCliente" method="POST" name="formExcluirCliente">
-            <input type="hidden" value="" name="idClienteExcluir">
+    <body>   
+        <form action="ExcluiFilial" method="post" name="formExcluirFilial">
+            <input type="hidden" value="" name="idFilialExcluir">
         </form>
 
         <div id="wrapper3">
             <div id="three-column" class="container">
                 <div><span class="arrow-down"></span></div>
-
-
-
-
-                <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-group"></span>
-                    <div id="textCustom" class="title">	<h2>Gerenciamento de Clientes</h2> </div>
-                </div>
-
-
-                <div class="voltar">
-
+                
+                <div class="voltarFilial">
                     <a id="button" href="dashboard.jsp" class="button" style="border-radius: 10px;">Voltar</a>
                 </div>
                 
-                <div class="inserirProd">
-                    <a type="button" class="btn btn-inserir" href="CadastraCliente">Inserir Cliente</a>
+                <div class="inserirFilial">
+                    <a type="button" class="btn btn-inserir" href="CadastraFilial">Inserir Filial</a>
                 </div>
-
-                <div class="pesquisaNome">
-                    <form action="PesquisaCliente" method="POST" name="formPesquisarCliente"> 
-                        <div class="col-lg-3">
-                            <div  class="input-group custom-search-form">
-                                <input required="" name="pesquisaNome" type="text" id="pesquisaNome" class="form-control" placeholder="Pesquisa"/> 
-                                <span class="input-group-btn">  
-                                    <button type="button" class="btn btn-danger">
-                                    <span class=" glyphicon glyphicon-search"></span>
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
-                    </form>
-
+                
+                <div id="tbox1" class="paginaDeGerenciamento"> <span class="icon icon-truck"></span>
+                    <div id="textCustom" class="title">	<h2>Gerenciamento de Filiais</h2> </div>
                 </div>
-
-
 
                 <div class="container">
                     <div class="row">
@@ -80,34 +54,33 @@
                         <div class="col-md-12">
                             <div style="margin-top: -250px;" class="table-responsive">
 
-
-                                <table     id="mytable" class="table table-bordred table-striped">
-
+                                <table id="mytable" class="table table-bordred table-striped">
                                     <thead>
-
-                                    <th>Nome</th>
-                                    <th>Sobrenome</th>
-                                    <th>Endereco</th>
-                                    <th>Email</th>
-                                    <th>Celular</th>
+                                    <th>Id</th>
+                                    <th>Fantasia</th>
+                                    <th>CNPJ</th>
+                                    <th>Endereço</th>
+                                    <th>Telefone</th>
                                     <th>Editar</th>
-
                                     <th>Deletar</th>
                                     </thead>
+                                    
                                     <tbody>
-                                        <% List<Cliente> listaClientes = (List<Cliente>) session.getAttribute("listaClientes"); %>
-                                        <% for (Cliente cliente : listaClientes) {%>
-                                        <tr>            
-                                            <td><%= cliente.getNome()%></td>
-                                            <td><%= cliente.getSobrenome()%></td>
-                                            <% Endereco endereco = cliente.getEndereco();%>
+                                        <% List<Filial> listaFiliais = (List<Filial>) session.getAttribute("listFilial"); %>
+                                        <% for (Filial filial : listaFiliais) {%>
+                                            <tr>
+                                                 <td><%= filial.getIdFilial()%></td>
+                                                <td><%= filial.getFantasia()%></td>
+                                                <td><%= filial.getCnpj()%></td>
+                                                <% Endereco endereco = filial.getEndereco();%>
 
-                                            <td> <%= endereco.getRua() + ", " + endereco.getNumero() + " - " + endereco.getCidade() + "/" + endereco.getEstado()%> </td>
-                                            <td><%= cliente.getEmail()%></td>
-                                            <td><%= cliente.getCel()%></td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditarCliente?idCliente=<%= cliente.getId()%>" class="btn btn-primary btn-xs" data-title="Edit"  ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-cliente" data-idCliente="<%=cliente.getId()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-                                        </tr>    
+                                                <td> <%= endereco.getRua() + " " + endereco.getNumero() + " " + endereco.getCidade() + "/" + endereco.getEstado()%> </td>
+                                                <td><%= filial.getTelefone()%></td>
+                                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="EditarFilial?idFilial=<%= filial.getIdFilial()%>" class="btn btn-primary btn-xs" data-title="Edit"  ><span class="glyphicon glyphicon-pencil"></span></a></p></td>
+                                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs excluir-cliente" data-idCliente="<%=filial.getIdFilial()%>" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                            </tr>    
+
+
                                         <% }%>
 
                                     </tbody>
@@ -161,7 +134,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                                <h4 class="modal-title custom_align" id="Heading">Deletar Cliente</h4>
+                                <h4 class="modal-title custom_align" id="Heading">Deletar Filial</h4>
                             </div>
                             <div class="modal-body">
 
@@ -189,17 +162,17 @@
 
             $(function () {
 
-                $(".excluir-cliente").on('click', function () {
+                $(".excluir-filial").on('click', function () {
 
-                    let idCliente = $(this).attr('data-idCliente');
+                    let idFilial = $(this).attr('data-idFilial');
 
 
-                    formExcluirCliente.idClienteExcluir.value = idCliente;
+                    formExcluirFilial.idClienteExcluir.value = idFilial;
                 });
 
                 $('.btn-confirm-excluir').on('click', function () {
 
-                    formExcluirCliente.submit();
+                    formExcluirFilial.submit();
                 })
 
 
@@ -208,4 +181,5 @@
         </script>
     </body>
 </html>
+
 
